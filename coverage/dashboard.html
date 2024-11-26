@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u2-chambilla_llantay\src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.32" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u2-chambilla_llantay\src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Config/Database.php.html#7">Config\Database</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/DatabaseException.php.html#4">Exceptions\DatabaseException</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#4">Models\Message</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#11">Controllers\AdminController</a></td><td class="text-right">39%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#10">Controllers\ProductController</a></td><td class="text-right">45%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#11">Controllers\OrderController</a></td><td class="text-right">61%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#6">Controllers\UserController</a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="Models/User.php.html#4">Models\User</a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="Models/Product.php.html#4">Models\Product</a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/AdminController.php.html#11">Controllers\AdminController</a></td><td class="text-right">907</td></tr>
+       <tr><td><a href="Config/Database.php.html#7">Config\Database</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#11">Controllers\OrderController</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#10">Controllers\ProductController</a></td><td class="text-right">71</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#6">Controllers\UserController</a></td><td class="text-right">29</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Config/Database.php.html#13"><abbr title="Config\Database::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Config/Database.php.html#33"><abbr title="Config\Database::connect">connect</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#104"><abbr title="Controllers\AdminController::handleDatabaseError">handleDatabaseError</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#164"><abbr title="Controllers\AdminController::validateImageName">validateImageName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#169"><abbr title="Controllers\AdminController::getSecureImagePath">getSecureImagePath</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#196"><abbr title="Controllers\AdminController::handleImageDelete">handleImageDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#233"><abbr title="Controllers\AdminController::updateProduct">updateProduct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#279"><abbr title="Controllers\AdminController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#293"><abbr title="Controllers\AdminController::getAllOrders">getAllOrders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#329"><abbr title="Controllers\AdminController::deleteOrder">deleteOrder</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#363"><abbr title="Controllers\AdminController::deleteUser">deleteUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#376"><abbr title="Controllers\AdminController::getAllMessages">getAllMessages</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#397"><abbr title="Controllers\AdminController::deleteMessage">deleteMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ContactController.php.html#17"><abbr title="Controllers\ContactController::createUser">createUser</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ContactController.php.html#22"><abbr title="Controllers\ContactController::createMessage">createMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#209"><abbr title="Controllers\OrderController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#227"><abbr title="Controllers\OrderController::getAllUsers">getAllUsers</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#77"><abbr title="Controllers\ProductController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#111"><abbr title="Controllers\ProductController::updateCartQuantity">updateCartQuantity</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#123"><abbr title="Controllers\ProductController::deleteCartItem">deleteCartItem</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#135"><abbr title="Controllers\ProductController::deleteAllCartItems">deleteAllCartItems</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#76"><abbr title="Controllers\UserController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#110"><abbr title="Controllers\UserController::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Exceptions/DatabaseException.php.html#5"><abbr title="Exceptions\DatabaseException::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Cart.php.html#13"><abbr title="Models\Cart::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#13"><abbr title="Models\Message::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#14"><abbr title="Models\Message::getUserId">getUserId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#15"><abbr title="Models\Message::getName">getName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#16"><abbr title="Models\Message::getEmail">getEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#17"><abbr title="Models\Message::getNumber">getNumber</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#18"><abbr title="Models\Message::getMessage">getMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#21"><abbr title="Models\Message::setUserId">setUserId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#22"><abbr title="Models\Message::setName">setName</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#23"><abbr title="Models\Message::setEmail">setEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#24"><abbr title="Models\Message::setNumber">setNumber</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#25"><abbr title="Models\Message::setMessage">setMessage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#27"><abbr title="Models\Message::exists">exists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#34"><abbr title="Models\Message::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Message.php.html#46"><abbr title="Models\Message::setId">setId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Order.php.html#27"><abbr title="Models\Order::getPlacedOn">getPlacedOn</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Product.php.html#11"><abbr title="Models\Product::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#16"><abbr title="Models\User::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#24"><abbr title="Models\User::setPassword">setPassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/User.php.html#33"><abbr title="Models\User::exists">exists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#18"><abbr title="Controllers\OrderController::getOrders">getOrders</abbr></a></td><td class="text-right">19%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#45"><abbr title="Controllers\OrderController::updatePaymentStatus">updatePaymentStatus</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#55"><abbr title="Controllers\OrderController::deleteOrder">deleteOrder</abbr></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#98"><abbr title="Controllers\UserController::getUserById">getUserById</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#99"><abbr title="Controllers\ProductController::getCartItems">getCartItems</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#315"><abbr title="Controllers\AdminController::updateOrderStatus">updateOrderStatus</abbr></a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#139"><abbr title="Controllers\AdminController::deleteProduct">deleteProduct</abbr></a></td><td class="text-right">69%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#109"><abbr title="Controllers\AdminController::addProduct">addProduct</abbr></a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#56"><abbr title="Controllers\UserController::loginUser">loginUser</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#342"><abbr title="Controllers\AdminController::getAllUsers">getAllUsers</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#17"><abbr title="Controllers\ProductController::getLatestProducts">getLatestProducts</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#22"><abbr title="Controllers\UserController::registerUser">registerUser</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#65"><abbr title="Controllers\OrderController::getAllOrders">getAllOrders</abbr></a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#40"><abbr title="Controllers\ProductController::addToCart">addToCart</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#183"><abbr title="Controllers\OrderController::getUserOrders">getUserOrders</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controllers/AdminController.php.html#196"><abbr title="Controllers\AdminController::handleImageDelete">handleImageDelete</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Config/Database.php.html#13"><abbr title="Config\Database::__construct">__construct</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#169"><abbr title="Controllers\AdminController::getSecureImagePath">getSecureImagePath</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#233"><abbr title="Controllers\AdminController::updateProduct">updateProduct</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#376"><abbr title="Controllers\AdminController::getAllMessages">getAllMessages</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#209"><abbr title="Controllers\OrderController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#227"><abbr title="Controllers\OrderController::getAllUsers">getAllUsers</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#77"><abbr title="Controllers\ProductController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#76"><abbr title="Controllers\UserController::logout">logout</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#18"><abbr title="Controllers\OrderController::getOrders">getOrders</abbr></a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Config/Database.php.html#33"><abbr title="Config\Database::connect">connect</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#279"><abbr title="Controllers\AdminController::getAllProducts">getAllProducts</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#293"><abbr title="Controllers\AdminController::getAllOrders">getAllOrders</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#329"><abbr title="Controllers\AdminController::deleteOrder">deleteOrder</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#363"><abbr title="Controllers\AdminController::deleteUser">deleteUser</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#397"><abbr title="Controllers\AdminController::deleteMessage">deleteMessage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#111"><abbr title="Controllers\ProductController::updateCartQuantity">updateCartQuantity</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#123"><abbr title="Controllers\ProductController::deleteCartItem">deleteCartItem</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#135"><abbr title="Controllers\ProductController::deleteAllCartItems">deleteAllCartItems</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#139"><abbr title="Controllers\AdminController::deleteProduct">deleteProduct</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#109"><abbr title="Controllers\AdminController::addProduct">addProduct</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#56"><abbr title="Controllers\UserController::loginUser">loginUser</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#342"><abbr title="Controllers\AdminController::getAllUsers">getAllUsers</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#17"><abbr title="Controllers\ProductController::getLatestProducts">getLatestProducts</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#65"><abbr title="Controllers\OrderController::getAllOrders">getAllOrders</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#22"><abbr title="Controllers\UserController::registerUser">registerUser</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#40"><abbr title="Controllers\ProductController::addToCart">addToCart</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#183"><abbr title="Controllers\OrderController::getUserOrders">getUserOrders</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#45"><abbr title="Controllers\OrderController::updatePaymentStatus">updatePaymentStatus</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#55"><abbr title="Controllers\OrderController::deleteOrder">deleteOrder</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Controllers/UserController.php.html#98"><abbr title="Controllers\UserController::getUserById">getUserById</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Controllers/ProductController.php.html#99"><abbr title="Controllers\ProductController::getCartItems">getCartItems</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Controllers/AdminController.php.html#315"><abbr title="Controllers\AdminController::updateOrderStatus">updateOrderStatus</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.32</a> using <a href="https://secure.php.net/" target="_top">PHP 8.2.12</a> and <a href="https://phpunit.de/">PHPUnit 9.6.21</a> at Tue Nov 26 8:32:40 CET 2024.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.32" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([3,0,0,0,1,1,0,3,0,1,3,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([44,0,1,0,0,2,2,2,3,5,1,68], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,9,"<a href=\"Config\/Database.php.html#7\">Config\\Database<\/a>"],[39.647577092511014,62,"<a href=\"Controllers\/AdminController.php.html#11\">Controllers\\AdminController<\/a>"],[92,12,"<a href=\"Controllers\/ContactController.php.html#9\">Controllers\\ContactController<\/a>"],[61.68831168831169,28,"<a href=\"Controllers\/OrderController.php.html#11\">Controllers\\OrderController<\/a>"],[45.23809523809524,18,"<a href=\"Controllers\/ProductController.php.html#10\">Controllers\\ProductController<\/a>"],[100,3,"<a href=\"Controllers\/SearchController.php.html#4\">Controllers\\SearchController<\/a>"],[62.264150943396224,16,"<a href=\"Controllers\/UserController.php.html#6\">Controllers\\UserController<\/a>"],[0,1,"<a href=\"Exceptions\/DatabaseException.php.html#4\">Exceptions\\DatabaseException<\/a>"],[90.9090909090909,11,"<a href=\"Models\/Cart.php.html#4\">Models\\Cart<\/a>"],[0,14,"<a href=\"Models\/Message.php.html#4\">Models\\Message<\/a>"],[95.65217391304348,22,"<a href=\"Models\/Order.php.html#4\">Models\\Order<\/a>"],[87.5,8,"<a href=\"Models\/Product.php.html#4\">Models\\Product<\/a>"],[64.28571428571429,11,"<a href=\"Models\/User.php.html#4\">Models\\User<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,7,"<a href=\"Config\/Database.php.html#13\">Config\\Database::__construct<\/a>"],[0,2,"<a href=\"Config\/Database.php.html#33\">Config\\Database::connect<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#16\">Controllers\\AdminController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#20\">Controllers\\AdminController::getDashboardData<\/a>"],[100,2,"<a href=\"Controllers\/AdminController.php.html#36\">Controllers\\AdminController::getTotalPendings<\/a>"],[100,2,"<a href=\"Controllers\/AdminController.php.html#49\">Controllers\\AdminController::getTotalCompleted<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#62\">Controllers\\AdminController::getOrdersCount<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#69\">Controllers\\AdminController::getProductsCount<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#76\">Controllers\\AdminController::getUsersCount<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#83\">Controllers\\AdminController::getAdminsCount<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#90\">Controllers\\AdminController::getTotalAccounts<\/a>"],[100,1,"<a href=\"Controllers\/AdminController.php.html#97\">Controllers\\AdminController::getMessagesCount<\/a>"],[0,1,"<a href=\"Controllers\/AdminController.php.html#104\">Controllers\\AdminController::handleDatabaseError<\/a>"],[70.58823529411765,5,"<a href=\"Controllers\/AdminController.php.html#109\">Controllers\\AdminController::addProduct<\/a>"],[69.23076923076923,5,"<a href=\"Controllers\/AdminController.php.html#139\">Controllers\\AdminController::deleteProduct<\/a>"],[0,1,"<a href=\"Controllers\/AdminController.php.html#164\">Controllers\\AdminController::validateImageName<\/a>"],[0,6,"<a href=\"Controllers\/AdminController.php.html#169\">Controllers\\AdminController::getSecureImagePath<\/a>"],[0,8,"<a href=\"Controllers\/AdminController.php.html#196\">Controllers\\AdminController::handleImageDelete<\/a>"],[0,6,"<a href=\"Controllers\/AdminController.php.html#233\">Controllers\\AdminController::updateProduct<\/a>"],[0,2,"<a href=\"Controllers\/AdminController.php.html#279\">Controllers\\AdminController::getAllProducts<\/a>"],[0,2,"<a href=\"Controllers\/AdminController.php.html#293\">Controllers\\AdminController::getAllOrders<\/a>"],[62.5,2,"<a href=\"Controllers\/AdminController.php.html#315\">Controllers\\AdminController::updateOrderStatus<\/a>"],[0,2,"<a href=\"Controllers\/AdminController.php.html#329\">Controllers\\AdminController::deleteOrder<\/a>"],[78.57142857142857,3,"<a href=\"Controllers\/AdminController.php.html#342\">Controllers\\AdminController::getAllUsers<\/a>"],[0,2,"<a href=\"Controllers\/AdminController.php.html#363\">Controllers\\AdminController::deleteUser<\/a>"],[0,3,"<a href=\"Controllers\/AdminController.php.html#376\">Controllers\\AdminController::getAllMessages<\/a>"],[0,2,"<a href=\"Controllers\/AdminController.php.html#397\">Controllers\\AdminController::deleteMessage<\/a>"],[100,1,"<a href=\"Controllers\/ContactController.php.html#12\">Controllers\\ContactController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/ContactController.php.html#17\">Controllers\\ContactController::createUser<\/a>"],[0,1,"<a href=\"Controllers\/ContactController.php.html#22\">Controllers\\ContactController::createMessage<\/a>"],[100,9,"<a href=\"Controllers\/ContactController.php.html#27\">Controllers\\ContactController::sendMessage<\/a>"],[100,1,"<a href=\"Controllers\/OrderController.php.html#14\">Controllers\\OrderController::__construct<\/a>"],[19.047619047619047,3,"<a href=\"Controllers\/OrderController.php.html#18\">Controllers\\OrderController::getOrders<\/a>"],[40,2,"<a href=\"Controllers\/OrderController.php.html#45\">Controllers\\OrderController::updatePaymentStatus<\/a>"],[40,2,"<a href=\"Controllers\/OrderController.php.html#55\">Controllers\\OrderController::deleteOrder<\/a>"],[82.35294117647058,3,"<a href=\"Controllers\/OrderController.php.html#65\">Controllers\\OrderController::getAllOrders<\/a>"],[90.74074074074075,5,"<a href=\"Controllers\/OrderController.php.html#88\">Controllers\\OrderController::createOrder<\/a>"],[100,1,"<a href=\"Controllers\/OrderController.php.html#172\">Controllers\\OrderController::getCartItems<\/a>"],[100,1,"<a href=\"Controllers\/OrderController.php.html#178\">Controllers\\OrderController::clearCart<\/a>"],[85,3,"<a href=\"Controllers\/OrderController.php.html#183\">Controllers\\OrderController::getUserOrders<\/a>"],[0,3,"<a href=\"Controllers\/OrderController.php.html#209\">Controllers\\OrderController::getAllProducts<\/a>"],[0,3,"<a href=\"Controllers\/OrderController.php.html#227\">Controllers\\OrderController::getAllUsers<\/a>"],[100,1,"<a href=\"Controllers\/OrderController.php.html#246\">Controllers\\OrderController::handleDatabaseError<\/a>"],[100,1,"<a href=\"Controllers\/ProductController.php.html#13\">Controllers\\ProductController::__construct<\/a>"],[81.25,3,"<a href=\"Controllers\/ProductController.php.html#17\">Controllers\\ProductController::getLatestProducts<\/a>"],[83.33333333333334,3,"<a href=\"Controllers\/ProductController.php.html#40\">Controllers\\ProductController::addToCart<\/a>"],[0,3,"<a href=\"Controllers\/ProductController.php.html#77\">Controllers\\ProductController::getAllProducts<\/a>"],[57.14285714285714,2,"<a href=\"Controllers\/ProductController.php.html#99\">Controllers\\ProductController::getCartItems<\/a>"],[0,2,"<a href=\"Controllers\/ProductController.php.html#111\">Controllers\\ProductController::updateCartQuantity<\/a>"],[0,2,"<a href=\"Controllers\/ProductController.php.html#123\">Controllers\\ProductController::deleteCartItem<\/a>"],[0,2,"<a href=\"Controllers\/ProductController.php.html#135\">Controllers\\ProductController::deleteAllCartItems<\/a>"],[100,1,"<a href=\"Controllers\/SearchController.php.html#7\">Controllers\\SearchController::__construct<\/a>"],[100,2,"<a href=\"Controllers\/SearchController.php.html#11\">Controllers\\SearchController::searchProducts<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#10\">Controllers\\UserController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#14\">Controllers\\UserController::hashPassword<\/a>"],[100,1,"<a href=\"Controllers\/UserController.php.html#18\">Controllers\\UserController::verifyPassword<\/a>"],[81.81818181818183,3,"<a href=\"Controllers\/UserController.php.html#22\">Controllers\\UserController::registerUser<\/a>"],[75,4,"<a href=\"Controllers\/UserController.php.html#56\">Controllers\\UserController::loginUser<\/a>"],[0,3,"<a href=\"Controllers\/UserController.php.html#76\">Controllers\\UserController::logout<\/a>"],[50,2,"<a href=\"Controllers\/UserController.php.html#98\">Controllers\\UserController::getUserById<\/a>"],[0,1,"<a href=\"Controllers\/UserController.php.html#110\">Controllers\\UserController::register<\/a>"],[0,1,"<a href=\"Exceptions\/DatabaseException.php.html#5\">Exceptions\\DatabaseException::__construct<\/a>"],[0,1,"<a href=\"Models\/Cart.php.html#13\">Models\\Cart::getId<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#14\">Models\\Cart::getUserId<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#15\">Models\\Cart::getName<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#16\">Models\\Cart::getPrice<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#17\">Models\\Cart::getQuantity<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#18\">Models\\Cart::getImage<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#21\">Models\\Cart::setUserId<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#22\">Models\\Cart::setName<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#23\">Models\\Cart::setPrice<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#24\">Models\\Cart::setQuantity<\/a>"],[100,1,"<a href=\"Models\/Cart.php.html#25\">Models\\Cart::setImage<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#13\">Models\\Message::getId<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#14\">Models\\Message::getUserId<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#15\">Models\\Message::getName<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#16\">Models\\Message::getEmail<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#17\">Models\\Message::getNumber<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#18\">Models\\Message::getMessage<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#21\">Models\\Message::setUserId<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#22\">Models\\Message::setName<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#23\">Models\\Message::setEmail<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#24\">Models\\Message::setNumber<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#25\">Models\\Message::setMessage<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#27\">Models\\Message::exists<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#34\">Models\\Message::save<\/a>"],[0,1,"<a href=\"Models\/Message.php.html#46\">Models\\Message::setId<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#18\">Models\\Order::getId<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#19\">Models\\Order::getUserId<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#20\">Models\\Order::getName<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#21\">Models\\Order::getNumber<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#22\">Models\\Order::getEmail<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#23\">Models\\Order::getMethod<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#24\">Models\\Order::getAddress<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#25\">Models\\Order::getTotalProducts<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#26\">Models\\Order::getTotalPrice<\/a>"],[0,1,"<a href=\"Models\/Order.php.html#27\">Models\\Order::getPlacedOn<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#28\">Models\\Order::getPaymentStatus<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#31\">Models\\Order::setUserId<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#32\">Models\\Order::setName<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#33\">Models\\Order::setNumber<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#34\">Models\\Order::setEmail<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#35\">Models\\Order::setMethod<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#36\">Models\\Order::setAddress<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#37\">Models\\Order::setTotalProducts<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#38\">Models\\Order::setTotalPrice<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#39\">Models\\Order::setPaymentStatus<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#40\">Models\\Order::setPlacedOn<\/a>"],[100,1,"<a href=\"Models\/Order.php.html#42\">Models\\Order::setId<\/a>"],[0,1,"<a href=\"Models\/Product.php.html#11\">Models\\Product::getId<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#12\">Models\\Product::getName<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#13\">Models\\Product::getPrice<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#14\">Models\\Product::getImage<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#17\">Models\\Product::setName<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#18\">Models\\Product::setPrice<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#19\">Models\\Product::setImage<\/a>"],[100,1,"<a href=\"Models\/Product.php.html#21\">Models\\Product::setId<\/a>"],[100,1,"<a href=\"Models\/User.php.html#11\">Models\\User::__construct<\/a>"],[0,1,"<a href=\"Models\/User.php.html#16\">Models\\User::getId<\/a>"],[100,1,"<a href=\"Models\/User.php.html#17\">Models\\User::getName<\/a>"],[100,1,"<a href=\"Models\/User.php.html#18\">Models\\User::getEmail<\/a>"],[100,1,"<a href=\"Models\/User.php.html#19\">Models\\User::getUserType<\/a>"],[100,1,"<a href=\"Models\/User.php.html#22\">Models\\User::setName<\/a>"],[100,1,"<a href=\"Models\/User.php.html#23\">Models\\User::setEmail<\/a>"],[0,1,"<a href=\"Models\/User.php.html#24\">Models\\User::setPassword<\/a>"],[100,1,"<a href=\"Models\/User.php.html#27\">Models\\User::setUserType<\/a>"],[100,1,"<a href=\"Models\/User.php.html#28\">Models\\User::setId<\/a>"],[0,1,"<a href=\"Models\/User.php.html#33\">Models\\User::exists<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
