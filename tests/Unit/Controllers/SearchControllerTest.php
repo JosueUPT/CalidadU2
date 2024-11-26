@@ -22,26 +22,26 @@ class SearchControllerTest extends TestCase
     }
 
     #[Test]
-    public function search_products_returns_results(): void
+    public function buscar_productos_devuelve_resultados(): void
     {
-        $expectedResults = [
+        $resultadosEsperados = [
             ['id' => 1, 'name' => 'Producto 1'],
             ['id' => 2, 'name' => 'Producto 2']
         ];
 
         $this->pdoStatement->method('execute')->willReturn(true);
-        $this->pdoStatement->method('fetchAll')->willReturn($expectedResults);
+        $this->pdoStatement->method('fetchAll')->willReturn($resultadosEsperados);
         
         $this->conn->method('prepare')
             ->willReturn($this->pdoStatement);
 
-        $results = $this->searchController->searchProducts('Producto');
+        $resultados = $this->searchController->searchProducts('Producto');
 
-        $this->assertEquals($expectedResults, $results);
+        $this->assertEquals($resultadosEsperados, $resultados);
     }
 
     #[Test]
-    public function search_products_returns_empty_array_when_no_results(): void
+    public function buscar_productos_devuelve_array_vacio_cuando_no_hay_resultados(): void
     {
         $this->pdoStatement->method('execute')->willReturn(true);
         $this->pdoStatement->method('fetchAll')->willReturn([]);
@@ -49,19 +49,19 @@ class SearchControllerTest extends TestCase
         $this->conn->method('prepare')
             ->willReturn($this->pdoStatement);
 
-        $results = $this->searchController->searchProducts('NoExiste');
+        $resultados = $this->searchController->searchProducts('NoExiste');
 
-        $this->assertEmpty($results);
+        $this->assertEmpty($resultados);
     }
 
     #[Test]
-    public function search_products_returns_empty_array_on_exception(): void
+    public function buscar_productos_devuelve_array_vacio_cuando_hay_excepcion(): void
     {
         $this->conn->method('prepare')
             ->willThrowException(new \Exception('Error de conexión'));
 
-        $results = $this->searchController->searchProducts('Producto');
+        $resultados = $this->searchController->searchProducts('Producto');
 
-        $this->assertEmpty($results);
+        $this->assertEmpty($resultados);
     }
 } 

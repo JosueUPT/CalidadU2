@@ -21,7 +21,7 @@ class AdminControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_dashboard_data(): void
+    public function obtener_datos_dashboard(): void
     {
         // Configurar mocks para cada consulta
         $this->pdoStatement->method('execute')->willReturn(true);
@@ -43,7 +43,7 @@ class AdminControllerTest extends TestCase
     }
 
     #[Test]
-    public function add_product_success(): void
+    public function agregar_producto_exitoso(): void
     {
         $postData = [
             'name' => 'Nuevo Producto',
@@ -69,7 +69,7 @@ class AdminControllerTest extends TestCase
     }
 
     #[Test]
-    public function update_order_status(): void
+    public function actualizar_estado_pedido(): void
     {
         $orderId = 1;
         $status = 'completado';
@@ -83,7 +83,7 @@ class AdminControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_all_users(): void
+    public function obtener_todos_usuarios(): void
     {
         $expectedUsers = [
             [
@@ -113,7 +113,7 @@ class AdminControllerTest extends TestCase
     }
 
     #[Test]
-    public function delete_product(): void
+    public function eliminar_producto(): void
     {
         $productId = 1;
         

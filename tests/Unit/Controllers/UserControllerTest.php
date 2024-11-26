@@ -20,7 +20,7 @@ class UserControllerTest extends TestCase
     }
 
     #[Test]
-    public function user_can_register(): void 
+    public function usuario_puede_registrarse(): void 
     {
         // Crear mock para PDOStatement
         $mockStmt = $this->createMock(PDOStatement::class);
@@ -40,7 +40,7 @@ class UserControllerTest extends TestCase
     }
 
     #[Test]
-    public function user_can_login(): void
+    public function usuario_puede_iniciar_sesion(): void
     {
         // Crear mock para PDOStatement
         $mockStmt = $this->createMock(PDOStatement::class);
@@ -61,7 +61,7 @@ class UserControllerTest extends TestCase
     }
 
     #[Test]
-    public function login_fails_with_wrong_credentials(): void
+    public function inicio_sesion_falla_con_credenciales_incorrectas(): void
     {
         // Simular que no se encuentra el usuario
         $mockStmt = $this->createMock(PDOStatement::class);
@@ -77,7 +77,7 @@ class UserControllerTest extends TestCase
     }
 
     #[Test]
-    public function can_get_user_by_id(): void
+    public function puede_obtener_usuario_por_id(): void
     {
         // Crear mock para PDOStatement
         $mockStmt = $this->createMock(PDOStatement::class);

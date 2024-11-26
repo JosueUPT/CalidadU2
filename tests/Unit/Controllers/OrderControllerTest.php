@@ -21,7 +21,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function create_order(): void
+    public function crear_pedido(): void
     {
         $userId = 1;
         $userData = [
@@ -67,7 +67,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_user_orders(): void
+    public function obtener_pedidos_usuario(): void
     {
         $userId = 1;
         $expectedOrders = [
@@ -105,7 +105,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function update_payment_status(): void
+    public function actualizar_estado_pago(): void
     {
         $orderId = 1;
         $status = 'completed';
@@ -124,7 +124,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function delete_order(): void
+    public function eliminar_pedido(): void
     {
         $orderId = 1;
 
@@ -142,7 +142,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_all_orders(): void
+    public function obtener_todos_pedidos(): void
     {
         $expectedOrders = [
             [
@@ -175,7 +175,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function handle_database_error_on_get_orders(): void
+    public function manejar_error_base_datos_en_obtener_pedidos(): void
     {
         $userId = 1;
         
@@ -188,7 +188,7 @@ class OrderControllerTest extends TestCase
     }
 
     #[Test]
-    public function handle_database_error_on_update_status(): void
+    public function manejar_error_base_datos_en_actualizar_estado(): void
     {
         $orderId = 1;
         $status = 'completed';

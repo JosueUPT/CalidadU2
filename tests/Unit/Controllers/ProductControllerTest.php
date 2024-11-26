@@ -22,7 +22,7 @@ class ProductControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_latest_products(): void
+    public function obtener_productos_recientes(): void
     {
         $expectedProducts = [
             [
@@ -52,7 +52,7 @@ class ProductControllerTest extends TestCase
     }
 
     #[Test]
-    public function add_to_cart(): void
+    public function agregar_al_carrito(): void
     {
         $userId = 1;
         $productData = [
@@ -79,7 +79,7 @@ class ProductControllerTest extends TestCase
     }
 
     #[Test]
-    public function get_cart_items(): void
+    public function obtener_items_carrito(): void
     {
         $userId = 1;
         $expectedItems = [

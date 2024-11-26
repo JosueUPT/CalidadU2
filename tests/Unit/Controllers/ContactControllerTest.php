@@ -38,9 +38,9 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function send_message_success(): void
+    public function enviar_mensaje_exitoso(): void
     {
-        $userData = [
+        $datosUsuario = [
             'user_id' => 1,
             'name' => 'Juan Pérez',
             'email' => 'juan@example.com',
@@ -53,29 +53,29 @@ class ContactControllerTest extends TestCase
         $this->message->method('exists')->willReturn(false);
         $this->message->method('save')->willReturn(true);
 
-        $result = $this->contactController->sendMessage($userData);
+        $resultado = $this->contactController->sendMessage($datosUsuario);
 
-        $this->assertSame(true, $result['success']);
-        $this->assertSame('¡Mensaje enviado exitosamente!', $result['message']);
+        $this->assertSame(true, $resultado['success']);
+        $this->assertSame('¡Mensaje enviado exitosamente!', $resultado['message']);
     }
 
     #[Test]
-    public function send_message_missing_fields(): void
+    public function enviar_mensaje_campos_faltantes(): void
     {
-        $userData = [
+        $datosUsuario = [
             'user_id' => 1,
             'name' => 'Juan Pérez'
             // Faltan campos requeridos
         ];
 
-        $result = $this->contactController->sendMessage($userData);
+        $resultado = $this->contactController->sendMessage($datosUsuario);
 
-        $this->assertSame(false, $result['success']);
-        $this->assertSame('Faltan campos requeridos', $result['message']);
+        $this->assertSame(false, $resultado['success']);
+        $this->assertSame('Faltan campos requeridos', $resultado['message']);
     }
 
     #[Test]
-    public function send_message_user_not_found(): void
+    public function enviar_mensaje_usuario_no_encontrado(): void
     {
         $userData = [
             'user_id' => 999,
@@ -97,7 +97,7 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function send_message_already_sent(): void
+    public function enviar_mensaje_ya_enviado(): void
     {
         $userData = [
             'user_id' => 1,
@@ -118,7 +118,7 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function send_message_save_error(): void
+    public function enviar_mensaje_error_al_guardar(): void
     {
         $userData = [
             'user_id' => 1,
@@ -140,7 +140,7 @@ class ContactControllerTest extends TestCase
     }
 
     #[Test]
-    public function send_message_throws_exception(): void
+    public function enviar_mensaje_lanza_excepcion(): void
     {
         $userData = [
             'user_id' => 1,
