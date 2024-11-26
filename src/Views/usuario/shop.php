@@ -42,7 +42,7 @@ $products = $productController->getAllProducts();
 </head>
 <body>
 
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Nuestra tienda</h3>
@@ -71,7 +71,7 @@ $products = $productController->getAllProducts();
    </div>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

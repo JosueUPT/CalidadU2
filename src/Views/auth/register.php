@@ -56,13 +56,13 @@ if (isset($_POST['submit'])) {
       <?php foreach ($message as $msg): ?>
          <div class="message">
             <span><?= $msg ?></span>
-            <i class="fas fa-times" tabindex="0"
+            <button class="close-btn" aria-label="Cerrar mensaje"
                onclick="this.parentElement.remove();"
-               onkeypress="if (event.key === 'Enter') this.parentElement.remove();"
                onkeydown="if (event.key === 'Enter' || event.key === ' ') this.parentElement.remove();">
-            </i>
-
+               <i class="fas fa-times"></i>
+            </button>
          </div>
+
       <?php endforeach; ?>
    <?php endif; ?>
 
