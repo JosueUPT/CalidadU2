@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use Exceptions\DatabaseException;
+
 class Database {
     private $host;
     private $user;
@@ -40,7 +42,11 @@ class Database {
             return $conn;
         } catch(\PDOException $e) {
             error_log("Error de conexión: " . $e->getMessage());
-            throw new \Exception("Error de conexión a la base de datos");
+            throw new DatabaseException(
+                "Error de conexión a la base de datos: " . $e->getMessage(),
+                $e->getCode(),
+                $e
+            );
         }
     }
 } 

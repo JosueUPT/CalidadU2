@@ -1,10 +1,7 @@
 <?php
 namespace Controllers;
 
-require_once __DIR__ . '/../Models/Product.php';
-require_once __DIR__ . '/../Models/Order.php';
-require_once __DIR__ . '/../Models/User.php';
-require_once __DIR__ . '/../Models/Message.php';
+require_once __DIR__ . '/../autoload.php';
 
 use Models\Product;
 use Models\Order;
@@ -12,9 +9,9 @@ use Models\User;
 use Models\Message;
 
 class AdminController {
-    private $conn;
     private const UPLOAD_PATH = '../../uploaded_img/';
     private const ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png'];
+    private $conn;
 
     public function __construct($conn) {
         $this->conn = $conn;
