@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732608692">
-  <project timestamp="1732608692">
+<coverage generated="1732609167">
+  <project timestamp="1732609167">
     <file name="/github/workspace/src/Config/Database.php">
       <class name="Config\Database" namespace="global">
         <metrics complexity="9" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="0" elements="30" coveredelements="0"/>
@@ -628,45 +628,45 @@
       <class name="Controllers\UserController" namespace="global">
         <metrics complexity="16" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="44" elements="61" coveredelements="51"/>
       </class>
-      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="11"/>
-      <line num="11" type="stmt" count="11"/>
-      <line num="14" type="method" name="hashPassword" visibility="private" complexity="1" crap="1" count="4"/>
-      <line num="15" type="stmt" count="4"/>
-      <line num="18" type="method" name="verifyPassword" visibility="private" complexity="1" crap="1" count="1"/>
-      <line num="19" type="stmt" count="1"/>
-      <line num="22" type="method" name="registerUser" visibility="public" complexity="3" crap="3" count="6"/>
-      <line num="24" type="stmt" count="6"/>
-      <line num="25" type="stmt" count="6"/>
-      <line num="26" type="stmt" count="6"/>
-      <line num="27" type="stmt" count="6"/>
-      <line num="30" type="stmt" count="6"/>
-      <line num="31" type="stmt" count="6"/>
-      <line num="32" type="stmt" count="5"/>
+      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="18"/>
+      <line num="11" type="stmt" count="18"/>
+      <line num="14" type="method" name="hashPassword" visibility="private" complexity="1" crap="1" count="6"/>
+      <line num="15" type="stmt" count="6"/>
+      <line num="18" type="method" name="verifyPassword" visibility="private" complexity="1" crap="1" count="5"/>
+      <line num="19" type="stmt" count="5"/>
+      <line num="22" type="method" name="registerUser" visibility="public" complexity="3" crap="3" count="7"/>
+      <line num="24" type="stmt" count="7"/>
+      <line num="25" type="stmt" count="7"/>
+      <line num="26" type="stmt" count="7"/>
+      <line num="27" type="stmt" count="7"/>
+      <line num="30" type="stmt" count="7"/>
+      <line num="31" type="stmt" count="7"/>
+      <line num="32" type="stmt" count="6"/>
       <line num="33" type="stmt" count="1"/>
-      <line num="37" type="stmt" count="4"/>
-      <line num="38" type="stmt" count="4"/>
-      <line num="39" type="stmt" count="4"/>
-      <line num="40" type="stmt" count="4"/>
-      <line num="42" type="stmt" count="4"/>
-      <line num="43" type="stmt" count="4"/>
-      <line num="44" type="stmt" count="4"/>
-      <line num="45" type="stmt" count="4"/>
-      <line num="46" type="stmt" count="4"/>
-      <line num="47" type="stmt" count="4"/>
-      <line num="49" type="stmt" count="4"/>
+      <line num="37" type="stmt" count="5"/>
+      <line num="38" type="stmt" count="5"/>
+      <line num="39" type="stmt" count="5"/>
+      <line num="40" type="stmt" count="5"/>
+      <line num="42" type="stmt" count="5"/>
+      <line num="43" type="stmt" count="5"/>
+      <line num="44" type="stmt" count="5"/>
+      <line num="45" type="stmt" count="5"/>
+      <line num="46" type="stmt" count="5"/>
+      <line num="47" type="stmt" count="5"/>
+      <line num="49" type="stmt" count="5"/>
       <line num="50" type="stmt" count="1"/>
       <line num="51" type="stmt" count="1"/>
       <line num="52" type="stmt" count="1"/>
-      <line num="56" type="method" name="loginUser" visibility="public" complexity="4" crap="4" count="3"/>
-      <line num="58" type="stmt" count="3"/>
-      <line num="59" type="stmt" count="3"/>
-      <line num="60" type="stmt" count="2"/>
-      <line num="62" type="stmt" count="2"/>
-      <line num="63" type="stmt" count="1"/>
-      <line num="64" type="stmt" count="1"/>
-      <line num="65" type="stmt" count="1"/>
-      <line num="66" type="stmt" count="1"/>
-      <line num="69" type="stmt" count="1"/>
+      <line num="56" type="method" name="loginUser" visibility="public" complexity="4" crap="4" count="5"/>
+      <line num="58" type="stmt" count="5"/>
+      <line num="59" type="stmt" count="5"/>
+      <line num="60" type="stmt" count="4"/>
+      <line num="62" type="stmt" count="4"/>
+      <line num="63" type="stmt" count="2"/>
+      <line num="64" type="stmt" count="2"/>
+      <line num="65" type="stmt" count="2"/>
+      <line num="66" type="stmt" count="2"/>
+      <line num="69" type="stmt" count="2"/>
       <line num="70" type="stmt" count="1"/>
       <line num="71" type="stmt" count="1"/>
       <line num="72" type="stmt" count="1"/>
@@ -680,10 +680,10 @@
       <line num="92" type="stmt" count="0"/>
       <line num="93" type="stmt" count="0"/>
       <line num="94" type="stmt" count="0"/>
-      <line num="98" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="2"/>
-      <line num="100" type="stmt" count="2"/>
-      <line num="101" type="stmt" count="2"/>
-      <line num="102" type="stmt" count="1"/>
+      <line num="98" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="100" type="stmt" count="3"/>
+      <line num="101" type="stmt" count="3"/>
+      <line num="102" type="stmt" count="2"/>
       <line num="103" type="stmt" count="1"/>
       <line num="104" type="stmt" count="1"/>
       <line num="105" type="stmt" count="1"/>
@@ -796,27 +796,27 @@
     </file>
     <file name="/github/workspace/src/Models/User.php">
       <class name="Models\User" namespace="global">
-        <metrics complexity="11" methods="11" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="10" elements="25" coveredelements="19"/>
+        <metrics complexity="11" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="25" coveredelements="25"/>
       </class>
-      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="12" type="stmt" count="10"/>
-      <line num="16" type="method" name="getId" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="17" type="method" name="getName" visibility="public" complexity="1" crap="1" count="6"/>
-      <line num="18" type="method" name="getEmail" visibility="public" complexity="1" crap="1" count="7"/>
-      <line num="19" type="method" name="getUserType" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="22" type="method" name="setName" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="23" type="method" name="setEmail" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="24" type="method" name="setPassword" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="27" type="method" name="setUserType" visibility="public" complexity="1" crap="1" count="8"/>
-      <line num="28" type="method" name="setId" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="29" type="stmt" count="2"/>
-      <line num="30" type="stmt" count="2"/>
-      <line num="33" type="method" name="exists" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <metrics loc="38" ncloc="36" classes="1" methods="11" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="10" elements="25" coveredelements="19"/>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="16"/>
+      <line num="12" type="stmt" count="16"/>
+      <line num="16" type="method" name="getId" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="17" type="method" name="getName" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="18" type="method" name="getEmail" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="19" type="method" name="getUserType" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="22" type="method" name="setName" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="23" type="method" name="setEmail" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="24" type="method" name="setPassword" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="27" type="method" name="setUserType" visibility="public" complexity="1" crap="1" count="9"/>
+      <line num="28" type="method" name="setId" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="29" type="stmt" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="33" type="method" name="exists" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="34" type="stmt" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="36" type="stmt" count="2"/>
+      <metrics loc="38" ncloc="36" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="25" coveredelements="25"/>
     </file>
     <file name="/github/workspace/src/Views/admin/admin_contacts.php">
       <line num="4" type="stmt" count="0"/>
@@ -2022,6 +2022,6 @@
       <line num="13" type="stmt" count="0"/>
       <metrics loc="15" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="6" coveredelements="0"/>
     </file>
-    <metrics files="34" loc="3083" ncloc="3011" classes="13" methods="128" coveredmethods="103" conditionals="0" coveredconditionals="0" statements="1810" coveredstatements="565" elements="1938" coveredelements="668"/>
+    <metrics files="34" loc="3083" ncloc="3011" classes="13" methods="128" coveredmethods="105" conditionals="0" coveredconditionals="0" statements="1810" coveredstatements="569" elements="1938" coveredelements="674"/>
   </project>
 </coverage>
