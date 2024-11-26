@@ -21,7 +21,7 @@ class SearchControllerTest extends TestCase
         $this->searchController = new SearchController($this->conn);
     }
 
-    #[Test]
+    /** @test */
     public function buscar_productos_devuelve_resultados(): void
     {
         $resultadosEsperados = [
@@ -40,7 +40,7 @@ class SearchControllerTest extends TestCase
         $this->assertEquals($resultadosEsperados, $resultados);
     }
 
-    #[Test]
+    /** @test */
     public function buscar_productos_devuelve_array_vacio_cuando_no_hay_resultados(): void
     {
         $this->pdoStatement->method('execute')->willReturn(true);
@@ -54,7 +54,7 @@ class SearchControllerTest extends TestCase
         $this->assertEmpty($resultados);
     }
 
-    #[Test]
+    /** @test */
     public function buscar_productos_devuelve_array_vacio_cuando_hay_excepcion(): void
     {
         $this->conn->method('prepare')

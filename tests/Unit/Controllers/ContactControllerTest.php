@@ -37,7 +37,7 @@ class ContactControllerTest extends TestCase
             ->willReturn($this->message);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_exitoso(): void
     {
         $datosUsuario = [
@@ -59,7 +59,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame('¡Mensaje enviado exitosamente!', $resultado['message']);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_campos_faltantes(): void
     {
         $datosUsuario = [
@@ -74,7 +74,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame('Faltan campos requeridos', $resultado['message']);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_usuario_no_encontrado(): void
     {
         $userData = [
@@ -96,7 +96,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame('Usuario no encontrado', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_ya_enviado(): void
     {
         $userData = [
@@ -117,7 +117,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame('¡Mensaje ya enviado!', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_error_al_guardar(): void
     {
         $userData = [
@@ -139,7 +139,7 @@ class ContactControllerTest extends TestCase
         $this->assertSame('Error al enviar mensaje', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function enviar_mensaje_lanza_excepcion(): void
     {
         $userData = [

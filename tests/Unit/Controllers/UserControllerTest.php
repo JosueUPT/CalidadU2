@@ -19,7 +19,7 @@ class UserControllerTest extends TestCase
         $this->userController = new UserController($this->mockPDO);
     }
 
-    #[Test]
+    /** @test */
     public function usuario_puede_registrarse(): void 
     {
         // Crear mock para PDOStatement
@@ -39,7 +39,7 @@ class UserControllerTest extends TestCase
         $this->assertSame('Registro exitoso!', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function usuario_puede_iniciar_sesion(): void
     {
         // Crear mock para PDOStatement
@@ -60,7 +60,7 @@ class UserControllerTest extends TestCase
         $this->assertSame('user', $result['user_type']);
     }
 
-    #[Test]
+    /** @test */
     public function inicio_sesion_falla_con_credenciales_incorrectas(): void
     {
         // Simular que no se encuentra el usuario
@@ -76,7 +76,7 @@ class UserControllerTest extends TestCase
         $this->assertSame('Correo o contraseña incorrectos', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function puede_obtener_usuario_por_id(): void
     {
         // Crear mock para PDOStatement

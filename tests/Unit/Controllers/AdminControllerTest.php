@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Unit\Controllers;
 
 use PHPUnit\Framework\TestCase;
@@ -6,6 +7,7 @@ use PHPUnit\Framework\Attributes\Test;
 use Controllers\AdminController;
 use PDO;
 use PDOStatement;
+use Models\User;
 
 class AdminControllerTest extends TestCase
 {
@@ -20,8 +22,8 @@ class AdminControllerTest extends TestCase
         $this->adminController = new AdminController($this->conn);
     }
 
-    #[Test]
-    public function obtener_datos_dashboard(): void
+    /** @test */
+    public function testGetDashboardData(): void
     {
         // Configurar mocks para cada consulta
         $this->pdoStatement->method('execute')->willReturn(true);
@@ -42,8 +44,8 @@ class AdminControllerTest extends TestCase
         $this->assertArrayHasKey('products_count', $result);
     }
 
-    #[Test]
-    public function agregar_producto_exitoso(): void
+    /** @test */
+    public function testAddProductSuccessfully(): void
     {
         $postData = [
             'name' => 'Nuevo Producto',
@@ -68,8 +70,8 @@ class AdminControllerTest extends TestCase
         $this->assertSame('¡Producto añadido exitosamente!', $result['message']);
     }
 
-    #[Test]
-    public function actualizar_estado_pedido(): void
+    /** @test */
+    public function testUpdateOrderStatus(): void
     {
         $orderId = 1;
         $status = 'completado';
@@ -82,8 +84,8 @@ class AdminControllerTest extends TestCase
         $this->assertTrue($result);
     }
 
-    #[Test]
-    public function obtener_todos_usuarios(): void
+    /** @test */
+    public function testGetAllUsers(): void
     {
         $expectedUsers = [
             [
@@ -108,15 +110,17 @@ class AdminControllerTest extends TestCase
 
         $this->assertIsArray($users);
         $this->assertCount(2, $users);
-        $this->assertSame('Admin User', $users[0]->getName());
-        $this->assertSame('user@test.com', $users[1]->getEmail());
+        $this->assertInstanceOf(User::class, $users[0]);
+        $this->assertInstanceOf(User::class, $users[1]);
+        $this->assertEquals('Admin User', $users[0]->getName());
+        $this->assertEquals('user@test.com', $users[1]->getEmail());
     }
 
-    #[Test]
-    public function eliminar_producto(): void
+    /** @test */
+    public function testDeleteProduct(): void
     {
         $productId = 1;
-        
+
         // Mock para obtener la información de la imagen
         $this->pdoStatement->method('fetch')->willReturn(['image' => 'test.jpg']);
         $this->pdoStatement->method('execute')->willReturn(true);
@@ -127,4 +131,4 @@ class AdminControllerTest extends TestCase
         $this->assertSame(true, $result['success']);
         $this->assertSame('Producto eliminado', $result['message']);
     }
-} 
+}

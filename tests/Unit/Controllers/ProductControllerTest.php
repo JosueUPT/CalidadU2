@@ -21,7 +21,7 @@ class ProductControllerTest extends TestCase
         $this->productController = new ProductController($this->conn);
     }
 
-    #[Test]
+    /** @test */
     public function obtener_productos_recientes(): void
     {
         $expectedProducts = [
@@ -51,7 +51,7 @@ class ProductControllerTest extends TestCase
         $this->assertSame('Producto Test', $result[0]->getName());
     }
 
-    #[Test]
+    /** @test */
     public function agregar_al_carrito(): void
     {
         $userId = 1;
@@ -78,7 +78,7 @@ class ProductControllerTest extends TestCase
         $this->assertSame('Producto añadido al carrito', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function obtener_items_carrito(): void
     {
         $userId = 1;

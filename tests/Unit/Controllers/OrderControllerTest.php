@@ -20,7 +20,7 @@ class OrderControllerTest extends TestCase
         $this->orderController = new OrderController($this->conn);
     }
 
-    #[Test]
+    /** @test */
     public function crear_pedido(): void
     {
         $userId = 1;
@@ -66,7 +66,7 @@ class OrderControllerTest extends TestCase
         $this->assertSame('¡Pedido realizado con éxito!', $result['message']);
     }
 
-    #[Test]
+    /** @test */
     public function obtener_pedidos_usuario(): void
     {
         $userId = 1;
@@ -104,7 +104,7 @@ class OrderControllerTest extends TestCase
         $this->assertSame($userId, $result[0]->getUserId());
     }
 
-    #[Test]
+    /** @test */
     public function actualizar_estado_pago(): void
     {
         $orderId = 1;
@@ -123,7 +123,7 @@ class OrderControllerTest extends TestCase
         $this->assertTrue($result);
     }
 
-    #[Test]
+    /** @test */
     public function eliminar_pedido(): void
     {
         $orderId = 1;
@@ -141,7 +141,7 @@ class OrderControllerTest extends TestCase
         $this->assertTrue($result);
     }
 
-    #[Test]
+    /** @test */
     public function obtener_todos_pedidos(): void
     {
         $expectedOrders = [
@@ -174,7 +174,7 @@ class OrderControllerTest extends TestCase
         $this->assertSame($expectedOrders[0]['user_id'], $result[0]->getUserId());
     }
 
-    #[Test]
+    /** @test */
     public function manejar_error_base_datos_en_obtener_pedidos(): void
     {
         $userId = 1;
@@ -187,7 +187,6 @@ class OrderControllerTest extends TestCase
         $this->assertEmpty($result);
     }
 
-    #[Test]
     public function manejar_error_base_datos_en_actualizar_estado(): void
     {
         $orderId = 1;
