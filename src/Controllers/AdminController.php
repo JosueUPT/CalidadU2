@@ -13,6 +13,7 @@ use Models\Message;
 
 class AdminController {
     private $conn;
+    private const UPLOAD_PATH = '../../uploaded_img/';
 
     public function __construct($conn) {
         $this->conn = $conn;
@@ -128,7 +129,7 @@ class AdminController {
 
             $stmt = $this->conn->prepare("INSERT INTO `products`(name, price, image) VALUES(?, ?, ?)");
             if($stmt->execute([$product->getName(), $product->getPrice(), $product->getImage()])) {
-                move_uploaded_file($files['image']['tmp_name'], '../../uploaded_img/'.$product->getImage());
+                move_uploaded_file($files['image']['tmp_name'], self::UPLOAD_PATH . $product->getImage());
                 return ['success' => true, 'message' => '¡Producto añadido exitosamente!'];
             }
         } catch (\Exception $e) {
@@ -138,21 +139,33 @@ class AdminController {
     }
 
     public function deleteProduct($id) {
-        // Obtener información de la imagen
-        $stmt = $this->conn->prepare("SELECT image FROM `products` WHERE id = ?");
-        $stmt->execute([$id]);
-        $image_data = $stmt->fetch(\PDO::FETCH_ASSOC);
-        
-        if($image_data) {
-            unlink('../../uploaded_img/'.$image_data['image']);
+        try {
+            // Obtener información de la imagen
+            $stmt = $this->conn->prepare("SELECT image FROM `products` WHERE id = ?");
+            $stmt->execute([$id]);
+            $image_data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            
+            if($image_data) {
+                $imagePath = self::UPLOAD_PATH . $image_data['image'];
+                if(file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            
+            $stmt = $this->conn->prepare("DELETE FROM `products` WHERE id = ?");
+            if($stmt->execute([$id])) {
+                return ['success' => true, 'message' => 'Producto eliminado'];
+            }
+            
+            return ['success' => false, 'message' => 'Error al eliminar el producto'];
+        } catch (\Exception $e) {
+            return ['success' => false, 'message' => 'Error al eliminar el producto: ' . $e->getMessage()];
         }
-        
-        $stmt = $this->conn->prepare("DELETE FROM `products` WHERE id = ?");
-        if($stmt->execute([$id])) {
-            return ['success' => true, 'message' => 'Producto eliminado'];
-        }
-        
-        return ['success' => false, 'message' => 'Error al eliminar el producto'];
+    }
+
+    private function validateImageName($imageName) {
+        // Solo permitir letras, números, guiones y puntos
+        return preg_match('/^[a-zA-Z0-9_.-]+$/', $imageName);
     }
 
     public function updateProduct($postData, $files) {
@@ -166,13 +179,28 @@ class AdminController {
             $params = [$product->getName(), $product->getPrice(), $product->getId()];
             
             if(!empty($files['update_image']['name'])) {
-                $product->setImage($files['update_image']['name']);
+                // Validar nueva imagen
+                if (!$this->validateImageName($files['update_image']['name'])) {
+                    return ['success' => false, 'message' => 'Nombre de archivo no válido'];
+                }
+                
                 if($files['update_image']['size'] > 2000000) {
                     return ['success' => false, 'message' => 'El tamaño de la imagen es demasiado grande'];
                 }
                 
-                unlink('../../uploaded_img/'.$postData['update_old_image']);
-                move_uploaded_file($files['update_image']['tmp_name'], '../../uploaded_img/'.$product->getImage());
+                $product->setImage($files['update_image']['name']);
+                
+                // Eliminar imagen anterior si existe
+                $oldImagePath = self::UPLOAD_PATH . $postData['update_old_image'];
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+                
+                // Subir nueva imagen
+                move_uploaded_file(
+                    $files['update_image']['tmp_name'], 
+                    self::UPLOAD_PATH . $product->getImage()
+                );
                 
                 $stmt = $this->conn->prepare("UPDATE `products` SET name = ?, price = ?, image = ? WHERE id = ?");
                 $params = [$product->getName(), $product->getPrice(), $product->getImage(), $product->getId()];
@@ -183,9 +211,9 @@ class AdminController {
             }
             
             return ['success' => false, 'message' => 'Error al actualizar el producto'];
+            
         } catch (\Exception $e) {
-            $this->handleDatabaseError($e);
-            return ['success' => false, 'message' => 'Error al actualizar el producto'];
+            return ['success' => false, 'message' => 'Error al actualizar el producto: ' . $e->getMessage()];
         }
     }
 

@@ -31,6 +31,8 @@ if(isset($_GET['delete'])) {
     if($result['success']) {
         header('location:admin_products.php');
         exit();
+    } else {
+        $message[] = $result['message'];
     }
 }
 
