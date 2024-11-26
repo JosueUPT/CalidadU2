@@ -13,6 +13,17 @@ class ContactController {
         $this->conn = $conn;
     }
 
+    // Agregar estos métodos protegidos para permitir el mock en las pruebas
+    protected function createUser()
+    {
+        return new User();
+    }
+
+    protected function createMessage()
+    {
+        return new Message();
+    }
+
     public function sendMessage($userData) {
         try {
             // Validar que todos los campos requeridos existan
@@ -21,14 +32,14 @@ class ContactController {
                 return ['success' => false, 'message' => 'Faltan campos requeridos'];
             }
 
-            // Usar el modelo User para validar
-            $user = new User();
+            // Modificar la creación de User y Message
+            $user = $this->createUser();
             $user->setId($userData['user_id']);
-            if (!$user->exists($this->conn)) {  // Asumiendo que existe un método exists() en User
+            if (!$user->exists($this->conn)) {
                 return ['success' => false, 'message' => 'Usuario no encontrado'];
             }
 
-            $message = new Message();
+            $message = $this->createMessage();
             $message->setUserId($userData['user_id']);
             $message->setName($userData['name']);
             $message->setEmail($userData['email']);
