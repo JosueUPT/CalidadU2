@@ -41,7 +41,7 @@ $products = $productController->getLatestProducts();
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <section class="home">
    <div class="content">
@@ -98,7 +98,7 @@ $products = $productController->getLatestProducts();
    </div>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

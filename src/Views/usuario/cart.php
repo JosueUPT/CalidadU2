@@ -63,7 +63,7 @@ $cartItems = $productController->getCartItems($user_id);
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Carrito de Compras</h3>
@@ -126,7 +126,7 @@ $cartItems = $productController->getCartItems($user_id);
 
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

@@ -600,7 +600,6 @@ section{
    border:var(--border);
    padding:2rem;
    max-width: 50rem;
-   margin:0 auto;
    text-align: center;
 }
 
@@ -800,7 +799,6 @@ section{
    border:var(--border);
    width: 100%;
    border-radius: .5rem;
-   width: 100%;
    background-color: var(--white);
    padding:1.2rem 1.4rem;
    font-size: 1.8rem;
@@ -826,7 +824,6 @@ section{
    padding:2rem;
    border:var(--border);
    background-color: var(--light-bg);
-   padding:1rem 2rem;
 }
 
 .placed-orders .box-container .box p{

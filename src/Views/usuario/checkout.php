@@ -48,7 +48,7 @@ $grand_total = 0;
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Verificar Pedido</h3>
@@ -129,7 +129,7 @@ $grand_total = 0;
    </form>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

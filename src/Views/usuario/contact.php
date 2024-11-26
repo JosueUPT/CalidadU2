@@ -40,7 +40,7 @@ if(isset($_POST['send'])) {
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Contáctanos</h3>
@@ -58,7 +58,7 @@ if(isset($_POST['send'])) {
    </form>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

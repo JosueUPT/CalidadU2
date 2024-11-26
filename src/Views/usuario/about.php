@@ -38,7 +38,7 @@ $user_id = $_SESSION['user_id'];
 
 <body>
 
-    <?php include '../components/header.php'; ?>
+    <?php include_once '../components/header.php'; ?>
 
     <div class="heading">
         <h3>Nosotros</h3>
@@ -217,7 +217,7 @@ $user_id = $_SESSION['user_id'];
         </div>
     </section>
 
-    <?php include '../components/footer.php'; ?>
+    <?php include_once '../components/footer.php'; ?>
 
     <script src="../../js/script.js"></script>
 

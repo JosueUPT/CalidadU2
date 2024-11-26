@@ -37,7 +37,7 @@ $orders = $orderController->getUserOrders($user_id);
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Pedidos</h3>
@@ -75,7 +75,7 @@ $orders = $orderController->getUserOrders($user_id);
    </div>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 

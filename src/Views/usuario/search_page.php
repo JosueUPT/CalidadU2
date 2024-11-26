@@ -59,7 +59,7 @@ if(isset($_POST['add_to_cart'])) {
 </head>
 <body>
    
-<?php include '../components/header.php'; ?>
+<?php include_once '../components/header.php'; ?>
 
 <div class="heading">
    <h3>Busca tus series o películas</h3>
@@ -102,7 +102,7 @@ if(isset($_POST['add_to_cart'])) {
    </div>
 </section>
 
-<?php include '../components/footer.php'; ?>
+<?php include_once '../components/footer.php'; ?>
 
 <script src="../../js/script.js"></script>
 
