@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "toolExecutionNotifications": [
+            {
+              "descriptor": {
+                "id": "Rule parse error"
+              },
+              "level": "error",
+              "message": {
+                "text": "Rule parse error in rule python.fastapi.ai.prompt-injection-fastapi.prompt-injection-fastapi:\n Missing required field type"
+              }
+            }
+          ]
+        }
+      ],
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "semgrep",
+          "rules": [],
+          "semanticVersion": "1.36.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
