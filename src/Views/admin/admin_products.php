@@ -70,7 +70,7 @@ $products = $adminController->getAllProducts();
 </head>
 <body>
    
-<?php include '../components/admin_header.php'; ?>
+<?php include_once '../components/admin_header.php'; ?>
 
 <!-- product CRUD section starts  -->
 

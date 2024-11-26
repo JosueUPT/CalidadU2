@@ -1,8 +1,7 @@
 <?php
 namespace Views;
 
-require_once '../../Config/Database.php';
-require_once '../../Controllers/AdminController.php';
+require_once __DIR__ . '/../../autoload.php';
 
 use Config\Database;
 use Controllers\AdminController;
@@ -18,38 +17,37 @@ $db = new Database();
 $conn = $db->connect();
 $adminController = new AdminController($conn);
 
-
 if(isset($_POST['update_order'])){
-   $order_update_id = $_POST['order_id'];
-   $update_payment = $_POST['update_payment'];
-   
-   if($adminController->updateOrderStatus($order_update_id, $update_payment)) {
-       $message[] = 'El estado del pago ha sido actualizado!';
-   }
+    $order_update_id = $_POST['order_id'];
+    $update_payment = $_POST['update_payment'];
+    
+    if($adminController->updateOrderStatus($order_update_id, $update_payment)) {
+        $message[] = 'El estado del pago ha sido actualizado!';
+    }
 }
 
 if(isset($_GET['delete'])){
-   $delete_id = $_GET['delete'];
-   if($adminController->deleteOrder($delete_id)) {
-       header('location:admin_orders.php');
-   }
+    $delete_id = $_GET['delete'];
+    if($adminController->deleteOrder($delete_id)) {
+        header('location:admin_orders.php');
+        exit();
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pedidos</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-   <link rel="stylesheet" href="../../css/admin_style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/admin_style.css">
 </head>
 <body>
-   
-<?php include '../components/admin_header.php'; ?>
+    
+<?php include_once '../components/admin_header.php'; ?>
 
 <section class="orders">
    <h1 class="title">pedidos realizados</h1>

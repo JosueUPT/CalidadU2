@@ -35,7 +35,7 @@ $dashboardData = $adminController->getDashboardData();
 </head>
 <body>
    
-<?php include '../components/admin_header.php'; ?>
+<?php include_once '../components/admin_header.php'; ?>
 
 <section class="dashboard">
     <h1 class="title">Panel de Control</h1>

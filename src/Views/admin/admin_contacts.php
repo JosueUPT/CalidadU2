@@ -1,8 +1,7 @@
 <?php
 namespace Views;
 
-require_once '../../Config/Database.php';
-require_once '../../Controllers/AdminController.php';
+require_once __DIR__ . '/../../autoload.php';
 
 use Config\Database;
 use Controllers\AdminController;
@@ -40,7 +39,7 @@ if(isset($_GET['delete'])){
 </head>
 <body>
    
-<?php include '../components/admin_header.php'; ?>
+<?php include_once '../components/admin_header.php'; ?>
 
 <section class="messages">
    <h1 class="title">mensajes</h1>
