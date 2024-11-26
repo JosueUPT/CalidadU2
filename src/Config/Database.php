@@ -3,24 +3,44 @@
 namespace Config;
 
 class Database {
-    private $host = "db";
-    private $database_name = "tienda_bd";
-    private $username = "root";
-    private $password = "123456";
-    private $conn;
+    private $host;
+    private $user;
+    private $password;
+    private $database;
+
+    public function __construct() {
+        $envPath = __DIR__ . '/../../.env';
+        
+        if (file_exists($envPath)) {
+            $env = parse_ini_file($envPath);
+            if ($env !== false) {
+                $this->host = $env['DB_HOST'];
+                $this->user = $env['DB_USER'];
+                $this->password = $env['DB_PASSWORD'];
+                $this->database = $env['DB_NAME'];
+                return;
+            }
+        }
+
+        $this->host = getenv('DB_HOST') ?: 'db';
+        $this->user = getenv('DB_USER') ?: 'root';
+        $this->password = getenv('DB_PASSWORD') ?: '123456';
+        $this->database = getenv('DB_NAME') ?: 'tienda_bd';
+    }
 
     public function connect() {
-        $this->conn = null;
         try {
-            $this->conn = new \PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->database_name . ";charset=utf8mb4",
-                $this->username,
-                $this->password
+            $conn = new \PDO(
+                "mysql:host={$this->host};dbname={$this->database}",
+                $this->user,
+                $this->password,
+                array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
             );
-            $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            return $conn;
         } catch(\PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            error_log("Error de conexión: " . $e->getMessage());
+            throw new \Exception("Error de conexión a la base de datos");
         }
-        return $this->conn;
     }
 } 
