@@ -199,4 +199,193 @@ class OrderControllerTest extends TestCase
         $result = $this->orderController->updatePaymentStatus($orderId, $status);
         $this->assertFalse($result);
     }
+
+    /** @test */
+    public function obtener_todos_productos(): void
+    {
+        $expectedProducts = [
+            [
+                'name' => 'Producto 1',
+                'price' => 100,
+                'image' => 'imagen1.jpg'
+            ],
+            [
+                'name' => 'Producto 2',
+                'price' => 200,
+                'image' => 'imagen2.jpg'
+            ]
+        ];
+
+        $this->conn->expects($this->once())
+            ->method('query')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn($expectedProducts);
+
+        $result = $this->orderController->getAllProducts();
+
+        $this->assertNotEmpty($result);
+        $this->assertCount(2, $result);
+        $this->assertEquals('Producto 1', $result[0]->getName());
+    }
+
+    /** @test */
+    public function obtener_todos_usuarios(): void
+    {
+        $expectedUsers = [
+            [
+                'name' => 'Usuario 1',
+                'email' => 'usuario1@test.com',
+                'user_type' => 'user'
+            ],
+            [
+                'name' => 'Admin',
+                'email' => 'admin@test.com',
+                'user_type' => 'admin'
+            ]
+        ];
+
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('execute');
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn($expectedUsers);
+
+        $result = $this->orderController->getAllUsers();
+
+        $this->assertNotEmpty($result);
+        $this->assertCount(2, $result);
+        $this->assertEquals('Usuario 1', $result[0]->getName());
+    }
+
+    /** @test */
+    public function crear_pedido_con_carrito_vacio(): void
+    {
+        $userId = 1;
+        $userData = [
+            'name' => 'Juan Pérez',
+            'number' => '123456789',
+            'email' => 'juan@test.com',
+            'method' => 'credit card',
+            'flat' => '123',
+            'street' => 'Calle Principal',
+            'city' => 'Lima',
+            'country' => 'Perú',
+            'pin_code' => '12345'
+        ];
+
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn([]);
+
+        $result = $this->orderController->createOrder($userData, $userId);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('El carrito está vacío', $result['message']);
+    }
+
+    /** @test */
+    public function crear_pedido_duplicado(): void
+    {
+        $userId = 1;
+        $userData = [
+            'name' => 'Juan Pérez',
+            'number' => '123456789',
+            'email' => 'juan@test.com',
+            'method' => 'credit card',
+            'flat' => '123',
+            'street' => 'Calle Principal',
+            'city' => 'Lima',
+            'country' => 'Perú',
+            'pin_code' => '12345'
+        ];
+
+        $cartItems = [
+            [
+                'name' => 'Producto 1',
+                'quantity' => 2,
+                'price' => 100
+            ]
+        ];
+
+        $this->conn->expects($this->exactly(2))
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn($cartItems);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('rowCount')
+            ->willReturn(1);
+
+        $result = $this->orderController->createOrder($userData, $userId);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('¡Pedido ya realizado!', $result['message']);
+    }
+
+    /** @test */
+    public function manejar_error_al_crear_pedido(): void
+    {
+        $userId = 1;
+        $userData = [
+            'name' => 'Juan Pérez',
+            'number' => '123456789',
+            'email' => 'juan@test.com',
+            'method' => 'credit card',
+            'flat' => '123',
+            'street' => 'Calle Principal',
+            'city' => 'Lima',
+            'country' => 'Perú',
+            'pin_code' => '12345'
+        ];
+
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willThrowException(new \Exception('Error de base de datos'));
+
+        $result = $this->orderController->createOrder($userData, $userId);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Error al procesar el pedido', $result['message']);
+    }
+
+    /** @test */
+    public function manejar_error_al_obtener_todos_productos(): void
+    {
+        $this->conn->expects($this->once())
+            ->method('query')
+            ->willThrowException(new \Exception('Error de base de datos'));
+
+        $result = $this->orderController->getAllProducts();
+
+        $this->assertEmpty($result);
+        $this->assertIsArray($result);
+    }
+
+    /** @test */
+    public function manejar_error_al_obtener_todos_usuarios(): void
+    {
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willThrowException(new \Exception('Error de base de datos'));
+
+        $result = $this->orderController->getAllUsers();
+
+        $this->assertEmpty($result);
+        $this->assertIsArray($result);
+    }
 } 

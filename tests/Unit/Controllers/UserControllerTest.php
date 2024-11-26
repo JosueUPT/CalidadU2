@@ -97,4 +97,124 @@ class UserControllerTest extends TestCase
         $this->assertSame('juan@example.com', $user['email']);
         $this->assertSame('user', $user['user_type']);
     }
+
+    /** @test */
+    public function registro_falla_con_email_existente(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(['id' => 1]); // Email ya existe
+        $mockStmt->method('execute')->willReturn(true);
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->registerUser([
+            'name' => 'Juan Pérez',
+            'email' => 'existente@example.com',
+            'password' => 'password123'
+        ]);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('El correo ya está registrado', $result['message']);
+    }
+
+    /** @test */
+    public function manejo_error_en_registro(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')->willThrowException(new \Exception('Error de base de datos'));
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->registerUser([
+            'name' => 'Juan Pérez',
+            'email' => 'juan@example.com',
+            'password' => 'password123'
+        ]);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Error en el registro', $result['message']);
+    }
+
+    /** @test */
+    public function manejo_error_en_login(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')->willThrowException(new \Exception('Error de base de datos'));
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->loginUser('juan@example.com', 'password123');
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Error en el inicio de sesión', $result['message']);
+    }
+
+    /** @test */
+    public function manejo_error_al_obtener_usuario(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')->willThrowException(new \Exception('Error de base de datos'));
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->getUserById(1);
+
+        $this->assertNull($result);
+    }
+
+    /** @test */
+    public function registro_con_tipo_usuario_personalizado(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(false);
+        $mockStmt->method('execute')->willReturn(true);
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->registerUser([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => 'admin123',
+            'user_type' => 'admin'
+        ]);
+
+        $this->assertTrue($result['success']);
+        $this->assertEquals('Registro exitoso!', $result['message']);
+    }
+
+    /** @test */
+    public function verificar_alias_register(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(false);
+        $mockStmt->method('execute')->willReturn(true);
+
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+
+        $result = $this->userController->register([
+            'name' => 'Juan Pérez',
+            'email' => 'juan@example.com',
+            'password' => 'password123'
+        ]);
+
+        $this->assertTrue($result['success']);
+        $this->assertEquals('Registro exitoso!', $result['message']);
+    }
+
+    /** @test */
+    public function verificar_hash_password(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $password = 'password123';
+        
+        $this->mockPDO->method('prepare')->willReturn($mockStmt);
+        
+        $result = $this->userController->registerUser([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => $password
+        ]);
+
+        $this->assertTrue($result['success']);
+    }
 } 
