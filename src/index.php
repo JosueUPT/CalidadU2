@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Si el usuario ya está logueado, redirigir según su tipo
 if(isset($_SESSION['user_id'])){
    if($_SESSION['user_type'] == 'admin'){

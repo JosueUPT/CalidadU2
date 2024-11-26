@@ -7,7 +7,8 @@
         "psr-4": {
             "Controllers\\": "src/Controllers/",
             "Models\\": "src/Models/",
-            "Config\\": "src/Config/"
+            "Config\\": "src/Config/",
+            "Exceptions\\": "src/Exceptions/"
         }
     },
     "autoload-dev": {

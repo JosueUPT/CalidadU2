@@ -10,7 +10,12 @@ class Database {
     private $password;
     private $database;
 
-    public function __construct() {
+    public function __construct(bool $useEnv = true) {
+        if (!$useEnv) {
+            $this->setDefaultCredentials();
+            return;
+        }
+
         $envPath = __DIR__ . '/../../.env';
         
         if (file_exists($envPath)) {
@@ -24,10 +29,23 @@ class Database {
             }
         }
 
+        $this->setDefaultCredentials();
+    }
+
+    private function setDefaultCredentials(): void
+    {
         $this->host = getenv('DB_HOST') ?: 'db';
         $this->user = getenv('DB_USER') ?: 'root';
         $this->password = getenv('DB_PASSWORD') ?: '123456';
         $this->database = getenv('DB_NAME') ?: 'tienda_bd';
+    }
+
+    public function setCredentials(string $host, string $user, string $password, string $database): void
+    {
+        $this->host = $host;
+        $this->user = $user;
+        $this->password = $password;
+        $this->database = $database;
     }
 
     public function connect() {

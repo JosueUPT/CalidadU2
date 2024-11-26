@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732610583">
-  <project timestamp="1732610583">
+<coverage generated="1732629212">
+  <project timestamp="1732629212">
     <file name="/github/workspace/src/Config/Database.php">
       <class name="Config\Database" namespace="global">
-        <metrics complexity="9" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="13" elements="30" coveredelements="14"/>
+        <metrics complexity="12" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="20" elements="40" coveredelements="21"/>
       </class>
-      <line num="13" type="method" name="__construct" visibility="public" complexity="7" crap="7" count="3"/>
-      <line num="14" type="stmt" count="3"/>
-      <line num="16" type="stmt" count="3"/>
-      <line num="17" type="stmt" count="1"/>
-      <line num="18" type="stmt" count="1"/>
-      <line num="19" type="stmt" count="1"/>
-      <line num="20" type="stmt" count="1"/>
-      <line num="21" type="stmt" count="1"/>
-      <line num="22" type="stmt" count="1"/>
-      <line num="23" type="stmt" count="1"/>
-      <line num="27" type="stmt" count="2"/>
-      <line num="28" type="stmt" count="2"/>
-      <line num="29" type="stmt" count="2"/>
-      <line num="30" type="stmt" count="2"/>
-      <line num="33" type="method" name="connect" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
+      <line num="13" type="method" name="__construct" visibility="public" complexity="4" crap="11.28" count="1"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="32" type="stmt" count="0"/>
+      <line num="35" type="method" name="setDefaultCredentials" visibility="private" complexity="5" crap="5" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <line num="38" type="stmt" count="1"/>
+      <line num="39" type="stmt" count="1"/>
+      <line num="40" type="stmt" count="1"/>
+      <line num="43" type="method" name="setCredentials" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="45" type="stmt" count="0"/>
       <line num="46" type="stmt" count="0"/>
       <line num="47" type="stmt" count="0"/>
       <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <metrics loc="52" ncloc="52" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="28" coveredstatements="13" elements="30" coveredelements="14"/>
+      <line num="51" type="method" name="connect" visibility="public" complexity="2" crap="2.01" count="1"/>
+      <line num="53" type="stmt" count="1"/>
+      <line num="54" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="58" type="stmt" count="1"/>
+      <line num="59" type="stmt" count="0"/>
+      <line num="60" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="64" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="67" type="stmt" count="1"/>
+      <metrics loc="70" ncloc="70" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="20" elements="40" coveredelements="21"/>
     </file>
     <file name="/github/workspace/src/Controllers/AdminController.php">
       <class name="Controllers\AdminController" namespace="global">
@@ -626,7 +636,7 @@
     </file>
     <file name="/github/workspace/src/Controllers/UserController.php">
       <class name="Controllers\UserController" namespace="global">
-        <metrics complexity="16" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="44" elements="61" coveredelements="51"/>
+        <metrics complexity="16" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="45" elements="62" coveredelements="52"/>
       </class>
       <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="28"/>
       <line num="11" type="stmt" count="28"/>
@@ -666,37 +676,38 @@
       <line num="64" type="stmt" count="5"/>
       <line num="65" type="stmt" count="5"/>
       <line num="66" type="stmt" count="5"/>
-      <line num="69" type="stmt" count="4"/>
-      <line num="70" type="stmt" count="2"/>
-      <line num="71" type="stmt" count="2"/>
-      <line num="72" type="stmt" count="2"/>
-      <line num="76" type="method" name="logout" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="79" type="stmt" count="0"/>
+      <line num="67" type="stmt" count="2"/>
+      <line num="70" type="stmt" count="4"/>
+      <line num="71" type="stmt" count="5"/>
+      <line num="72" type="stmt" count="5"/>
+      <line num="73" type="stmt" count="5"/>
+      <line num="77" type="method" name="logout" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="80" type="stmt" count="0"/>
-      <line num="84" type="stmt" count="0"/>
-      <line num="87" type="stmt" count="0"/>
-      <line num="90" type="stmt" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <line num="85" type="stmt" count="0"/>
+      <line num="88" type="stmt" count="0"/>
       <line num="91" type="stmt" count="0"/>
       <line num="92" type="stmt" count="0"/>
       <line num="93" type="stmt" count="0"/>
       <line num="94" type="stmt" count="0"/>
-      <line num="98" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="5"/>
-      <line num="100" type="stmt" count="5"/>
+      <line num="95" type="stmt" count="0"/>
+      <line num="99" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="5"/>
       <line num="101" type="stmt" count="5"/>
-      <line num="102" type="stmt" count="3"/>
-      <line num="103" type="stmt" count="2"/>
+      <line num="102" type="stmt" count="5"/>
+      <line num="103" type="stmt" count="3"/>
       <line num="104" type="stmt" count="2"/>
       <line num="105" type="stmt" count="2"/>
-      <line num="110" type="method" name="register" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="111" type="stmt" count="1"/>
-      <metrics loc="113" ncloc="105" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="44" elements="61" coveredelements="51"/>
+      <line num="106" type="stmt" count="2"/>
+      <line num="111" type="method" name="register" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="112" type="stmt" count="1"/>
+      <metrics loc="114" ncloc="106" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="45" elements="62" coveredelements="52"/>
     </file>
     <file name="/github/workspace/src/Exceptions/DatabaseException.php">
       <class name="Exceptions\DatabaseException" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="5" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="6" type="stmt" count="3"/>
+      <line num="5" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="6" type="stmt" count="4"/>
       <metrics loc="8" ncloc="8" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="/github/workspace/src/Models/Cart.php">
@@ -1241,7 +1252,15 @@
       <line num="42" type="stmt" count="0"/>
       <line num="43" type="stmt" count="0"/>
       <line num="44" type="stmt" count="0"/>
-      <metrics loc="48" ncloc="46" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="0" elements="27" coveredelements="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="50" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <metrics loc="52" ncloc="50" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="35" coveredelements="0"/>
     </file>
     <file name="/github/workspace/src/Views/components/footer.php">
       <line num="1" type="stmt" count="0"/>
@@ -2004,24 +2023,23 @@
     </file>
     <file name="/github/workspace/src/autoload.php">
       <line num="2" type="stmt" count="1"/>
-      <line num="4" type="stmt" count="1"/>
-      <line num="5" type="stmt" count="1"/>
-      <line num="7" type="stmt" count="1"/>
-      <line num="8" type="stmt" count="1"/>
-      <line num="9" type="stmt" count="1"/>
+      <line num="4" type="stmt" count="0"/>
+      <line num="5" type="stmt" count="0"/>
+      <line num="7" type="stmt" count="0"/>
+      <line num="8" type="stmt" count="0"/>
+      <line num="9" type="stmt" count="0"/>
       <line num="11" type="stmt" count="0"/>
       <line num="12" type="stmt" count="1"/>
-      <metrics loc="12" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" elements="8" coveredelements="7"/>
+      <metrics loc="12" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="2" elements="8" coveredelements="2"/>
     </file>
     <file name="/github/workspace/src/index.php">
-      <line num="2" type="stmt" count="0"/>
+      <line num="3" type="stmt" count="0"/>
+      <line num="4" type="stmt" count="0"/>
       <line num="5" type="stmt" count="0"/>
-      <line num="6" type="stmt" count="0"/>
       <line num="7" type="stmt" count="0"/>
-      <line num="9" type="stmt" count="0"/>
-      <line num="13" type="stmt" count="0"/>
-      <metrics loc="15" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="6" coveredelements="0"/>
+      <line num="11" type="stmt" count="0"/>
+      <metrics loc="13" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="5" coveredelements="0"/>
     </file>
-    <metrics files="34" loc="3083" ncloc="3011" classes="13" methods="128" coveredmethods="106" conditionals="0" coveredconditionals="0" statements="1810" coveredstatements="582" elements="1938" coveredelements="688"/>
+    <metrics files="34" loc="3104" ncloc="3032" classes="13" methods="130" coveredmethods="106" conditionals="0" coveredconditionals="0" statements="1826" coveredstatements="585" elements="1956" coveredelements="691"/>
   </project>
 </coverage>

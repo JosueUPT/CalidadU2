@@ -40,8 +40,12 @@ if(isset($message)){
       </div>
 
       <div class="account-box">
-         <p>nombre de usuario : <span><?php echo htmlspecialchars($_SESSION['user_name']); ?></span></p>
-         <p>email : <span><?php echo htmlspecialchars($_SESSION['user_email']); ?></span></p>
+         <p>nombre de usuario : <span><?php 
+            echo htmlspecialchars($_SESSION['user_name'] ?? 'Usuario'); 
+         ?></span></p>
+         <p>email : <span><?php 
+            echo htmlspecialchars($_SESSION['user_email'] ?? 'correo@ejemplo.com'); 
+         ?></span></p>
          <a href="../auth/logout.php" class="delete-btn">cerrar sesion</a>
       </div>
    </div>

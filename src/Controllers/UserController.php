@@ -63,6 +63,7 @@ class UserController {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_type'] = $user['user_type'];
+                $_SESSION['user_email'] = $user['email'];
                 return ['success' => true, 'user_type' => $user['user_type']];
             }
 
