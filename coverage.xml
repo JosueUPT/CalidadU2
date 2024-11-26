@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732636372">
-  <project timestamp="1732636372">
+<coverage generated="1732636772">
+  <project timestamp="1732636772">
     <file name="/github/workspace/src/Config/Database.php">
       <class name="Config\Database" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="20" elements="40" coveredelements="21"/>

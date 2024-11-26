@@ -24,4 +24,6 @@ jobs:
           SEMGREP_REPO_NAME: ${{ github.repository }}
           SEMGREP_BRANCH: ${{ github.ref_name }}
         with:
-          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }} 
+          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
+          config: >- 
+            p/default 
