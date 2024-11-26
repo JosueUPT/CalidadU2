@@ -14,6 +14,7 @@ use Models\Message;
 class AdminController {
     private $conn;
     private const UPLOAD_PATH = '../../uploaded_img/';
+    private const ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png'];
 
     public function __construct($conn) {
         $this->conn = $conn;
@@ -168,6 +169,33 @@ class AdminController {
         return preg_match('/^[a-zA-Z0-9_.-]+$/', $imageName);
     }
 
+    private function getSecureImagePath($imageName) {
+        try {
+            // Validar el nombre del archivo
+            if (empty($imageName) || !is_string($imageName)) {
+                throw new \Exception('Nombre de archivo inválido');
+            }
+
+            // Obtener y validar la extensión
+            $extension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+            if (!in_array($extension, self::ALLOWED_EXTENSIONS)) {
+                throw new \Exception('Tipo de archivo no permitido');
+            }
+
+            // Verificar que el archivo existe en la base de datos
+            $stmt = $this->conn->prepare("SELECT image FROM products WHERE image = ?");
+            $stmt->execute([$imageName]);
+            if (!$stmt->fetch()) {
+                throw new \Exception('Archivo no encontrado en la base de datos');
+            }
+
+            return self::UPLOAD_PATH . $imageName;
+        } catch (\Exception $e) {
+            error_log("Error en getSecureImagePath: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function updateProduct($postData, $files) {
         try {
             $product = new Product();
@@ -175,26 +203,20 @@ class AdminController {
             $product->setName($postData['update_name']);
             $product->setPrice($postData['update_price']);
             
-            $stmt = $this->conn->prepare("UPDATE `products` SET name = ?, price = ? WHERE id = ?");
-            $params = [$product->getName(), $product->getPrice(), $product->getId()];
-            
             if(!empty($files['update_image']['name'])) {
-                // Validar nueva imagen
-                if (!$this->validateImageName($files['update_image']['name'])) {
-                    return ['success' => false, 'message' => 'Nombre de archivo no válido'];
-                }
-                
                 if($files['update_image']['size'] > 2000000) {
                     return ['success' => false, 'message' => 'El tamaño de la imagen es demasiado grande'];
                 }
-                
-                $product->setImage($files['update_image']['name']);
-                
-                // Eliminar imagen anterior si existe
-                $oldImagePath = self::UPLOAD_PATH . $postData['update_old_image'];
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
+
+                // Manejar imagen anterior de forma segura
+                if (!empty($postData['update_old_image'])) {
+                    $oldImagePath = $this->getSecureImagePath($postData['update_old_image']);
+                    if ($oldImagePath && file_exists($oldImagePath)) {
+                        unlink($oldImagePath);
+                    }
                 }
+
+                $product->setImage($files['update_image']['name']);
                 
                 // Subir nueva imagen
                 move_uploaded_file(
@@ -204,6 +226,9 @@ class AdminController {
                 
                 $stmt = $this->conn->prepare("UPDATE `products` SET name = ?, price = ?, image = ? WHERE id = ?");
                 $params = [$product->getName(), $product->getPrice(), $product->getImage(), $product->getId()];
+            } else {
+                $stmt = $this->conn->prepare("UPDATE `products` SET name = ?, price = ? WHERE id = ?");
+                $params = [$product->getName(), $product->getPrice(), $product->getId()];
             }
             
             if($stmt->execute($params)) {
@@ -213,7 +238,8 @@ class AdminController {
             return ['success' => false, 'message' => 'Error al actualizar el producto'];
             
         } catch (\Exception $e) {
-            return ['success' => false, 'message' => 'Error al actualizar el producto: ' . $e->getMessage()];
+            error_log("Error en updateProduct: " . $e->getMessage());
+            return ['success' => false, 'message' => 'Error al actualizar el producto'];
         }
     }
 
