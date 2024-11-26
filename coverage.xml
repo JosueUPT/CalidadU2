@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732629212">
-  <project timestamp="1732629212">
+<coverage generated="1732630126">
+  <project timestamp="1732630126">
     <file name="/github/workspace/src/Config/Database.php">
       <class name="Config\Database" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="20" elements="40" coveredelements="21"/>
@@ -1967,23 +1967,21 @@
       <metrics loc="110" ncloc="108" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="0" elements="72" coveredelements="0"/>
     </file>
     <file name="/github/workspace/src/Views/usuario/shop.php">
-      <line num="4" type="stmt" count="0"/>
       <line num="5" type="stmt" count="0"/>
       <line num="6" type="stmt" count="0"/>
+      <line num="9" type="stmt" count="0"/>
+      <line num="10" type="stmt" count="0"/>
       <line num="11" type="stmt" count="0"/>
-      <line num="13" type="stmt" count="0"/>
-      <line num="14" type="stmt" count="0"/>
-      <line num="15" type="stmt" count="0"/>
+      <line num="16" type="stmt" count="0"/>
+      <line num="17" type="stmt" count="0"/>
       <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
       <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
       <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
       <line num="35" type="stmt" count="0"/>
       <line num="36" type="stmt" count="0"/>
       <line num="37" type="stmt" count="0"/>
@@ -1993,33 +1991,36 @@
       <line num="41" type="stmt" count="0"/>
       <line num="42" type="stmt" count="0"/>
       <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
       <line num="45" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
       <line num="48" type="stmt" count="0"/>
-      <line num="49" type="stmt" count="0"/>
       <line num="50" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
       <line num="52" type="stmt" count="0"/>
       <line num="53" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
       <line num="55" type="stmt" count="0"/>
       <line num="56" type="stmt" count="0"/>
       <line num="57" type="stmt" count="0"/>
       <line num="58" type="stmt" count="0"/>
       <line num="59" type="stmt" count="0"/>
       <line num="60" type="stmt" count="0"/>
+      <line num="61" type="stmt" count="0"/>
       <line num="62" type="stmt" count="0"/>
       <line num="63" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="69" type="stmt" count="0"/>
-      <line num="70" type="stmt" count="0"/>
+      <line num="65" type="stmt" count="0"/>
+      <line num="66" type="stmt" count="0"/>
+      <line num="67" type="stmt" count="0"/>
       <line num="71" type="stmt" count="0"/>
       <line num="72" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
       <line num="74" type="stmt" count="0"/>
-      <line num="76" type="stmt" count="0"/>
-      <line num="78" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <line num="77" type="stmt" count="0"/>
       <line num="79" type="stmt" count="0"/>
-      <metrics loc="79" ncloc="77" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="52" coveredstatements="0" elements="52" coveredelements="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <line num="82" type="stmt" count="0"/>
+      <metrics loc="82" ncloc="79" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="53" coveredstatements="0" elements="53" coveredelements="0"/>
     </file>
     <file name="/github/workspace/src/autoload.php">
       <line num="2" type="stmt" count="1"/>
@@ -2040,6 +2041,6 @@
       <line num="11" type="stmt" count="0"/>
       <metrics loc="13" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="5" coveredelements="0"/>
     </file>
-    <metrics files="34" loc="3104" ncloc="3032" classes="13" methods="130" coveredmethods="106" conditionals="0" coveredconditionals="0" statements="1826" coveredstatements="585" elements="1956" coveredelements="691"/>
+    <metrics files="34" loc="3107" ncloc="3034" classes="13" methods="130" coveredmethods="106" conditionals="0" coveredconditionals="0" statements="1827" coveredstatements="585" elements="1957" coveredelements="691"/>
   </project>
 </coverage>

@@ -1,14 +1,17 @@
 <?php
 namespace Views;
 
+// Iniciar sesión antes de cualquier salida
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once '../../Config/Database.php';
 require_once '../../Controllers/ProductController.php';
 require_once '../../Models/Product.php';
 
 use Config\Database;
 use Controllers\ProductController;
-
-session_start();
 
 if(!isset($_SESSION['user_id'])) {
     header('location:../auth/login.php');
