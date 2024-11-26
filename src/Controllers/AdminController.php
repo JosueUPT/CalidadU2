@@ -196,6 +196,43 @@ class AdminController {
         }
     }
 
+    private function handleImageDelete($imageName) {
+        try {
+            // Validar el nombre del archivo
+            if (empty($imageName) || !is_string($imageName)) {
+                return false;
+            }
+
+            // Verificar en la base de datos
+            $stmt = $this->conn->prepare("SELECT image FROM products WHERE image = ? LIMIT 1");
+            $stmt->execute([$imageName]);
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            if (!$result) {
+                return false;
+            }
+
+            // Construir y validar la ruta
+            $fullPath = realpath(self::UPLOAD_PATH . $result['image']);
+            $uploadDir = realpath(self::UPLOAD_PATH);
+
+            // Verificar que el archivo está dentro del directorio permitido
+            if ($fullPath === false || strpos($fullPath, $uploadDir) !== 0) {
+                return false;
+            }
+
+            // Eliminar el archivo si existe
+            if (file_exists($fullPath)) {
+                return unlink($fullPath);
+            }
+
+            return false;
+        } catch (\Exception $e) {
+            error_log("Error al eliminar imagen: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function updateProduct($postData, $files) {
         try {
             $product = new Product();
@@ -208,20 +245,20 @@ class AdminController {
                     return ['success' => false, 'message' => 'El tamaño de la imagen es demasiado grande'];
                 }
 
-                // Manejar imagen anterior de forma segura
+                // Eliminar imagen anterior de forma segura
                 if (!empty($postData['update_old_image'])) {
-                    $oldImagePath = $this->getSecureImagePath($postData['update_old_image']);
-                    if ($oldImagePath && file_exists($oldImagePath)) {
-                        unlink($oldImagePath);
-                    }
+                    $this->handleImageDelete($postData['update_old_image']);
                 }
 
-                $product->setImage($files['update_image']['name']);
+                // Generar nombre único para la nueva imagen
+                $extension = strtolower(pathinfo($files['update_image']['name'], PATHINFO_EXTENSION));
+                $newImageName = uniqid() . '.' . $extension;
+                $product->setImage($newImageName);
                 
                 // Subir nueva imagen
                 move_uploaded_file(
                     $files['update_image']['tmp_name'], 
-                    self::UPLOAD_PATH . $product->getImage()
+                    self::UPLOAD_PATH . $newImageName
                 );
                 
                 $stmt = $this->conn->prepare("UPDATE `products` SET name = ?, price = ?, image = ? WHERE id = ?");
@@ -236,7 +273,6 @@ class AdminController {
             }
             
             return ['success' => false, 'message' => 'Error al actualizar el producto'];
-            
         } catch (\Exception $e) {
             error_log("Error en updateProduct: " . $e->getMessage());
             return ['success' => false, 'message' => 'Error al actualizar el producto'];
