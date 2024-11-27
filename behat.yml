@@ -1,0 +1,10 @@
+default:
+  suites:
+    default:
+      contexts:
+        - Tests\BDD\Features\Bootstrap\FeatureContext
+        - Tests\BDD\Features\Bootstrap\AuthContext
+        - Tests\BDD\Features\Bootstrap\AdminContext
+        - Tests\BDD\Features\Bootstrap\UserContext
+      paths:
+        - tests/BDD/features 

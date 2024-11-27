@@ -8,3 +8,11 @@ sacar reporte de calidad de covertura:
 composer dump-autoload
 ```
 
+sacar bdd:
+```
+./vendor/bin/behat --format=pretty --out=std --format=html --out=behat.html
+./vendor/bin/behat
+```
+
+
+composer require --dev behat/mink-extension:^2.3.1 --with-all-dependencies --ignore-platform-reqs
