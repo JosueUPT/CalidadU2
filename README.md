@@ -16,3 +16,15 @@ sacar bdd:
 
 
 composer require --dev behat/mink-extension:^2.3.1 --with-all-dependencies --ignore-platform-reqs
+
+
+Pruebas de interfaz de usuario:
+```
+Instalacion de dependencias:
+composer require --dev behat/mink-extension
+composer require --dev behat/mink-selenium2-driver
+composer require --dev dmore/chrome-mink-driver
+
+Ejecucion de pruebas:
+vendor/bin/phpunit tests/UI/Pages/LoginPageTest.php
+```

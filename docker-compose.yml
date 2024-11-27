@@ -1,3 +1,4 @@
+version: '3'
 services:
   web:
     build: .
@@ -22,5 +23,17 @@ services:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password --bind-address=0.0.0.0
 
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
+    shm_size: '2g'
+    networks:
+      - tu_red_docker
+
 volumes:
   mysql_data:
+
+networks:
+  tu_red_docker:
+    driver: bridge
