@@ -21,7 +21,6 @@ $productController = new ProductController($conn);
 
 $user_id = $_SESSION['user_id'];
 
-// Actualizar cantidad
 if(isset($_POST['update_cart'])) {
     $result = $productController->updateCartQuantity(
         $_POST['cart_id'],
@@ -30,7 +29,6 @@ if(isset($_POST['update_cart'])) {
     $message[] = $result['message'];
 }
 
-// Eliminar item
 if(isset($_GET['delete'])) {
     if($productController->deleteCartItem($_GET['delete'])) {
         header('location: cart.php');
@@ -38,7 +36,6 @@ if(isset($_GET['delete'])) {
     }
 }
 
-// Eliminar todo
 if(isset($_GET['delete_all'])) {
     if($productController->deleteAllCartItems($user_id)) {
         header('location: cart.php');
@@ -46,7 +43,6 @@ if(isset($_GET['delete_all'])) {
     }
 }
 
-// Obtener items del carrito
 $cartItems = $productController->getCartItems($user_id);
 ?>
 

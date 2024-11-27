@@ -25,7 +25,6 @@ class AdminControllerTest extends TestCase
     /** @test */
     public function testGetDashboardData(): void
     {
-        // Configurar mocks para cada consulta
         $this->pdoStatement->method('execute')->willReturn(true);
         $this->pdoStatement->method('fetch')->willReturn(['count' => 5]);
         $this->pdoStatement->method('fetchAll')->willReturn([
@@ -121,7 +120,6 @@ class AdminControllerTest extends TestCase
     {
         $productId = 1;
 
-        // Mock para obtener la información de la imagen
         $this->pdoStatement->method('fetch')->willReturn(['image' => 'test.jpg']);
         $this->pdoStatement->method('execute')->willReturn(true);
         $this->conn->method('prepare')->willReturn($this->pdoStatement);
@@ -477,7 +475,7 @@ class AdminControllerTest extends TestCase
         $files = [
             'update_image' => [
                 'name' => 'large.jpg',
-                'size' => 3000000 // Más grande que el límite
+                'size' => 3000000 
             ]
         ];
 
@@ -535,7 +533,6 @@ class AdminControllerTest extends TestCase
 
         $result = $method->invoke($this->adminController, $imageName);
 
-        // El resultado dependerá de si el archivo existe físicamente
         $this->assertIsBool($result);
     }
 

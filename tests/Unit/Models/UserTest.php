@@ -32,7 +32,6 @@ class UserTest extends TestCase
         $password = "123456";
         $this->user->setPassword($password);
         
-        // Verificar que el password fue hasheado (debe tener 60 caracteres para BCRYPT)
         $reflection = new \ReflectionClass($this->user);
         $property = $reflection->getProperty('password');
         $property->setAccessible(true);

@@ -24,13 +24,11 @@ $productController = new ProductController($conn);
 $user_id = $_SESSION['user_id'];
 $message = [];
 
-// Procesar el formulario de orden
 if(isset($_POST['order_btn'])) {
     $result = $orderController->createOrder($_POST, $user_id);
     $message[] = $result['message'];
 }
 
-// Obtener items del carrito
 $cartItems = $productController->getCartItems($user_id);
 $grand_total = 0;
 ?>

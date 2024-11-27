@@ -22,9 +22,8 @@ class UserControllerTest extends TestCase
     /** @test */
     public function usuario_puede_registrarse(): void 
     {
-        // Crear mock para PDOStatement
         $mockStmt = $this->createMock(PDOStatement::class);
-        $mockStmt->method('fetch')->willReturn(false); // El email no existe
+        $mockStmt->method('fetch')->willReturn(false);
         $mockStmt->method('execute')->willReturn(true);
 
         $this->mockPDO->method('prepare')->willReturn($mockStmt);
@@ -42,29 +41,24 @@ class UserControllerTest extends TestCase
     /** @test */
     public function usuario_puede_iniciar_sesion(): void
     {
-        // Crear una contraseña hasheada real
         $password = 'password123';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        // Crear mock para PDOStatement
         $mockStmt = $this->createMock(\PDOStatement::class);
         $mockStmt->method('fetch')->willReturn([
             'id' => 1,
             'name' => 'Juan Pérez',
             'email' => 'juan@example.com',
-            'password' => $hashedPassword,  // Usar la contraseña hasheada real
+            'password' => $hashedPassword,  
             'user_type' => 'user'
         ]);
         $mockStmt->method('execute')->willReturn(true);
 
-        // Configurar el mock de PDO
         $this->mockPDO->method('prepare')
             ->willReturn($mockStmt);
 
-        // Ejecutar el login con la contraseña sin hashear
         $result = $this->userController->loginUser('juan@example.com', $password);
         
-        // Verificaciones
         $this->assertTrue($result['success']);
         $this->assertEquals('user', $result['user_type']);
     }
@@ -72,7 +66,6 @@ class UserControllerTest extends TestCase
     /** @test */
     public function inicio_sesion_falla_con_credenciales_incorrectas(): void
     {
-        // Simular que no se encuentra el usuario
         $mockStmt = $this->createMock(PDOStatement::class);
         $mockStmt->method('fetch')->willReturn(false);
         $mockStmt->method('execute')->willReturn(true);
@@ -88,7 +81,6 @@ class UserControllerTest extends TestCase
     /** @test */
     public function puede_obtener_usuario_por_id(): void
     {
-        // Crear mock para PDOStatement
         $mockStmt = $this->createMock(PDOStatement::class);
         $mockStmt->method('fetch')->willReturn([
             'id' => 1,
@@ -111,7 +103,7 @@ class UserControllerTest extends TestCase
     public function registro_falla_con_email_existente(): void
     {
         $mockStmt = $this->createMock(PDOStatement::class);
-        $mockStmt->method('fetch')->willReturn(['id' => 1]); // Email ya existe
+        $mockStmt->method('fetch')->willReturn(['id' => 1]);
         $mockStmt->method('execute')->willReturn(true);
 
         $this->mockPDO->method('prepare')->willReturn($mockStmt);
@@ -237,7 +229,6 @@ class UserControllerTest extends TestCase
         $password = 'test123';
         $hashedPassword = $method->invoke($this->userController, $password);
 
-        // Verificar que el hash tiene el costo correcto (12)
         $this->assertTrue(password_verify($password, $hashedPassword));
         $this->assertStringContainsString('$2y$12$', $hashedPassword);
     }
@@ -293,7 +284,6 @@ class UserControllerTest extends TestCase
     /** @test */
     public function login_exitoso_con_admin(): void
     {
-        // Similar al anterior pero para admin
         $password = 'admin123';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
@@ -329,7 +319,6 @@ class UserControllerTest extends TestCase
             'name' => 'Default User',
             'email' => 'default@test.com',
             'password' => 'pass123'
-            // Sin especificar user_type, debería usar 'user' por defecto
         ]);
 
         $this->assertTrue($result['success']);
@@ -349,11 +338,10 @@ class UserControllerTest extends TestCase
         $this->assertFalse($result);
     }
 
-    // Pruebas de registro con errores
     public function test_register_con_email_existente()
     {
         $stmt = $this->createMock(\PDOStatement::class);
-        $stmt->method('fetch')->willReturn(['id' => 1]); // Simula que encuentra un email existente
+        $stmt->method('fetch')->willReturn(['id' => 1]);
         $stmt->method('execute')->willReturn(true);
         
         $this->mockPDO->method('prepare')->willReturn($stmt);
@@ -389,7 +377,7 @@ class UserControllerTest extends TestCase
     public function test_login_con_credenciales_invalidas()
     {
         $stmt = $this->createMock(\PDOStatement::class);
-        $stmt->method('fetch')->willReturn(false); // Usuario no encontrado
+        $stmt->method('fetch')->willReturn(false); 
         $stmt->method('execute')->willReturn(true);
         
         $this->mockPDO->method('prepare')->willReturn($stmt);

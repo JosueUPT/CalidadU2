@@ -82,7 +82,6 @@ class AdminLoginTest extends TestCase
 
             echo "URL actual: " . $this->driver->getCurrentURL() . "\n";
 
-            // Credenciales de administrador
             echo "Ingresando credenciales de administrador...\n";
             $this->driver->findElement(WebDriverBy::name('email'))
                 ->sendKeys('admin@hotmail.com');
@@ -98,7 +97,6 @@ class AdminLoginTest extends TestCase
 
             sleep(3);
 
-            // Verificar redirección al panel de administrador
             $currentUrl = $this->driver->getCurrentURL();
             echo "URL después del login: " . $currentUrl . "\n";
 
@@ -108,13 +106,11 @@ class AdminLoginTest extends TestCase
                 'La redirección al panel de administrador no fue exitosa'
             );
 
-            // Verificar elementos del panel de admin
             $this->assertNotNull(
                 $this->driver->findElement(WebDriverBy::className('dashboard')),
                 'No se encontró el dashboard del administrador'
             );
 
-            // Verificar el título del panel
             $titleElement = $this->driver->findElement(WebDriverBy::className('title'));
             $this->assertNotNull($titleElement, 'No se encontró el título del panel');
             $this->assertEquals('PANEL DE CONTROL', $titleElement->getText());
@@ -137,7 +133,6 @@ class AdminLoginTest extends TestCase
 
             echo "URL actual: " . $this->driver->getCurrentURL() . "\n";
 
-            // Credenciales incorrectas
             echo "Ingresando credenciales incorrectas...\n";
             $this->driver->findElement(WebDriverBy::name('email'))
                 ->sendKeys('admin_incorrecto@hotmail.com');
@@ -153,7 +148,6 @@ class AdminLoginTest extends TestCase
 
             sleep(2);
 
-            // Verificar que seguimos en la página de login
             $currentUrl = $this->driver->getCurrentURL();
             $this->assertStringContainsString(
                 '/views/auth/login.php',
@@ -161,7 +155,6 @@ class AdminLoginTest extends TestCase
                 'La página no permaneció en el login después de credenciales incorrectas'
             );
 
-            // Verificar mensaje de error
             $errorMessage = $this->driver->findElement(WebDriverBy::className('message'));
             $this->assertNotNull($errorMessage, 'No se mostró mensaje de error');
             $this->assertStringContainsString(
@@ -173,7 +166,6 @@ class AdminLoginTest extends TestCase
             echo "Prueba de login fallido completada exitosamente\n";
         } catch (\Exception $e) {
             echo "Error durante la prueba de login fallido: " . $e->getMessage() . "\n";
-            // Tomar screenshot en caso de error
             $screenshot = $this->driver->takeScreenshot();
             $filename = 'error_screenshot_' . date('Y-m-d_H-i-s') . '.png';
             file_put_contents($filename, $screenshot);
@@ -189,12 +181,10 @@ class AdminLoginTest extends TestCase
     public function testAdminLogoutVisual()
     {
         try {
-            // Primero hacer login como admin
             echo "Preparando prueba de logout - Iniciando sesión primero...\n";
             $this->driver->get($this->baseUrl . '/views/auth/login.php');
             sleep(2);
 
-            // Login con credenciales de administrador
             echo "Ingresando credenciales de administrador...\n";
             $this->driver->findElement(WebDriverBy::name('email'))
                 ->sendKeys('admin@hotmail.com');
@@ -205,7 +195,6 @@ class AdminLoginTest extends TestCase
             $this->driver->findElement(WebDriverBy::name('submit'))->click();
             sleep(2);
 
-            // Verificar que estamos en el panel de admin
             $currentUrl = $this->driver->getCurrentURL();
             $this->assertStringContainsString(
                 '/views/admin/admin_page.php',
@@ -213,19 +202,16 @@ class AdminLoginTest extends TestCase
                 'No se pudo acceder al panel de administrador'
             );
 
-            // Abrir el menú de usuario (porque el botón de logout está en el account-box)
             echo "Abriendo menú de usuario...\n";
             $userBtn = $this->driver->findElement(WebDriverBy::id('user-btn'));
             $userBtn->click();
             sleep(1);
 
-            // Realizar el logout
             echo "Haciendo clic en cerrar sesión...\n";
             $logoutButton = $this->driver->findElement(WebDriverBy::cssSelector('.delete-btn'));
             $logoutButton->click();
             sleep(2);
 
-            // Verificar redirección al login
             $currentUrl = $this->driver->getCurrentURL();
             $this->assertStringContainsString(
                 '/views/auth/login.php',
@@ -236,7 +222,6 @@ class AdminLoginTest extends TestCase
             echo "Prueba de logout completada exitosamente\n";
         } catch (\Exception $e) {
             echo "Error durante la prueba de logout: " . $e->getMessage() . "\n";
-            // Tomar screenshot en caso de error
             $screenshot = $this->driver->takeScreenshot();
             $filename = 'error_screenshot_' . date('Y-m-d_H-i-s') . '.png';
             file_put_contents($filename, $screenshot);

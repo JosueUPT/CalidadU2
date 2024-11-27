@@ -1,7 +1,6 @@
 <?php
 namespace Views;
 
-// Iniciar sesión antes de cualquier salida
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -22,13 +21,11 @@ $db = new Database();
 $conn = $db->connect();
 $productController = new ProductController($conn);
 
-// Procesar añadir al carrito
 if(isset($_POST['add_to_cart'])) {
     $result = $productController->addToCart($_SESSION['user_id'], $_POST);
     $message[] = $result['message'];
 }
 
-// Obtener todos los productos
 $products = $productController->getAllProducts();
 ?>
 

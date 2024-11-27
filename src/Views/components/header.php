@@ -6,7 +6,6 @@ if(!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Mostrar mensajes si existen
 if (isset($message)) {
     foreach ($message as $msg) {
         echo '
@@ -18,7 +17,6 @@ if (isset($message)) {
     }
 }
 
-// Obtener número de items en carrito usando PDO
 try {
     $stmt = $conn->prepare("SELECT COUNT(*) FROM cart WHERE user_id = ?");
     $stmt->execute([$user_id]);
@@ -81,7 +79,6 @@ try {
    </div>
 </header>
 
-<!-- Añadir el CSS necesario -->
 <style>
 .user-box {
     position: absolute;
@@ -116,7 +113,6 @@ try {
 }
 </style>
 
-<!-- Añadir el JavaScript necesario -->
 <script>
 document.querySelector('#user-btn').onclick = () => {
     document.querySelector('.user-box').classList.toggle('active');

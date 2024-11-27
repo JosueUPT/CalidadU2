@@ -20,7 +20,6 @@ $orderController = new OrderController($conn);
 
 $user_id = $_SESSION['user_id'];
 
-// Obtener órdenes del usuario
 $orders = $orderController->getUserOrders($user_id);
 ?>
 

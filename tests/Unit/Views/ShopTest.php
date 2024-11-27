@@ -20,7 +20,6 @@ class ShopTest extends TestCase
 
     public function test_puede_obtener_productos(): void
     {
-        // Mock de productos
         $productos_mock = [
             new class {
                 public function getName() { return 'Producto Test'; }

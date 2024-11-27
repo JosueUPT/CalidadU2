@@ -19,13 +19,11 @@ $db = new Database();
 $conn = $db->connect();
 $adminController = new AdminController($conn);
 
-// Manejar adición de productos
 if(isset($_POST['add_product'])) {
     $result = $adminController->addProduct($_POST, $_FILES);
     $message[] = $result['message'];
 }
 
-// Manejar eliminación
 if(isset($_GET['delete'])) {
     $result = $adminController->deleteProduct($_GET['delete']);
     if($result['success']) {
@@ -36,7 +34,6 @@ if(isset($_GET['delete'])) {
     }
 }
 
-// Manejar actualización
 if(isset($_POST['update_product'])) {
     $result = $adminController->updateProduct($_POST, $_FILES);
     if($result['success']) {
@@ -46,7 +43,6 @@ if(isset($_POST['update_product'])) {
     $message[] = $result['message'];
 }
 
-// Obtener todos los productos
 $products = $adminController->getAllProducts();
 
 ?>
@@ -61,18 +57,15 @@ $products = $adminController->getAllProducts();
 
    <link rel="icon" id="png" href="images/icon2.png">
 
-   <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-   <!-- custom admin css file link  -->
-   <link rel="stylesheet" href="../../css/admin_style.css"> <!--link donde se hara la mod-->
+   <link rel="stylesheet" href="../../css/admin_style.css"> 
 
 </head>
 <body>
    
 <?php include_once '../components/admin_header.php'; ?>
 
-<!-- product CRUD section starts  -->
 
 <section class="add-products">
 
@@ -88,9 +81,7 @@ $products = $adminController->getAllProducts();
 
 </section>
 
-<!-- product CRUD section ends -->
 
-<!-- show products  -->
 
 <section class="show-products">
 
@@ -153,7 +144,6 @@ $products = $adminController->getAllProducts();
 
 
 
-<!-- custom admin js file link  -->
 <script src="../../js/admin_script.js"></script>
 
 </body>

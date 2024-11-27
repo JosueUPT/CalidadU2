@@ -3,13 +3,11 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
-// Verificar si el usuario es admin
 if(!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'admin') {
     header('location: ../auth/login.php');
     exit();
 }
 
-// Mostrar mensajes si existen
 if(isset($message)){
     foreach($message as $msg){
         echo '

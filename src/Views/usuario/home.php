@@ -19,7 +19,6 @@ $db = new Database();
 $conn = $db->connect();
 $productController = new ProductController($conn);
 
-// Procesar añadir al carrito
 if(isset($_POST['add_to_cart'])) {
     $result = $productController->addToCart($_SESSION['user_id'], $_POST);
     $message[] = $result['message'];

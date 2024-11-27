@@ -22,7 +22,6 @@ class ContactControllerTest extends TestCase
         $this->conn = $this->createMock(PDO::class);
         $this->pdoStatement = $this->createMock(PDOStatement::class);
         
-        // Mockear User y Message
         $this->user = $this->createMock(User::class);
         $this->message = $this->createMock(Message::class);
         
@@ -48,7 +47,6 @@ class ContactControllerTest extends TestCase
             'message' => 'Mensaje de prueba'
         ];
 
-        // Configurar comportamiento esperado
         $this->user->method('exists')->willReturn(true);
         $this->message->method('exists')->willReturn(false);
         $this->message->method('save')->willReturn(true);
@@ -65,7 +63,6 @@ class ContactControllerTest extends TestCase
         $datosUsuario = [
             'user_id' => 1,
             'name' => 'Juan Pérez'
-            // Faltan campos requeridos
         ];
 
         $resultado = $this->contactController->sendMessage($datosUsuario);
@@ -85,7 +82,6 @@ class ContactControllerTest extends TestCase
             'message' => 'Mensaje de prueba'
         ];
 
-        // Mock para User::exists retornando false
         $this->pdoStatement->method('execute')->willReturn(true);
         $this->pdoStatement->method('fetch')->willReturn(false);
         $this->conn->method('prepare')->willReturn($this->pdoStatement);
@@ -107,9 +103,8 @@ class ContactControllerTest extends TestCase
             'message' => 'Mensaje de prueba'
         ];
 
-        // Configurar comportamiento esperado
         $this->user->method('exists')->willReturn(true);
-        $this->message->method('exists')->willReturn(true); // Mensaje ya existe
+        $this->message->method('exists')->willReturn(true);
         
         $result = $this->contactController->sendMessage($userData);
 
@@ -128,7 +123,6 @@ class ContactControllerTest extends TestCase
             'message' => 'Mensaje de prueba'
         ];
 
-        // Configurar comportamiento esperado
         $this->user->method('exists')->willReturn(true);
         $this->message->method('exists')->willReturn(false);
         $this->message->method('save')->willReturn(false);
@@ -150,7 +144,6 @@ class ContactControllerTest extends TestCase
             'message' => 'Mensaje de prueba'
         ];
 
-        // Simular una excepción al verificar si el usuario existe
         $this->user->method('exists')
             ->willThrowException(new \Exception('Error de conexión'));
 
