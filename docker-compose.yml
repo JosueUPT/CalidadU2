@@ -27,24 +27,36 @@ services:
     networks:
       - tu_red_docker
 
-  selenium:
-    image: selenium/video:ffmpeg-4.3.1-20230801
-    volumes:
-      - ./test-videos:/videos
-    depends_on:
-      - selenium-chrome
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
     networks:
       - tu_red_docker
 
-  selenium-chrome:
-    image: selenium/standalone-chrome:latest
+  chrome:
+    image: selenium/node-chrome:latest
+    shm_size: '2g'
+    depends_on:
+      - selenium-hub
     environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=4
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
       - SE_VNC_NO_PASSWORD=1
-    ports:
-      - "4444:4444"
-      - "7900:7900"
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
+      - SE_ENABLE_RECORDING=true
+      - SE_RECORD_VIDEO=true
     volumes:
-      - /dev/shm:/dev/shm
+      - ./test-videos:/opt/selenium/videos
+    ports:
+      - "7901:7900"
     networks:
       - tu_red_docker
 
