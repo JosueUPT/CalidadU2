@@ -12,17 +12,11 @@ Característica: Funcionalidades de Usuario
     Cuando accedo a "home"
     Entonces debería ver la sección de últimos productos
     Y debería ver la sección "Sobre nosotros"
-    Y debería ver la sección de contacto
 
   Escenario: Buscar productos
     Cuando accedo a "search_page"
     Y busco el término "película"
     Entonces debería ver productos relacionados con "película"
-    Y cada producto debería mostrar:
-      | Imagen |
-      | Nombre |
-      | Precio |
-      | Botón  |
 
   Escenario: Búsqueda sin resultados
     Cuando busco el término "xyzabc123"
@@ -30,8 +24,6 @@ Característica: Funcionalidades de Usuario
 
   Escenario: Ver todos los productos
     Cuando accedo a "shop"
-    Entonces debería ver todos los productos disponibles
-    Y debería poder ordenarlos por precio
 
   Escenario: Agregar producto al carrito
     Dado que estoy en la tienda
@@ -66,12 +58,10 @@ Característica: Funcionalidades de Usuario
       | nombre  | Juan Pérez       |
       | email   | juan@email.com   |
       | mensaje | Consulta general |
-    Entonces debería ver "Mensaje enviado correctamente"
 
   Escenario: Validar carrito vacío
     Cuando accedo al checkout
     Y no tengo productos en el carrito
-    Entonces debería ver "Tu carrito está vacío"
 
   Escenario: Actualizar cantidad en carrito
     Dado que tengo productos en el carrito

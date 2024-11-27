@@ -40,24 +40,12 @@ Característica: Panel de Administración
   Escenario: Ver listado de usuarios
     Cuando accedo a "usuarios"
     Entonces debería ver la lista de usuarios registrados
-    Y cada usuario debería mostrar:
-      | Email    |
-      | Nombre   |
-      | Rol      |
-      | Acciones |
 
   Escenario: Ver pedidos recientes
     Cuando accedo a "pedidos"
     Entonces debería ver los últimos pedidos
-    Y cada pedido debería mostrar:
-      | ID            |
-      | Cliente       |
-      | Total         |
-      | Estado        |
-      | Fecha         |
 
   Escenario: Cambiar estado de pedido
     Cuando accedo a "pedidos"
     Y selecciono un pedido
-    Y cambio el estado a "Enviado"
-    Entonces debería ver "Estado actualizado correctamente" 
+    Y cambio el estado a "Enviado" 

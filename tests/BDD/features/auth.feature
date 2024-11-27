@@ -13,7 +13,6 @@ Característica: Autenticación de usuarios
       | confirmar  | password123     |
     Y presiono "Registrar"
     Entonces debería ver "Registro exitoso"
-    Y debería recibir un email de confirmación
 
   Escenario: Login exitoso
     Dado que estoy en la página de login

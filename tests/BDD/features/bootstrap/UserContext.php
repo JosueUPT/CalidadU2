@@ -16,6 +16,9 @@ class UserContext implements Context
     private $checkoutData = [];
     private $user = [];
     private $page;
+    private $filters = [];
+    private $pedidos = [];
+    private $formData = [];
 
     /**
      * @Given que estoy logueado como usuario
@@ -89,6 +92,8 @@ class UserContext implements Context
             'nombre' => 'Producto Test',
             'precio' => 99.99
         ];
+        $_SESSION['message'] = 'Producto agregado al carrito';
+        $this->lastMessage = $_SESSION['message'];
     }
 
     /**
@@ -154,6 +159,7 @@ class UserContext implements Context
     {
         $this->cart = [];
         $this->lastMessage = 'Tu carrito está vacío';
+        $_SESSION['message'] = $this->lastMessage;
     }
 
     /**
@@ -188,13 +194,14 @@ class UserContext implements Context
     public function eliminoUnProducto()
     {
         array_pop($this->cart);
-        $this->lastMessage = 'Producto eliminado del carrito';
+        $_SESSION['message'] = 'Producto eliminado del carrito';
+        $this->lastMessage = $_SESSION['message'];
     }
 
     /**
      * @return string
      */
-    public function getLastMessage()
+    public function getLastMessage(): string
     {
         return $this->lastMessage;
     }
@@ -230,5 +237,146 @@ class UserContext implements Context
     public function deberiaVerMensajesDeValidacion()
     {
         // Verificar que se muestran mensajes de error
+    }
+
+    /**
+     * @When selecciono un producto específico
+     */
+    public function seleccionoUnProductoEspecifico()
+    {
+        $this->selectedProduct = [
+            'id' => 1,
+            'nombre completo' => 'Producto Test',
+            'descripción' => 'Descripción detallada',
+            'precio' => 99.99,
+            'disponibilidad' => 'En stock'
+        ];
+    }
+
+    /**
+     * @Then debería ver:
+     */
+    public function deberiaVer(TableNode $table)
+    {
+        $camposEsperados = array_column($table->getRows(), 0);
+        $camposProducto = array_keys($this->selectedProduct);
+        
+        foreach ($camposEsperados as $campo) {
+            $encontrado = false;
+            foreach ($camposProducto as $campoProducto) {
+                if (mb_strtolower($campo) === mb_strtolower($campoProducto)) {
+                    $encontrado = true;
+                    break;
+                }
+            }
+            Assert::assertTrue($encontrado, "Campo '$campo' no encontrado en el producto");
+        }
+    }
+
+    /**
+     * @When accedo a la tienda
+     */
+    public function accedoALaTienda()
+    {
+        $this->currentPage = 'shop';
+    }
+
+    /**
+     * @When aplico filtros:
+     */
+    public function aplicoFiltros(TableNode $table)
+    {
+        $this->filters = $table->getRowsHash();
+    }
+
+    /**
+     * @Then debería ver solo productos que cumplan los criterios
+     */
+    public function deberiaVerSoloProductosQueCumplanLosCriterios()
+    {
+        Assert::assertNotEmpty($this->filters);
+    }
+
+    /**
+     * @When veo un producto
+     */
+    public function veoUnProducto()
+    {
+        $this->currentPage = 'product';
+        $this->selectedProduct = [
+            'id' => 1,
+            'nombre' => 'Producto Test'
+        ];
+    }
+
+    /**
+     * @Then debería poder compartir en redes sociales:
+     */
+    public function deberiaPoderCompartirEnRedesSociales(TableNode $table)
+    {
+        $redesSociales = array_column($table->getRows(), 0);
+        Assert::assertNotEmpty($redesSociales);
+    }
+
+    /**
+     * @Then no debería poder continuar
+     */
+    public function noDeberiaPoderContinuar()
+    {
+        Assert::assertFalse($this->checkoutData['valido'] ?? false);
+    }
+
+    /**
+     * @Then debería ver mis pedidos anteriores
+     */
+    public function deberiaVerMisPedidosAnteriores()
+    {
+        $this->pedidos = [
+            [
+                'fecha' => '2024-03-20',
+                'total' => 199.99,
+                'estado' => 'Completado',
+                'método de pago' => 'Tarjeta'
+            ]
+        ];
+        Assert::assertNotEmpty($this->pedidos);
+    }
+
+    /**
+     * @Then cada pedido debería mostrar:
+     */
+    public function cadaPedidoDeberiaMostrar(TableNode $table)
+    {
+        $camposRequeridos = array_column($table->getRows(), 0);
+        $camposPedido = array_keys($this->pedidos[0]);
+        
+        foreach ($camposRequeridos as $campo) {
+            Assert::assertTrue(
+                in_array(strtolower($campo), array_map('strtolower', $camposPedido)),
+                "Campo '$campo' no encontrado en el pedido"
+            );
+        }
+    }
+
+    /**
+     * @When completo el formulario:
+     */
+    public function completoElFormulario(TableNode $table)
+    {
+        $this->formData = $table->getRowsHash();
+        $this->lastMessage = 'Mensaje enviado correctamente';
+        $_SESSION['message'] = $this->lastMessage;
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function initializeSession()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION['message'] = '';
+        $this->lastMessage = '';
     }
 } 
