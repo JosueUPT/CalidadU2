@@ -27,4 +27,14 @@ composer require --dev dmore/chrome-mink-driver
 
 Ejecucion de pruebas:
 vendor/bin/phpunit tests/UI/Pages/LoginPageTest.php
+vendor/bin/phpunit tests/UI/Pages/AdminLoginTest.php
+```
+
+Antes de Construir la imagen de docker, es necesario ejecutar el comando:
+```
+docker network create tu_red_docker
+```
+despues 
+```
+docker compose up -d
 ```

@@ -9,6 +9,8 @@ services:
       - ./src:/var/www/html
     depends_on:
       - db
+    networks:
+      - tu_red_docker
 
   db:
     image: mysql:8.0
@@ -22,12 +24,27 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password --bind-address=0.0.0.0
+    networks:
+      - tu_red_docker
 
   selenium:
+    image: selenium/video:ffmpeg-4.3.1-20230801
+    volumes:
+      - ./test-videos:/videos
+    depends_on:
+      - selenium-chrome
+    networks:
+      - tu_red_docker
+
+  selenium-chrome:
     image: selenium/standalone-chrome:latest
+    environment:
+      - SE_VNC_NO_PASSWORD=1
     ports:
       - "4444:4444"
-    shm_size: '2g'
+      - "7900:7900"
+    volumes:
+      - /dev/shm:/dev/shm
     networks:
       - tu_red_docker
 
@@ -36,4 +53,4 @@ volumes:
 
 networks:
   tu_red_docker:
-    driver: bridge
+    external: true
