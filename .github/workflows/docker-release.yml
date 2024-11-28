@@ -6,7 +6,6 @@ on:
       - main
 
 env:
-  DOCKER_USERNAME: chambillaj
   DOCKER_IMAGE: proyecto-codigo
 
 jobs:
@@ -26,7 +25,7 @@ jobs:
       - name: Login en Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ env.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build y Push a Docker Hub
@@ -35,8 +34,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
-            ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
 
       - name: Crear tag en Git
         run: |
@@ -61,5 +60,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 Nueva versión desplegada:\n- Docker Hub: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}\n- GitHub Release: v${{ env.VERSION }}`
+              body: `🚀 Nueva versión desplegada:\n- Docker Hub: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}\n- GitHub Release: v${{ env.VERSION }}`
             })
