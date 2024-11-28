@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Configurar PHP
         uses: shivammathur/setup-php@v2
@@ -61,7 +61,7 @@ jobs:
           zip -r test-report.zip ./*
 
       - name: Subir reporte como artefacto
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: reports/test-report.zip
