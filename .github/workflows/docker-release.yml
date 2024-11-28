@@ -5,15 +5,15 @@ on:
     branches:
       - main
 
-env:
-  DOCKER_IMAGE: proyecto-codigo
-
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Generar versión automática
         id: version
@@ -27,6 +27,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          logout: true
 
       - name: Build y Push a Docker Hub
         uses: docker/build-push-action@v4
@@ -34,11 +35,15 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:${{ env.VERSION }}
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:buildcache,mode=max
 
       - name: Crear tag en Git
         run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git tag v${{ env.VERSION }}
           git push origin v${{ env.VERSION }}
 
