@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+tienda_bd-- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
@@ -124,8 +124,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`) VALUES
-(1, 'test', 'test@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'user'),
-(2, 'admin', 'admin@hotmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'admin');
+(1, 'test', 'test@hotmail.com', '$12$o5yGQtFeIno4cDPHglbii.SAuM83/dKDxZI7ImDmW6pnYE.fHHd0O', 'user'),
+(2, 'admin', 'admin@hotmail.com', '$12$o5yGQtFeIno4cDPHglbii.SAuM83/dKDxZI7ImDmW6pnYE.fHHd0O', 'admin');
 
 --
 -- Indexes for dumped tables
