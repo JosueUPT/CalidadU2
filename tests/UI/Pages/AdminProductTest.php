@@ -48,23 +48,18 @@ class AdminProductTest extends TestCase
     public function testAddAndUpdateProduct()
     {
         try {
-            // Navegar a la página de productos
             $this->driver->get($this->baseUrl . '/views/admin/admin_products.php');
             
-            // Esperar explícitamente a que la página se cargue
             $wait = new WebDriverWait($this->driver, 10);
             
-            // Esperar a que el formulario esté visible
             $form = $wait->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(
                     WebDriverBy::cssSelector('.add-products form')
                 )
             );
             
-            // Agregar nuevo producto
             $productName = 'Producto UI Test';
             
-            // Llenar solo los campos obligatorios
             $nameInput = $form->findElement(WebDriverBy::cssSelector('input[name="name"]'));
             $nameInput->clear();
             $nameInput->sendKeys($productName);
@@ -73,10 +68,8 @@ class AdminProductTest extends TestCase
             $priceInput->clear();
             $priceInput->sendKeys('15');
             
-            // Enviar el formulario
             $form->findElement(WebDriverBy::cssSelector('input[name="add_product"]'))->click();
             
-            // Esperar a que el producto aparezca en la lista
             $wait = new WebDriverWait($this->driver, 10);
             $productElement = $wait->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(
@@ -84,23 +77,19 @@ class AdminProductTest extends TestCase
                 )
             );
             
-            // Verificar que el texto del producto está presente
             $this->assertStringContainsString(
                 $productName,
                 $productElement->getText(),
                 'El producto no se encontró en la lista después de agregarlo'
             );
 
-            // Actualizar el producto
             $newProductName = 'Producto UI Test Actualizado';
             
-            // Hacer clic en el botón actualizar del producto
             $updateButton = $this->driver->findElement(
                 WebDriverBy::xpath("//div[contains(@class, 'name') and contains(text(), '$productName')]/..//a[contains(@class, 'option-btn')]")
             );
             $updateButton->click();
             
-            // Esperar a que el formulario de actualización sea visible
             $wait = new WebDriverWait($this->driver, 10);
             $updateForm = $wait->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(
@@ -108,34 +97,28 @@ class AdminProductTest extends TestCase
                 )
             );
             
-            // Actualizar el nombre del producto
             $updateNameInput = $updateForm->findElement(WebDriverBy::cssSelector('input[name="update_name"]'));
             $updateNameInput->clear();
             $updateNameInput->sendKeys($newProductName);
             
-            // Actualizar el precio
             $updatePriceInput = $updateForm->findElement(WebDriverBy::cssSelector('input[name="update_price"]'));
             $updatePriceInput->clear();
             $updatePriceInput->sendKeys('25');
             
-            // Enviar el formulario de actualización
             $updateForm->findElement(WebDriverBy::cssSelector('input[name="update_product"]'))->click();
             
-            // Esperar a que el producto actualizado aparezca en la lista
             $updatedProductElement = $wait->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(
                     WebDriverBy::xpath("//div[contains(@class, 'name') and contains(text(), '$newProductName')]")
                 )
             );
             
-            // Verificar que el producto se actualizó correctamente
             $this->assertStringContainsString(
                 $newProductName,
                 $updatedProductElement->getText(),
                 'El producto no se actualizó correctamente'
             );
             
-            // Verificar el nuevo precio
             $updatedPriceElement = $this->driver->findElement(
                 WebDriverBy::xpath("//div[contains(@class, 'name') and contains(text(), '$newProductName')]/..//div[contains(@class, 'price')]")
             );

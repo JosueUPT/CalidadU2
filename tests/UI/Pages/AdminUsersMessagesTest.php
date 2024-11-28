@@ -58,15 +58,12 @@ class AdminUsersMessagesTest extends TestCase
     public function testViewUsersAndMessagesAndLogout()
     {
         try {
-            // Verificar sección de Usuarios
             $this->checkUsersSection();
             sleep(1);
 
-            // Verificar sección de Mensajes
             $this->checkMessagesSection();
             sleep(1);
 
-            // Realizar cierre de sesión
             $this->performLogout();
 
         } catch (\Exception $e) {
@@ -79,18 +76,15 @@ class AdminUsersMessagesTest extends TestCase
 
     private function checkUsersSection()
     {
-        // Navegar a la página de usuarios
         $this->driver->get($this->baseUrl . '/views/admin/admin_users.php');
         sleep(1);
 
-        // Verificar que estamos en la página correcta
         $this->assertStringContainsString(
             'admin_users.php',
             $this->driver->getCurrentURL(),
             'No se pudo acceder a la página de usuarios'
         );
 
-        // Verificar que existe la tabla de usuarios
         $wait = new WebDriverWait($this->driver, 10);
         $usersContainer = $wait->until(
             WebDriverExpectedCondition::presenceOfElementLocated(
@@ -98,7 +92,6 @@ class AdminUsersMessagesTest extends TestCase
             )
         );
 
-        // Verificar que hay usuarios listados o mensaje de "no hay usuarios"
         $users = $this->driver->findElements(WebDriverBy::cssSelector('.box'));
         $emptyMessage = $this->driver->findElements(WebDriverBy::cssSelector('.empty'));
         
@@ -110,18 +103,15 @@ class AdminUsersMessagesTest extends TestCase
 
     private function checkMessagesSection()
     {
-        // Navegar a la página de mensajes
         $this->driver->get($this->baseUrl . '/views/admin/admin_contacts.php');
         sleep(1);
 
-        // Verificar que estamos en la página correcta
         $this->assertStringContainsString(
             'admin_contacts.php',
             $this->driver->getCurrentURL(),
             'No se pudo acceder a la página de mensajes'
         );
 
-        // Verificar que existe el contenedor de mensajes
         $wait = new WebDriverWait($this->driver, 10);
         $messagesContainer = $wait->until(
             WebDriverExpectedCondition::presenceOfElementLocated(
@@ -129,7 +119,6 @@ class AdminUsersMessagesTest extends TestCase
             )
         );
 
-        // Verificar que hay mensajes listados o mensaje de "no hay mensajes"
         $messages = $this->driver->findElements(WebDriverBy::cssSelector('.box'));
         $emptyMessage = $this->driver->findElements(WebDriverBy::cssSelector('.empty'));
         
@@ -138,7 +127,6 @@ class AdminUsersMessagesTest extends TestCase
             'No se encontraron mensajes ni mensaje de "no hay mensajes"'
         );
 
-        // Si hay mensajes, verificar que se pueden eliminar (opcional)
         if (count($messages) > 0) {
             $deleteButtons = $this->driver->findElements(WebDriverBy::cssSelector('.delete-btn'));
             $this->assertGreaterThan(0, count($deleteButtons), 'No se encontraron botones de eliminar');
@@ -147,12 +135,10 @@ class AdminUsersMessagesTest extends TestCase
 
     private function performLogout()
     {
-        // Hacer clic en el icono de usuario para mostrar el menú
         $userBtn = $this->driver->findElement(WebDriverBy::id('user-btn'));
         $userBtn->click();
         sleep(1);
 
-        // Esperar a que aparezca el menú de cuenta
         $wait = new WebDriverWait($this->driver, 10);
         $accountBox = $wait->until(
             WebDriverExpectedCondition::visibilityOfElementLocated(
@@ -160,23 +146,19 @@ class AdminUsersMessagesTest extends TestCase
             )
         );
 
-        // Hacer clic en el botón de cerrar sesión
         $logoutBtn = $accountBox->findElement(WebDriverBy::cssSelector('.delete-btn'));
         $logoutBtn->click();
         sleep(1);
 
-        // Verificar que hemos sido redirigidos a la página de login
         $this->assertStringContainsString(
             'login.php',
             $this->driver->getCurrentURL(),
             'No se redirigió correctamente a la página de login después de cerrar sesión'
         );
 
-        // Verificar que ya no podemos acceder a la página de admin
         $this->driver->get($this->baseUrl . '/views/admin/admin_page.php');
         sleep(1);
 
-        // Deberíamos ser redirigidos de nuevo al login
         $this->assertStringContainsString(
             'login.php',
             $this->driver->getCurrentURL(),
