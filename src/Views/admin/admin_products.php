@@ -75,7 +75,7 @@ $products = $adminController->getAllProducts();
       <h3>agregar producto</h3>
       <input type="text" name="name" class="box" placeholder="ingresar nombre del producto" required>
       <input type="number" min="0" name="price" class="box" placeholder="ingresar precio del producto" required>
-      <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
+      <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box">
       <input type="submit" value="agregar producto" name="add_product" class="btn">
    </form>
 

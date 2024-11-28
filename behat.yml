@@ -16,6 +16,6 @@ default:
       browser_name: chrome
       sessions:
         chrome:
-          chrome:
-            api_url: http://localhost:9222
-            socket_timeout: 60 
+          selenium2:
+            browser: chrome
+            wd_host: http://localhost:4444/wd/hub

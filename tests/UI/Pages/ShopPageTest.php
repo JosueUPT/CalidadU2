@@ -7,6 +7,7 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
+use Facebook\WebDriver\WebDriverWait;
 use PHPUnit\Framework\TestCase;
 
 class ShopPageTest extends TestCase
@@ -123,6 +124,137 @@ class ShopPageTest extends TestCase
                 
         } catch (\Exception $e) {
             $this->fail("Error en prueba de añadir producto duplicado al carrito: " . $e->getMessage());
+        }
+    }
+
+    public function testUpdateProductQuantityInCart()
+    {
+        try {
+            $this->driver->get($this->baseUrl . '/views/usuario/shop.php');
+            sleep(2);
+            
+            $addToCartButton = $this->driver->findElement(WebDriverBy::name('add_to_cart'));
+            $addToCartButton->click();
+            sleep(2);
+            
+            $cartIcon = $this->driver->findElement(WebDriverBy::cssSelector('.header .icons a[href="cart.php"]'));
+            $cartIcon->click();
+            sleep(2);
+            
+            $quantityInput = $this->driver->findElement(WebDriverBy::name('cart_quantity'));
+            $initialQuantity = $quantityInput->getAttribute('value');
+            
+            $quantityInput->clear();
+            $quantityInput->sendKeys('3');
+            
+            $updateButton = $this->driver->findElement(WebDriverBy::cssSelector('input[name="update_cart"]'));
+            $updateButton->click();
+            sleep(2);
+            
+            $updatedQuantityInput = $this->driver->findElement(WebDriverBy::name('cart_quantity'));
+            $newQuantity = $updatedQuantityInput->getAttribute('value');
+            
+            $this->assertEquals('3', $newQuantity, 'La cantidad no se actualizó correctamente');
+            
+        } catch (\Exception $e) {
+            $this->fail("Error en prueba de actualización de cantidad en el carrito: " . $e->getMessage());
+        }
+    }
+
+    public function testProceedToCheckoutAndPlaceOrder()
+    {
+        try {
+            $this->driver->get($this->baseUrl . '/views/usuario/shop.php');
+            
+            $wait = new WebDriverWait($this->driver, 10);
+            
+            $addToCartButton = $wait->until(
+                WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::name('add_to_cart'))
+            );
+            $addToCartButton->click();
+            sleep(2);
+            
+            $this->driver->get($this->baseUrl . '/views/usuario/cart.php');
+            sleep(2);
+            
+            $checkoutButton = $wait->until(
+                WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::cssSelector('.cart-total .btn'))
+            );
+            $checkoutButton->click();
+            sleep(2);
+            
+            $this->assertStringContainsString('checkout.php', $this->driver->getCurrentUrl());
+            
+            $wait->until(WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::name('name')))
+                ->sendKeys('Usuario Prueba');
+            $this->driver->findElement(WebDriverBy::name('number'))->sendKeys('987654321');
+            $this->driver->findElement(WebDriverBy::name('email'))->sendKeys('prueba@test.com');
+            
+            $select = $this->driver->findElement(WebDriverBy::name('method'));
+            $select->findElement(WebDriverBy::cssSelector("option[value='Tarjeta de crédito']"))->click();
+            
+            $this->driver->findElement(WebDriverBy::name('flat'))->sendKeys('123');
+            $this->driver->findElement(WebDriverBy::name('street'))->sendKeys('Calle Principal');
+            $this->driver->findElement(WebDriverBy::name('city'))->sendKeys('Lima');
+            $this->driver->findElement(WebDriverBy::name('state'))->sendKeys('Miraflores');
+            $this->driver->findElement(WebDriverBy::name('country'))->sendKeys('Perú');
+            $this->driver->findElement(WebDriverBy::name('pin_code'))->sendKeys('15046');
+            
+            $orderButton = $wait->until(
+                WebDriverExpectedCondition::elementToBeClickable(WebDriverBy::name('order_btn'))
+            );
+            $orderButton->click();
+            sleep(2);
+            
+            $message = $wait->until(
+                WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.message'))
+            );
+            
+            $messageText = $message->getText();
+            $validMessages = [
+                '¡Pedido realizado con éxito!',
+                '¡Pedido ya realizado!'
+            ];
+            
+            $this->assertTrue(
+                in_array($messageText, $validMessages),
+                "Mensaje inesperado: '$messageText'. Se esperaba uno de estos mensajes: " . implode(' o ', $validMessages)
+            );
+                
+        } catch (\Exception $e) {
+            $this->fail("Error en prueba de checkout: " . $e->getMessage());
+        }
+    }
+
+    public function testViewOrders()
+    {
+        try {
+            $this->driver->get($this->baseUrl . '/views/usuario/orders.php');
+            sleep(2);
+            
+            $currentUrl = $this->driver->getCurrentUrl();
+            $this->assertStringContainsString('orders.php', $currentUrl);
+            
+            $ordersSection = $this->driver->findElement(WebDriverBy::cssSelector('.placed-orders'));
+            $this->assertNotNull($ordersSection, 'La sección de órdenes no fue encontrada');
+            
+            $boxContainer = $this->driver->findElement(WebDriverBy::cssSelector('.box-container'));
+            
+            try {
+                $orderBoxes = $this->driver->findElements(WebDriverBy::cssSelector('.box-container .box'));
+                if (count($orderBoxes) > 0) {
+                    $firstOrder = $orderBoxes[0];
+                    $this->assertNotNull($firstOrder->findElement(WebDriverBy::xpath(".//p[contains(text(), 'Nombre')]")), 'Nombre no encontrado');
+                    $this->assertNotNull($firstOrder->findElement(WebDriverBy::xpath(".//p[contains(text(), 'Número')]")), 'Número no encontrado');
+                    $this->assertNotNull($firstOrder->findElement(WebDriverBy::xpath(".//p[contains(text(), 'Tus pedidos')]")), 'Total de productos no encontrado');
+                    $this->assertNotNull($firstOrder->findElement(WebDriverBy::xpath(".//p[contains(text(), 'Precio total')]")), 'Precio total no encontrado');
+                    $this->assertNotNull($firstOrder->findElement(WebDriverBy::xpath(".//p[contains(text(), 'Fecha')]")), 'Fecha no encontrada');
+                }
+            } catch (\Exception $e) {
+                $this->fail("Error en prueba de visualización de órdenes: " . $e->getMessage());
+            }
+        } catch (\Exception $e) {
+            $this->fail("Error en prueba de visualización de órdenes: " . $e->getMessage());
         }
     }
 

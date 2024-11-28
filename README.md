@@ -25,12 +25,18 @@ composer require --dev behat/mink-extension
 composer require --dev behat/mink-selenium2-driver
 composer require --dev dmore/chrome-mink-driver
 
-Ejecucion de pruebas:
+Ejecucion de pruebas UI:
 vendor/bin/phpunit tests/UI/Pages/LoginPageTest.php
 vendor/bin/phpunit tests/UI/Pages/AdminLoginTest.php
 vendor/bin/phpunit tests/UI/Pages/RegisterPageTest.php
 vendor/bin/phpunit tests/UI/Pages/SearchPageTest.php
 vendor/bin/phpunit tests/UI/Pages/ShopPageTest.php
+vendor/bin/phpunit tests/UI/Pages/ContactPageTest.php
+
+vendor/bin/phpunit tests/UI/Pages/AdminProductTest.php
+vendor/bin/phpunit tests/UI/Pages/AdminOrderTest.php
+vendor/bin/phpunit tests/UI/Pages/AdminUsersMessagesTest.php
+
 ```
 
 Antes de Construir la imagen de docker, es necesario ejecutar el comando:
