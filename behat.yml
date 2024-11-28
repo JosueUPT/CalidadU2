@@ -19,3 +19,12 @@ default:
           selenium2:
             browser: chrome
             wd_host: http://localhost:4444/wd/hub
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      renderer: Twig
+      name: html
+      file_name: index.html
+      print_args: true
+      print_outp: true
+      loop_break: true
+  formatters:
+    pretty: true

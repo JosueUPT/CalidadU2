@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Behat Tests</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="assets/Twig/css/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</head>
+<body role="document" style="margin-top: 70px;">
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Automated test report - 28/11/2024 17:52:51</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+    <div class="row charts">
+        <div class="col-sm-4">
+            <div class="canvas-holder">
+                <canvas id="chart-features" width="300" height="300"/>
+            </div>
+            <div class="chart-summary title">
+                3 Features:
+            </div>
+            <div class="chart-summary failed">0 failed</div>
+        </div>
+        <div class="col-sm-4">
+            <div class="canvas-holder">
+                <canvas id="chart-scenarios" width="300" height="300"/>
+            </div>
+            <div class="chart-summary title">
+                27
+                Scenarios:
+            </div>
+            <div class="chart-summary failed">0 failed</div>
+            <div class="chart-summary undefined">0 undefined</div>
+            <div class="chart-summary skipped">0 skipped</div>
+        </div>
+        <div class="col-sm-4">
+            <div class="canvas-holder">
+                <canvas id="chart-steps" width="300" height="300"/>
+            </div>
+            <div class="chart-summary title">
+                133
+                Steps:
+            </div>
+            <div class="chart-summary failed">0 failed</div>
+            <div class="chart-summary undefined">0 undefined</div>
+            <div class="chart-summary skipped">0 skipped</div>
+        </div>
+    </div>
+    <hr>
+    <div class="filters">
+        <a class="btn btn-default" id="feature-all-filter" role="button">All</a>
+        <a class="btn btn-success" id="feature-passed-filter" role="button">Passed</a>
+        <a class="btn btn-danger" id="feature-failed-filter" role="button">Failed</a>
+    </div>
+    <hr>
+    <div id="feature-overview">
+                    <div class="row">
+                <div class="col-sm-12">
+                    <h2>Suite: default</h2>
+
+                    <div class="row">
+                                                    <div class="col-sm-4 feature" data-id="feature-1">
+                                <div class="card passed">
+                                    <div class="header">
+                                        <h2>Feature: Panel de Administración</h2>
+                                    </div>
+                                    <div class="info">
+                                        <p>Como administrador del sistema<br />
+Quiero gestionar productos y usuarios<br />
+Para mantener la tienda actualizada</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="tags">
+                                                                                    </div>
+                                                                                    <div class="progress">
+                                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                                     style="width: 100%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <div class="col-sm-4 feature" data-id="feature-2">
+                                <div class="card passed">
+                                    <div class="header">
+                                        <h2>Feature: Autenticación de usuarios</h2>
+                                    </div>
+                                    <div class="info">
+                                        <p>Como usuario del sistema<br />
+Quiero poder registrarme y acceder a mi cuenta<br />
+Para gestionar mis compras y datos personales</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="tags">
+                                                                                    </div>
+                                                                                    <div class="progress">
+                                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                                     style="width: 100%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <div class="col-sm-4 feature" data-id="feature-3">
+                                <div class="card passed">
+                                    <div class="header">
+                                        <h2>Feature: Funcionalidades de Usuario</h2>
+                                    </div>
+                                    <div class="info">
+                                        <p>Como usuario del sistema<br />
+Quiero gestionar mis compras y perfil<br />
+Para tener una experiencia de compra satisfactoria</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div class="tags">
+                                                                                    </div>
+                                                                                    <div class="progress">
+                                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                                     style="width: 100%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                                <div class="progress-bar progress-bar-red" role="progressbar"
+                                                     style="width: 0%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                                                            </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            <hr>
+            </div>
+    <div id="scenario-overview" class="row">
+                                    <div class="feature" data-id="feature-1">
+                    <div class="col-sm-4">
+                        <div class="card passed">
+                            <div class="header">
+                                <h2>Feature: Panel de Administración</h2>
+                            </div>
+                            <div class="info">
+                                <p>Como administrador del sistema<br />
+Quiero gestionar productos y usuarios<br />
+Para mantener la tienda actualizada</p>
+                            </div>
+                            <div class="footer">
+                                <div class="tags">
+                                                                    </div>
+                                                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-green" role="progressbar"
+                                             style="width: 100%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-red" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-1"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-1">
+                                            Scenario: Ver dashboard
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-1" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver estadísticas de:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Nuevos usuarios |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Productos activos |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Pedidos pendientes |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-2"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-2">
+                                            Scenario: Crear nuevo producto
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-2" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;productos/nuevo&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> completo los datos del producto:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | precio |  99.99 |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | stock |  100 |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | descripción |  Descripción test |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Guardar&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Producto creado correctamente&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-3"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-3">
+                                            Scenario: Editar producto existente
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-3" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> selecciono un producto existente
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> modifico el precio a &quot;149.99&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Actualizar&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Producto actualizado correctamente&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-4"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-4">
+                                            Scenario: Eliminar producto
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-4" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> selecciono un producto existente
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Eliminar&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> confirmo la acción
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Producto eliminado correctamente&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-5"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-5">
+                                            Scenario: Ver listado de usuarios
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-5" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;usuarios&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver la lista de usuarios registrados
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-6"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-6">
+                                            Scenario: Ver pedidos recientes
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-6" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;pedidos&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver los últimos pedidos
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-1-7"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-1-7">
+                                            Scenario: Cambiar estado de pedido
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-1-7" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como administrador
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en el panel de administración
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;pedidos&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> selecciono un pedido
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> cambio el estado a &quot;Enviado&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                            <div class="feature" data-id="feature-2">
+                    <div class="col-sm-4">
+                        <div class="card passed">
+                            <div class="header">
+                                <h2>Feature: Autenticación de usuarios</h2>
+                            </div>
+                            <div class="info">
+                                <p>Como usuario del sistema<br />
+Quiero poder registrarme y acceder a mi cuenta<br />
+Para gestionar mis compras y datos personales</p>
+                            </div>
+                            <div class="footer">
+                                <div class="tags">
+                                                                    </div>
+                                                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-green" role="progressbar"
+                                             style="width: 100%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-red" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-1"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-1">
+                                            Scenario: Registro exitoso
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-1" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy en la página de registro
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> completo el formulario con:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | email |  juan@email.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | contraseña |  password123 |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | confirmar |  password123 |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Registrar&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Registro exitoso&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-2"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-2">
+                                            Scenario: Login exitoso
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-2" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy en la página de login
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> ingreso &quot;usuario@test.com&quot; como email
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> ingreso &quot;password123&quot; como contraseña
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Iniciar sesión&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería estar logueado
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> debería ver &quot;Bienvenido&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-3"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-3">
+                                            Scenario: Login fallido
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-3" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy en la página de login
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> ingreso &quot;usuario@test.com&quot; como email
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> ingreso &quot;wrongpassword&quot; como contraseña
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Iniciar sesión&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Credenciales inválidas&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-4"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-4">
+                                            Scenario: Recuperar contraseña
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-4" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy en la página de recuperación
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> ingreso &quot;usuario@test.com&quot; como email
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Recuperar contraseña&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver &quot;Email de recuperación enviado&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-2-5"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-2-5">
+                                            Scenario: Cerrar sesión
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-2-5" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> presiono &quot;Cerrar sesión&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería estar deslogueado
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> debería ver &quot;Sesión cerrada correctamente&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                            <div class="feature" data-id="feature-3">
+                    <div class="col-sm-4">
+                        <div class="card passed">
+                            <div class="header">
+                                <h2>Feature: Funcionalidades de Usuario</h2>
+                            </div>
+                            <div class="info">
+                                <p>Como usuario del sistema<br />
+Quiero gestionar mis compras y perfil<br />
+Para tener una experiencia de compra satisfactoria</p>
+                            </div>
+                            <div class="footer">
+                                <div class="tags">
+                                                                    </div>
+                                                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-green" role="progressbar"
+                                             style="width: 100%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-red" role="progressbar"
+                                             style="width: 0%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 details panel-group" role="tablist" aria-multiselectable="true">
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-1"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-1">
+                                            Scenario: Ver página de inicio
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-1" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;home&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver la sección de últimos productos
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> debería ver la sección &quot;Sobre nosotros&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-2"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-2">
+                                            Scenario: Buscar productos
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-2" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;search_page&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> busco el término &quot;película&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver productos relacionados con &quot;película&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-3"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-3">
+                                            Scenario: Búsqueda sin resultados
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-3" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> busco el término &quot;xyzabc123&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver el mensaje &quot;¡No se han encontrado resultados!&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-4"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-4">
+                                            Scenario: Ver todos los productos
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-4" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;shop&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-5"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-5">
+                                            Scenario: Agregar producto al carrito
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-5" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy en la tienda
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> selecciono un producto
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> establezco cantidad &quot;2&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Añadir al carrito&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver el mensaje &quot;Producto agregado al carrito&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-6"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-6">
+                                            Scenario: Proceso de checkout
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-6" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que tengo productos en el carrito
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo al checkout
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> completo los datos de envío:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | email |  juan@email.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | teléfono |  987654321 |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | dirección |  Calle 123 |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> selecciono método de pago &quot;Pago en persona&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería poder finalizar la compra
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-7"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-7">
+                                            Scenario: Ver historial de pedidos
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-7" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;orders&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver mis pedidos anteriores
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> cada pedido debería mostrar:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Total |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Estado |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Método de pago |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-8"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-8">
+                                            Scenario: Enviar mensaje de contacto
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-8" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a &quot;contact&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> completo el formulario:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | email |  juan@email.com |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | mensaje |  Consulta general |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-9"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-9">
+                                            Scenario: Validar carrito vacío
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-9" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo al checkout
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> no tengo productos en el carrito
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-10"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-10">
+                                            Scenario: Actualizar cantidad en carrito
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-10" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que tengo productos en el carrito
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> actualizo la cantidad de un producto
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> el total debería actualizarse
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> debería ver el nuevo subtotal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-11"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-11">
+                                            Scenario: Eliminar producto del carrito
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-11" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que tengo productos en el carrito
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> elimino un producto
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver el mensaje &quot;Producto eliminado del carrito&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> el total debería actualizarse
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-12"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-12">
+                                            Scenario: Validar datos de envío
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-12" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> intento hacer checkout
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> no completo todos los campos requeridos
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver mensajes de validación
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> no debería poder continuar
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-13"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-13">
+                                            Scenario: Ver detalles de producto
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-13" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> selecciono un producto específico
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Descripción |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Precio |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Disponibilidad |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-14"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-14">
+                                            Scenario: Filtrar productos
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-14" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> accedo a la tienda
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> aplico filtros:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Precio |  0-100 |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería ver solo productos que cumplan los criterios
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                                    <div class="panel panel-default passed">
+                                <div class="panel-heading" role="tab">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion"
+                                           href="#scenario-3-15"
+                                           aria-expanded="true"
+                                           aria-controls="scenario-3-15">
+                                            Scenario: Compartir producto
+                                        </a>
+
+                                        <div class="tags pull-right">
+                                                                                                                                </div>
+                                    </h4>
+                                </div>
+                                <div id="scenario-3-15" class="panel-collapse collapse in"
+                                     role="tabpanel"
+                                     aria-labelledby="headingOne">
+                                    <ul class="list-group">
+                                                                                    <li class="list-group-item alert alert-success">
+                                                <b>Dado</b> que estoy logueado como usuario
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> estoy en la página principal
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Cuando</b> veo un producto
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Y</b> presiono &quot;Compartir&quot;
+                                                                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                        <li class="list-group-item alert alert-success">
+                                                <b>Entonces</b> debería poder compartir en redes sociales:
+                                                                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | Twitter |                                                         </p>
+                                                                                                            <p style="padding-left:0.5em; overflow-x:scroll; white-space:nowrap; font-family:monospace">
+                                                            | WhatsApp |                                                         </p>
+                                                                                                                                                                                                                                                                                                </li>
+                                                                                                                                                                                                                </ul>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                        </div>
+</div>
+<!-- /container -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var featureChart = document.getElementById("chart-features").getContext("2d");
+        var scenarioChart = document.getElementById("chart-scenarios").getContext("2d");
+        var stepChart = document.getElementById("chart-steps").getContext("2d");
+        new Chart(featureChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
+                labels: ['Failed', 'Passed'],
+                datasets: [{
+                    data: [0, 3],
+                    backgroundColor: ["#F7464A", "#00a65a"],
+                }],
+            }});
+        new Chart(scenarioChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
+                labels: ['Failed', 'Pending', 'Passed'],
+                datasets: [{
+                    data: [0, 0, 27],
+                    backgroundColor: ['#F7464A', 'e38d13', '#00a65a'],
+                }],
+            }});
+        new Chart(stepChart, {type: 'doughnut', options: {legend: {display: false}}, data: {
+                labels: ['Failed','Passed'],
+                datasets: [{
+                    data: [0, 133],
+                    backgroundColor: ["#F7464A", "#00a65a"],
+                }],
+            }});
+    };
+</script>
+<script type="text/javascript">
+    function showOverview() {
+        $("#feature-overview").show();
+        $("#scenario-overview").hide();
+    }
+    function showDetails() {
+        $("#feature-overview").hide();
+        $("#scenario-overview").show();
+    }
+    function showFeatureDetail(featureId) {
+        $("#scenario-overview .feature").hide();
+        $("#scenario-overview .feature[data-id='" + featureId + "']").show();
+    }
+    $(function () {
+        $('.collapse').collapse();
+
+        $('.filters').click()
+        {
+            showOverview();
+        }
+
+        $('.filters #feature-failed-filter').click(function () {
+            showOverview();
+            $('.feature').hide();
+            $('.card.failed').parent().show();
+        });
+        $('.filters #feature-pending-filter').click(function () {
+            showOverview();
+            $('.feature').hide();
+            $('.card.pending').parent().show();
+        });
+        $('.filters #feature-passed-filter').click(function () {
+            showOverview();
+            $('.feature').hide();
+            $('.card.passed').parent().show();
+        });
+        $('.filters #feature-all-filter').click(function () {
+            showOverview();
+            $('.feature').show();
+        });
+    });
+
+    $(function () {
+        $(".feature").click(function () {
+            var featureId = $(this).data("id");
+            showDetails();
+            showFeatureDetail(featureId);
+        });
+    });
+</script>
+</body>
+</html>

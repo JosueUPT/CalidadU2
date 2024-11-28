@@ -10,8 +10,10 @@ composer dump-autoload
 
 sacar bdd:
 ```
-./vendor/bin/behat --format=pretty --out=std --format=html --out=behat.html
-./vendor/bin/behat
+composer require --dev emuse/behat-html-formatter
+
+vendor/bin/behat --format pretty --format html --out std --out reports  (reporte en html)
+./vendor/bin/behat (reporte en consola)
 ```
 
 

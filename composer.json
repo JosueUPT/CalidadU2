@@ -24,6 +24,7 @@
         "behat/mink-extension": "^2.3",
         "behat/mink-selenium2-driver": "^1.7",
         "dmore/chrome-mink-driver": "^2.9",
-        "php-webdriver/webdriver": "^1.15"
+        "php-webdriver/webdriver": "^1.15",
+        "emuse/behat-html-formatter": "^2.0"
     }
 }
