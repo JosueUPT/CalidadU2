@@ -33,27 +33,87 @@ jobs:
 
       - name: Generar resumen
         run: |
-          echo "<html><head><title>Resumen de Pruebas</title>
-          <style>
-            body { font-family: Arial; margin: 40px; }
-            .summary { background: #f5f5f5; padding: 20px; border-radius: 5px; }
-            .links { margin-top: 20px; }
-            .links a { margin-right: 20px; }
-          </style></head><body>" > reports/index.html
-          
-          echo "<h1>Resumen de Pruebas Unitarias</h1>" >> reports/index.html
-          echo "<div class='summary'>" >> reports/index.html
-          echo "<h2>Cobertura de Código</h2><pre>" >> reports/index.html
+          cat > reports/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Reporte de Pruebas Unitarias</title>
+              <style>
+                  body { 
+                      font-family: Arial, sans-serif; 
+                      margin: 40px;
+                      background: #f8f9fa;
+                  }
+                  .container {
+                      max-width: 1200px;
+                      margin: 0 auto;
+                      background: white;
+                      padding: 20px;
+                      border-radius: 8px;
+                      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                  }
+                  h1 { 
+                      color: #2c3e50;
+                      border-bottom: 2px solid #eee;
+                      padding-bottom: 10px;
+                  }
+                  .summary { 
+                      background: #f8f9fa;
+                      padding: 20px;
+                      border-radius: 5px;
+                      margin: 20px 0;
+                  }
+                  .links { 
+                      margin: 20px 0;
+                      padding: 20px;
+                      background: #e9ecef;
+                      border-radius: 5px;
+                  }
+                  .links a {
+                      display: inline-block;
+                      padding: 10px 20px;
+                      background: #007bff;
+                      color: white;
+                      text-decoration: none;
+                      border-radius: 5px;
+                      margin-right: 10px;
+                  }
+                  .links a:hover {
+                      background: #0056b3;
+                  }
+                  pre {
+                      background: #f8f9fa;
+                      padding: 15px;
+                      border-radius: 5px;
+                      overflow-x: auto;
+                  }
+              </style>
+              <meta charset="UTF-8">
+          </head>
+          <body>
+              <div class="container">
+                  <h1>Reporte de Pruebas Unitarias</h1>
+                  
+                  <div class="summary">
+                      <h2>Cobertura de Código</h2>
+                      <pre>
+          EOF
+
           XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text tests/Unit/ >> reports/index.html
-          echo "</pre></div>" >> reports/index.html
-          
-          echo "<div class='links'>
-          <h2>Reportes Detallados</h2>
-          <a href='coverage/index.html'>Ver Cobertura Detallada</a>
-          <a href='testdox.html'>Ver Resultados de Pruebas</a>
-          </div>" >> reports/index.html
-          
-          echo "</body></html>" >> reports/index.html
+
+          cat >> reports/index.html << 'EOF'
+                      </pre>
+                  </div>
+
+                  <div class="links">
+                      <h2>Reportes Detallados</h2>
+                      <a href="coverage/index.html">Ver Cobertura Detallada</a>
+                      <a href="testdox.html">Ver Resultados de Pruebas</a>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
 
       - name: Comprimir reportes
         run: |
@@ -65,4 +125,4 @@ jobs:
         with:
           name: test-reports
           path: reports/test-report.zip
-          retention-days: 30 
+          retention-days: 30
