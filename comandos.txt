@@ -1,4 +1,17 @@
 Comanndos
+
+Instalar primero composer si es que no se tiene
+Despues habilitar en el php.ini (extension=zip)
+Despues el composer update
+
+Con el Docker
+
+docker network create tu_red_docker
+docker compose up -d
+
+
+primero hacemos la red
+
 sacar reporte de calidad de covertura:
 ```
 ./vendor/bin/phpunit --coverage-text (en consola)

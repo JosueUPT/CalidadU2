@@ -103,7 +103,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `image`) VALUES
-(1, 'Test', 25, 'freefall.jpg');
+(1, 'Test', 25, 'author-2.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,8 +124,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`) VALUES
-(1, 'test', 'test@hotmail.com', '$12$o5yGQtFeIno4cDPHglbii.SAuM83/dKDxZI7ImDmW6pnYE.fHHd0O', 'user'),
-(2, 'admin', 'admin@hotmail.com', '$12$o5yGQtFeIno4cDPHglbii.SAuM83/dKDxZI7ImDmW6pnYE.fHHd0O', 'admin');
+(1, 'test', 'test@hotmail.com', '$2y$12$QhjD2tOhCFANCGUX7Nvm5.WNcJYMSE/7os5j72PgracKfoWseRejy', 'user'),
+(2, 'admin', 'admin@hotmail.com', '$2y$12$QhjD2tOhCFANCGUX7Nvm5.WNcJYMSE/7os5j72PgracKfoWseRejy', 'admin');
 
 --
 -- Indexes for dumped tables
