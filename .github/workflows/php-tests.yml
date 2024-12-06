@@ -116,6 +116,12 @@ jobs:
                 .bdd-btn:hover {
                     background-color: #1976D2;
                 }
+                .sonar-btn {
+                    background-color: #FF9800;
+                }
+                .sonar-btn:hover {
+                    background-color: #F57C00;
+                }
             </style>
         </head>
         <body>
@@ -124,6 +130,7 @@ jobs:
                 <div class="buttons">
                     <a href="coverage/index.html" class="button coverage-btn">Ver Reporte de Cobertura</a>
                     <a href="bdd/index.html" class="button bdd-btn">Ver Reporte BDD</a>
+                    <a href="sonar/index.html" class="button sonar-btn">Ver Reporte SonarCloud</a>
                 </div>
             </div>
         </body>
