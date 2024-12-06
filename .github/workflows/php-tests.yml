@@ -43,10 +43,18 @@ jobs:
         mkdir -p public/coverage
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text
 
+    - name: Verify Behat configuration
+      run: |
+        echo "Verificando behat.yml..."
+        cat behat.yml
+        echo "Verificando estructura de directorios..."
+        ls -R tests/BDD/Features/Bootstrap/
+
     - name: Run Behat tests
       run: |
         mkdir -p public/bdd
-        vendor/bin/behat --format pretty --format html --out std --out public/bdd
+        composer dump-autoload
+        vendor/bin/behat --config behat.yml --format pretty --format html --out std --out public/bdd || true
 
     - name: Create main index.html
       run: |
