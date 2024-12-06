@@ -1,0 +1,57 @@
+name: Test Reports
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpunit-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip
+          
+      - name: Install Composer dependencies
+        run: composer install
+        
+      - name: Generate PHPUnit Coverage Report
+        run: ./vendor/bin/phpunit --coverage-html coverage
+        
+      - name: Deploy PHPUnit Coverage
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
+          publish_branch: coverage-report
+          destination_dir: coverage
+
+  behat-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: zip
+          
+      - name: Install Composer dependencies
+        run: composer install
+        
+      - name: Generate Behat Report
+        run: vendor/bin/behat --format pretty --format html --out std --out reports
+        
+      - name: Deploy Behat Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports
+          publish_branch: behat-report
+          destination_dir: behat 
