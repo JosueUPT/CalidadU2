@@ -34,12 +34,19 @@ jobs:
         restore-keys: ${{ runner.os }}-composer-
 
     - name: Install dependencies
-      run: composer install --no-progress --prefer-dist --optimize-autoloader
+      run: |
+        composer install --no-progress --prefer-dist --optimize-autoloader
+        composer require --dev emuse/behat-html-formatter
 
     - name: Run test suite with coverage
       run: |
         mkdir -p public/coverage
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text
+
+    - name: Run Behat tests
+      run: |
+        mkdir -p public/bdd
+        vendor/bin/behat --format pretty --format html --out std --out public/bdd
 
     - name: Create main index.html
       run: |
@@ -47,7 +54,7 @@ jobs:
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Proyecto Coverage</title>
+            <title>Reportes de Pruebas</title>
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -67,29 +74,45 @@ jobs:
                     color: #333;
                     margin-bottom: 30px;
                 }
+                .buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 20px;
+                }
                 .button {
                     display: inline-block;
                     padding: 12px 24px;
-                    background-color: #4CAF50;
                     color: white;
                     text-decoration: none;
                     border-radius: 5px;
                     transition: background-color 0.3s;
                 }
-                .button:hover {
+                .coverage-btn {
+                    background-color: #4CAF50;
+                }
+                .coverage-btn:hover {
                     background-color: #45a049;
+                }
+                .bdd-btn {
+                    background-color: #2196F3;
+                }
+                .bdd-btn:hover {
+                    background-color: #1976D2;
                 }
             </style>
         </head>
         <body>
             <div class="container">
                 <h1>Proyecto SI784-2024-II</h1>
-                <a href="coverage/index.html" class="button">Ver Reporte de Cobertura</a>
+                <div class="buttons">
+                    <a href="coverage/index.html" class="button coverage-btn">Ver Reporte de Cobertura</a>
+                    <a href="bdd/index.html" class="button bdd-btn">Ver Reporte BDD</a>
+                </div>
             </div>
         </body>
         </html>' > public/index.html
 
-    - name: Deploy coverage to GitHub Pages
+    - name: Deploy reports to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
@@ -97,4 +120,4 @@ jobs:
         publish_dir: ./public
         enable_jekyll: false
         force_orphan: true
-        full_commit_message: 'docs: update coverage report'
+        full_commit_message: 'docs: update test reports'
