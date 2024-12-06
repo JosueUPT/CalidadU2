@@ -43,12 +43,17 @@ jobs:
         mkdir -p public/coverage
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text
 
-    - name: Verify Behat configuration
+    - name: Update Behat configuration
       run: |
-        echo "Verificando behat.yml..."
-        cat behat.yml
-        echo "Verificando estructura de directorios..."
-        ls -R tests/BDD/Features/Bootstrap/
+        sed -i 's/Features/features/g' behat.yml
+        sed -i 's/Bootstrap/bootstrap/g' behat.yml
+
+    - name: Verify directory structure
+      run: |
+        echo "Verificando estructura actual..."
+        ls -R tests/BDD/
+        echo "Creando estructura de directorios si no existe..."
+        mkdir -p tests/BDD/features/bootstrap
 
     - name: Run Behat tests
       run: |
