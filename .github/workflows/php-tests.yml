@@ -345,3 +345,15 @@ jobs:
             </div>
         </body>
         </html>' > public/sonar/index.html
+
+    - name: Verify Sonar Report
+      run: |
+        echo "Verificando reporte de Sonar..."
+        if [ -f "public/sonar/index.html" ]; then
+          echo "✓ El archivo sonar/index.html existe"
+          ls -l public/sonar/
+        else
+          echo "✗ El archivo sonar/index.html NO existe"
+          echo "Contenido de public/:"
+          ls -R public/
+        fi
