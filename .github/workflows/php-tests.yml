@@ -47,7 +47,6 @@ jobs:
         <html>
         <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=coverage/index.html">
             <title>Coverage Report</title>
             <style>
                 body {
