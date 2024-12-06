@@ -38,55 +38,20 @@ jobs:
 
     - name: Run test suite with coverage
       run: |
-        mkdir -p reportes/coverage
-        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html reportes/coverage --coverage-text
+        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html temp-coverage --coverage-text
 
-    - name: Create index.html
+    - name: Move coverage files to root
       run: |
-        echo '<!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=coverage/index.html">
-            <title>Reportes de Cobertura</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 40px;
-                    text-align: center;
-                }
-                .container {
-                    max-width: 600px;
-                    margin: 0 auto;
-                }
-                h1 { color: #333; }
-                p { color: #666; }
-                a { 
-                    color: #007bff;
-                    text-decoration: none;
-                }
-                a:hover {
-                    text-decoration: underline;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>Reportes de Cobertura de Pruebas</h1>
-                <p>Redirigiendo al reporte de cobertura...</p>
-                <p>Si no eres redirigido automáticamente, 
-                   <a href="coverage/index.html">haz clic aquí</a>
-                </p>
-            </div>
-        </body>
-        </html>' > reportes/index.html
+        mkdir -p public
+        mv temp-coverage/* public/
+        rm -rf temp-coverage
 
     - name: Deploy coverage to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./reportes
+        publish_dir: ./public
         enable_jekyll: false
         force_orphan: true
         full_commit_message: 'docs: update coverage report'
