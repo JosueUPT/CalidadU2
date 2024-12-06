@@ -19,24 +19,22 @@ jobs:
         php-version: '8.2'
         extensions: mbstring, xml, xdebug
         coverage: xdebug
+        tools: composer:v2
 
-    - name: Validate composer.json
-      run: composer validate --strict
+    - name: Get composer cache directory
+      id: composer-cache-dir
+      run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-    - name: Cache Composer packages
-      id: composer-cache
+    - name: Cache Composer dependencies
       uses: actions/cache@v3
+      id: composer-cache
       with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+        path: ${{ steps.composer-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: Generate autoload files
-      run: composer dump-autoload
+      run: composer install --no-progress --prefer-dist --optimize-autoloader
 
     - name: Run test suite with coverage
       run: |
@@ -44,13 +42,11 @@ jobs:
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html coverage --coverage-text
 
     - name: Deploy coverage to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       if: github.ref == 'refs/heads/main'
-      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: coverage
-        branch: gh-pages
-        clean: true
-        clean-exclude: |
-          .gitignore
-          .nojekyll
-        target-folder: / 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./coverage
+        enable_jekyll: false
+        force_orphan: true
+        full_commit_message: 'docs: update coverage report'
