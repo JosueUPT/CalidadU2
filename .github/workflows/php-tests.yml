@@ -605,25 +605,12 @@ jobs:
                     border-radius: 10px; 
                     box-shadow: 0 0 10px rgba(0,0,0,0.1); 
                 }
-                .project-card {
+                .section-card {
                     background: #f8f9fa;
                     padding: 20px;
                     margin: 20px 0;
                     border-radius: 8px;
                     border: 1px solid #dee2e6;
-                }
-                .status {
-                    display: inline-block;
-                    padding: 5px 10px;
-                    border-radius: 4px;
-                    font-weight: bold;
-                }
-                .status.ok { 
-                    background-color: #28a745; 
-                    color: white;
-                }
-                .status.warning { 
-                    background-color: #ffc107; 
                 }
                 .metric-grid {
                     display: grid;
@@ -633,7 +620,7 @@ jobs:
                 }
                 .metric {
                     background: white;
-                    padding: 10px;
+                    padding: 15px;
                     border-radius: 4px;
                     text-align: center;
                     border: 1px solid #eee;
@@ -647,44 +634,97 @@ jobs:
                     color: #666;
                     font-size: 0.9em;
                 }
-                h1, h2 { color: #333; }
-                .project-title {
-                    color: #2196F3;
-                    margin: 0 0 10px 0;
+                .status {
+                    display: inline-block;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                    margin: 5px 0;
                 }
-                .path {
-                    color: #666;
-                    font-size: 0.9em;
-                    margin-bottom: 15px;
+                .status.ok { 
+                    background-color: #28a745; 
+                    color: white;
                 }
+                .status.high { 
+                    background-color: #dc3545; 
+                    color: white;
+                }
+                .status.medium { 
+                    background-color: #ffc107; 
+                }
+                .license-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 10px;
+                    margin-top: 15px;
+                }
+                .license-item {
+                    background: white;
+                    padding: 10px;
+                    border-radius: 4px;
+                    border: 1px solid #eee;
+                }
+                h1, h2, h3 { color: #333; }
             </style>
         </head>
         <body>
             <div class="container">
                 <h1>Análisis de Seguridad con Snyk</h1>
                 
-                <div class="project-card">
-                    <h2>Resumen de src/</h2>
+                <div class="section-card">
+                    <h2>Resumen del Proyecto</h2>
                     <div class="metric-grid">
                         <div class="metric">
-                            <div class="metric-value">$(jq '.[].dependencyCount' snyk_report.json || echo "0")</div>
+                            <div class="metric-value">$(jq '.dependencyCount' snyk_report.json)</div>
                             <div class="metric-label">Dependencias</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">$(jq '[.[].vulnerabilities[]] | length' snyk_report.json || echo "0")</div>
-                            <div class="metric-label">Vulnerabilidades</div>
+                            <div class="metric-value">$(jq '.uniqueCount' snyk_report.json)</div>
+                            <div class="metric-label">Vulnerabilidades Únicas</div>
                         </div>
+                        <div class="metric">
+                            <div class="metric-value">$(jq '.projectName' snyk_report.json)</div>
+                            <div class="metric-label">Nombre del Proyecto</div>
+                        </div>
+                    </div>
+                    <div class="status ok">✅ $(jq -r '.summary' snyk_report.json)</div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Detalles del Proyecto</h2>
+                    <p><strong>Gestor de Paquetes:</strong> $(jq -r '.packageManager' snyk_report.json)</p>
+                    <p><strong>Archivo Analizado:</strong> $(jq -r '.targetFile' snyk_report.json)</p>
+                    <p><strong>Ruta:</strong> $(jq -r '.path' snyk_report.json)</p>
+                    <p><strong>Organización:</strong> $(jq -r '.org' snyk_report.json)</p>
+                </div>
+
+                <div class="section-card">
+                    <h2>Políticas de Licencias</h2>
+                    <div class="license-grid">
+                    $(jq -r '.licensesPolicy.orgLicenseRules | to_entries[] | 
+                    "<div class=\"license-item\">
+                        <h4>" + .key + "</h4>
+                        <div class=\"status " + .value.severity + "\">" + .value.severity + "</div>
+                    </div>"' snyk_report.json)
                     </div>
                 </div>
 
-                <!-- Detalles por archivo -->
-                $(for file in src/**/*.php; do
-                    echo "<div class=\"project-card\">"
-                    echo "<h3 class=\"project-title\">$(basename "$file")</h3>"
-                    echo "<div class=\"path\">📁 $file</div>"
-                    echo "<div class=\"status ok\">✅ Analizado</div>"
-                    echo "</div>"
-                done)
+                <div class="section-card">
+                    <h2>Configuración</h2>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <div class="metric-label">Admin Only</div>
+                            <div class="metric-value">$(jq '.ignoreSettings.adminOnly' snyk_report.json)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Reason Required</div>
+                            <div class="metric-value">$(jq '.ignoreSettings.reasonRequired' snyk_report.json)</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Auto Approve Ignores</div>
+                            <div class="metric-value">$(jq '.ignoreSettings.autoApproveIgnores' snyk_report.json)</div>
+                        </div>
+                    </div>
+                </div>
 
                 <div style="text-align: right; margin-top: 30px; color: #666;">
                     Última actualización: $(date '+%Y-%m-%d %H:%M:%S')
