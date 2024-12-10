@@ -1,0 +1,23 @@
+name: Sincronizar Repositorios
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código fuente
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Configurar repositorio remoto
+        run: |
+          git remote add destino https://${{ secrets.GITHUB_TOKEN }}@github.com/UPT-FAING-EPIS/proyecto-si784-2024-ii-u3-reportes_chambilla_llantay.git
+          
+      - name: Sincronizar repositorios
+        run: |
+          git push destino main:main --force
