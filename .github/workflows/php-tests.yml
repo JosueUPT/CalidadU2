@@ -274,8 +274,8 @@ jobs:
         semgrep scan --config=auto --verbose > scan_output_verbose.txt 2>&1
 
         # Extraer datos del scan usando valores por defecto si no se encuentran
-        TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
-        TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+' | tail -n1 || echo "0")
+        TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+' | tail -n1 || echo "0")
         TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1 || echo "0")
 
         # Extraer datos por lenguaje con valores por defecto
@@ -287,15 +287,10 @@ jobs:
         DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
 
         # Extraer datos del resumen con valores por defecto
-        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
-        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1 || echo "0")
-        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1 || echo "0")
-        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1 || echo "0")
-
-        # Extraer listas de archivos con manejo de errores
-        PARSE_ERROR_FILES=$(grep "Parse error in" scan_output_verbose.txt | sed 's/.*Parse error in //' || echo "Ninguno")
-        LARGE_FILES=$(grep "Skipping file > 1MB:" scan_output_verbose.txt | sed 's/.*Skipping file > 1MB: //' || echo "Ninguno")
-        IGNORED_FILES=$(grep "Skipping file matched by .semgrepignore:" scan_output_verbose.txt | sed 's/.*Skipping file matched by .semgrepignore: //' || echo "Ninguno")
+        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
+        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1 | head -n1 || echo "0")
+        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1 | head -n1 || echo "0")
+        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1 | head -n1 || echo "0")
 
         # Debug: mostrar valores
         echo "Valores extraídos:"
@@ -307,31 +302,22 @@ jobs:
         echo "SKIPPED_IGNORED: $SKIPPED_IGNORED"
         echo "RULES_RUN: $RULES_RUN"
 
-        # Exportar variables con manejo de errores
-        {
-          echo "TOTAL_RULES=${TOTAL_RULES:-0}"
-          echo "TOTAL_FILES=${TOTAL_FILES:-0}"
-          echo "TOTAL_FINDINGS=${TOTAL_FINDINGS:-0}"
-          echo "PHP_FILES=${PHP_FILES:-0}"
-          echo "HTML_FILES=${HTML_FILES:-0}"
-          echo "JS_FILES=${JS_FILES:-0}"
-          echo "YAML_FILES=${YAML_FILES:-0}"
-          echo "JSON_FILES=${JSON_FILES:-0}"
-          echo "DOCKERFILE_FILES=${DOCKERFILE_FILES:-0}"
-          echo "PARTIALLY_SCANNED=${PARTIALLY_SCANNED:-0}"
-          echo "SKIPPED_LARGE=${SKIPPED_LARGE:-0}"
-          echo "SKIPPED_IGNORED=${SKIPPED_IGNORED:-0}"
-          echo "RULES_RUN=${RULES_RUN:-0}"
-          echo "PARSE_ERROR_FILES<<EOF"
-          echo "${PARSE_ERROR_FILES:-Ninguno}"
-          echo "EOF"
-          echo "LARGE_FILES<<EOF"
-          echo "${LARGE_FILES:-Ninguno}"
-          echo "EOF"
-          echo "IGNORED_FILES<<EOF"
-          echo "${IGNORED_FILES:-Ninguno}"
-          echo "EOF"
-        } >> $GITHUB_ENV
+        # Exportar variables
+        cat << EOF >> $GITHUB_ENV
+        TOTAL_RULES=$TOTAL_RULES
+        TOTAL_FILES=$TOTAL_FILES
+        TOTAL_FINDINGS=$TOTAL_FINDINGS
+        PHP_FILES=$PHP_FILES
+        HTML_FILES=$HTML_FILES
+        JS_FILES=$JS_FILES
+        YAML_FILES=$YAML_FILES
+        JSON_FILES=$JSON_FILES
+        DOCKERFILE_FILES=$DOCKERFILE_FILES
+        PARTIALLY_SCANNED=$PARTIALLY_SCANNED
+        SKIPPED_LARGE=$SKIPPED_LARGE
+        SKIPPED_IGNORED=$SKIPPED_IGNORED
+        RULES_RUN=$RULES_RUN
+        EOF
 
     - name: Create Semgrep HTML Report
       run: |
