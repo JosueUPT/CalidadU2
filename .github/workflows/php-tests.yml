@@ -425,6 +425,40 @@ jobs:
                     </div>
                 </div>
 
+                <h2 class=\"section-title\">Archivos por Lenguaje</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">PHP</div>
+                        <div class=\"metric-value info\">$PHP_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">HTML</div>
+                        <div class=\"metric-value info\">$HTML_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">JavaScript</div>
+                        <div class=\"metric-value info\">$JS_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">YAML</div>
+                        <div class=\"metric-value info\">$YAML_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">JSON</div>
+                        <div class=\"metric-value info\">$JSON_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Dockerfile</div>
+                        <div class=\"metric-value info\">$DOCKERFILE_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                </div>
+
                 <div style=\"text-align: right; margin-top: 30px; color: #666;\">
                     Última actualización: $(date \"+%Y-%m-%d %H:%M:%S\")
                 </div>
