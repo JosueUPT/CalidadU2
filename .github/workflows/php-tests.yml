@@ -237,18 +237,18 @@ jobs:
                 <div class="metric-grid">
                     <div class="metric-card">
                         <div class="metric-title">Seguridad</div>
-                        <div class="metric-value ${SECURITY_RATING == 1 ? 'good' : 'warning'}">__([ "$SECURITY_RATING" = "1" ] && echo "A" || echo "B+")__</div>
-                        <div class="metric-detail">Esfuerzo: __SECURITY_EFFORT__ min</div>
+                        <div class="metric-value $([ \"$SECURITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$SECURITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class="metric-detail">Esfuerzo: $SECURITY_EFFORT min</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-title">Confiabilidad</div>
-                        <div class="metric-value ${RELIABILITY_RATING == 1 ? 'good' : 'warning'}">__([ "$RELIABILITY_RATING" = "1" ] && echo "A" || echo "B+")__</div>
-                        <div class="metric-detail">Esfuerzo: __RELIABILITY_EFFORT__ min</div>
+                        <div class="metric-value $([ \"$RELIABILITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$RELIABILITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class="metric-detail">Esfuerzo: $RELIABILITY_EFFORT min</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-title">Mantenibilidad</div>
-                        <div class="metric-value ${MAINTAINABILITY_RATING == 1 ? 'good' : 'warning'}">__([ "$MAINTAINABILITY_RATING" = "1" ] && echo "A" || echo "B+")__</div>
-                        <div class="metric-detail">Deuda: __TECH_DEBT__ min</div>
+                        <div class="metric-value $([ \"$MAINTAINABILITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$MAINTAINABILITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class="metric-detail">Deuda: $TECH_DEBT min</div>
                     </div>
                 </div>
 
