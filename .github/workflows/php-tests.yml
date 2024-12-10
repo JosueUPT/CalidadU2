@@ -277,55 +277,22 @@ jobs:
         TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+' | tail -n1 || echo "0")
         TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1 || echo "0")
 
-        # Extraer datos por lenguaje (mejorado)
-        echo "Contenido del archivo scan_output_verbose.txt:"
-        cat scan_output_verbose.txt
+        # Extraer datos por lenguaje desde la tabla de Scan Status
+        PHP_FILES=$(grep "php" scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
+        HTML_FILES=$(grep "html" scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
+        JS_FILES=$(grep "js " scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
+        YAML_FILES=$(grep "yaml" scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
+        JSON_FILES=$(grep "json" scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
+        DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | grep -o '[0-9]\+ *$' | head -n1 || echo "0")
 
-        # Mejorar la extracción de archivos por lenguaje
-        PHP_FILES=$(grep -A1 "Analyzing PHP files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
-        HTML_FILES=$(grep -A1 "Analyzing HTML files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
-        JS_FILES=$(grep -A1 "Analyzing JavaScript files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
-        YAML_FILES=$(grep -A1 "Analyzing YAML files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
-        JSON_FILES=$(grep -A1 "Analyzing JSON files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
-        DOCKERFILE_FILES=$(grep -A1 "Analyzing Dockerfile files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        # Extraer datos de archivos omitidos
+        SKIPPED_FILES=$(grep -A 50 "Files skipped:" scan_output_verbose.txt | grep -B 50 "Scan Summary" || echo "")
+        PARSE_ERROR_FILES=$(echo "$SKIPPED_FILES" | grep "Partially analyzed:" -A 10 | grep "•" | sed 's/^[[:space:]]*•[[:space:]]*//' || echo "Ninguno")
+        LARGE_FILES=$(echo "$SKIPPED_FILES" | grep "larger than" -A 10 | grep "•" | sed 's/^[[:space:]]*•[[:space:]]*//' || echo "Ninguno")
+        IGNORED_FILES=$(echo "$SKIPPED_FILES" | grep "matching .semgrepignore" -A 50 | grep "•" | sed 's/^[[:space:]]*•[[:space:]]*//' || echo "Ninguno")
 
-        # Debug: mostrar el contenido específico para cada lenguaje
-        echo "Buscando datos de PHP:"
-        grep -A2 "Analyzing PHP" scan_output_verbose.txt || echo "No PHP data found"
-        echo "Buscando datos de HTML:"
-        grep -A2 "Analyzing HTML" scan_output_verbose.txt || echo "No HTML data found"
-        echo "Buscando datos de JavaScript:"
-        grep -A2 "Analyzing JavaScript" scan_output_verbose.txt || echo "No JS data found"
-
-        # Extraer severidades
-        HIGH_SEVERITY=$(grep "High:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
-        MEDIUM_SEVERITY=$(grep "Medium:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
-        LOW_SEVERITY=$(grep "Low:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
-
-        # Extraer datos del resumen
-        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
-        SKIPPED_LARGE=$(grep "files larger than" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
-        SKIPPED_IGNORED=$(grep "files matching" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
-        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1 | head -n1 || echo "0")
-
-        # Debug: mostrar valores
-        echo "Valores extraídos:"
-        echo "TOTAL_RULES: $TOTAL_RULES"
-        echo "TOTAL_FILES: $TOTAL_FILES"
-        echo "TOTAL_FINDINGS: $TOTAL_FINDINGS"
-        echo "PHP_FILES: $PHP_FILES"
-        echo "HTML_FILES: $HTML_FILES"
-        echo "JS_FILES: $JS_FILES"
-        echo "YAML_FILES: $YAML_FILES"
-        echo "JSON_FILES: $JSON_FILES"
-        echo "DOCKERFILE_FILES: $DOCKERFILE_FILES"
-        echo "HIGH_SEVERITY: $HIGH_SEVERITY"
-        echo "MEDIUM_SEVERITY: $MEDIUM_SEVERITY"
-        echo "LOW_SEVERITY: $LOW_SEVERITY"
-        echo "PARTIALLY_SCANNED: $PARTIALLY_SCANNED"
-        echo "SKIPPED_LARGE: $SKIPPED_LARGE"
-        echo "SKIPPED_IGNORED: $SKIPPED_IGNORED"
-        echo "RULES_RUN: $RULES_RUN"
+        # Extraer hallazgos específicos
+        FINDINGS_DETAILS=$(grep -A 2 "┌.*Code Findings.*┐" -A 1000 scan_output_verbose.txt | grep -B 1000 "========================================" || echo "No se encontraron hallazgos")
 
         # Exportar variables
         cat << EOF >> $GITHUB_ENV
@@ -338,13 +305,22 @@ jobs:
         YAML_FILES=$YAML_FILES
         JSON_FILES=$JSON_FILES
         DOCKERFILE_FILES=$DOCKERFILE_FILES
-        HIGH_SEVERITY=$HIGH_SEVERITY
-        MEDIUM_SEVERITY=$MEDIUM_SEVERITY
-        LOW_SEVERITY=$LOW_SEVERITY
         PARTIALLY_SCANNED=$PARTIALLY_SCANNED
         SKIPPED_LARGE=$SKIPPED_LARGE
         SKIPPED_IGNORED=$SKIPPED_IGNORED
         RULES_RUN=$RULES_RUN
+        FINDINGS_DETAILS<<EOF_FINDINGS
+        $FINDINGS_DETAILS
+        EOF_FINDINGS
+        PARSE_ERROR_FILES<<EOF_PARSE
+        $PARSE_ERROR_FILES
+        EOF_PARSE
+        LARGE_FILES<<EOF_LARGE
+        $LARGE_FILES
+        EOF_LARGE
+        IGNORED_FILES<<EOF_IGNORED
+        $IGNORED_FILES
+        EOF_IGNORED
         EOF
 
     - name: Create Semgrep HTML Report
@@ -410,6 +386,53 @@ jobs:
                     color: #444;
                     border-bottom: 2px solid #eee;
                     padding-bottom: 10px;
+                }
+                .findings-section {
+                    margin: 20px 0;
+                    padding: 20px;
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                    border: 1px solid #eee;
+                }
+                .findings-detail {
+                    font-family: monospace;
+                    white-space: pre-wrap;
+                    word-break: break-word;
+                    font-size: 0.9em;
+                    line-height: 1.5;
+                    margin: 0;
+                    padding: 10px;
+                    background: #fff;
+                    border-radius: 4px;
+                    border: 1px solid #eee;
+                    max-height: 500px;
+                    overflow-y: auto;
+                }
+                .metric-files {
+                    font-size: 0.8em;
+                    color: #666;
+                    margin-top: 10px;
+                    text-align: left;
+                    padding: 10px;
+                    background: #f8f9fa;
+                    border-radius: 4px;
+                    max-height: 150px;
+                    overflow-y: auto;
+                    white-space: pre-wrap;
+                    word-break: break-all;
+                    border: 1px solid #eee;
+                }
+                .file-list {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                }
+                .file-list li {
+                    padding: 3px 0;
+                    border-bottom: 1px dashed #eee;
+                }
+                .file-list li:last-child {
+                    border-bottom: none;
                 }
             </style>
         </head>
@@ -494,22 +517,42 @@ jobs:
                     </div>
                 </div>
 
-                <h2 class=\"section-title\">Estado del Escaneo</h2>
+                <h2 class=\"section-title\">Resumen del Escaneo</h2>
                 <div class=\"metric-grid\">
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Parcialmente Escaneados</div>
                         <div class=\"metric-value warning\">$PARTIALLY_SCANNED</div>
-                        <div class=\"metric-detail\">Archivos con errores de parsing</div>
+                        <div class=\"metric-detail\">Archivos con errores de parsing:</div>
+                        <div class=\"metric-files\">
+                            <ul class=\"file-list\">
+                                $PARSE_ERROR_FILES
+                            </ul>
+                        </div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Tamaño</div>
                         <div class=\"metric-value warning\">$SKIPPED_LARGE</div>
-                        <div class=\"metric-detail\">Archivos > 1.0 MB</div>
+                        <div class=\"metric-detail\">Archivos > 1.0 MB:</div>
+                        <div class=\"metric-files\">
+                            <ul class=\"file-list\">
+                                $LARGE_FILES
+                            </ul>
+                        </div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Patrón</div>
                         <div class=\"metric-value info\">$SKIPPED_IGNORED</div>
-                        <div class=\"metric-detail\">Archivos en .semgrepignore</div>
+                        <div class=\"metric-detail\">Archivos en .semgrepignore:</div>
+                        <div class=\"metric-files\">
+                            <ul class=\"file-list\">
+                                $IGNORED_FILES
+                            </ul>
+                        </div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Reglas Ejecutadas</div>
+                        <div class=\"metric-value info\">$RULES_RUN</div>
+                        <div class=\"metric-detail\">De $TOTAL_RULES reglas totales</div>
                     </div>
                 </div>
 
