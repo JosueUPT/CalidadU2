@@ -34,8 +34,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:${{ env.VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo-U3:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo-U3:${{ env.VERSION }}
 
       - name: Configurar Git
         run: |
@@ -54,7 +54,7 @@ jobs:
           name: Release v${{ env.VERSION }}
           body: |
             🚀 Nueva versión desplegada:
-            - Docker Hub: ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo:${{ env.VERSION }}
+            - Docker Hub: ${{ secrets.DOCKERHUB_USERNAME }}/proyecto-codigo-U3:${{ env.VERSION }}
             - Fecha: $(date +'%Y-%m-%d %H:%M:%S')
           draft: false
           prerelease: false
