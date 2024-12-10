@@ -265,6 +265,9 @@ jobs:
         # Ejecutar scan y generar SARIF
         semgrep scan --sarif --output=semgrep.sarif --config=auto
 
+        # Ejecutar CI (opcional)
+        semgrep ci || true
+
     - name: Process Semgrep Results
       run: |
         if [ -f semgrep.sarif ]; then
@@ -287,11 +290,6 @@ jobs:
           echo "- Severidad baja: $LOW_SEVERITY"
         else
           echo "No se encontró el archivo semgrep.sarif"
-          TOTAL_RULES=0
-          TOTAL_RESULTS=0
-          HIGH_SEVERITY=0
-          MEDIUM_SEVERITY=0
-          LOW_SEVERITY=0
         fi
 
     - name: Create Semgrep HTML Report
