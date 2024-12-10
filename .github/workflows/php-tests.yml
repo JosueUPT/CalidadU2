@@ -270,27 +270,55 @@ jobs:
 
     - name: Process Semgrep Results
       run: |
+        # Guardar output del scan en un archivo temporal
+        semgrep scan --config=auto > scan_output.txt 2>&1
+
+        # Extraer datos del scan
+        TOTAL_RULES=$(grep "Code rules:" scan_output.txt | grep -o '[0-9]\+')
+        TOTAL_FILES=$(grep "files tracked by git" scan_output.txt | grep -o '[0-9]\+')
+        TOTAL_FINDINGS=$(grep "findings" scan_output.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1)
+
+        # Extraer datos por lenguaje
+        PHP_FILES=$(grep "php" scan_output.txt | head -n1 | awk '{print $3}')
+        HTML_FILES=$(grep "html" scan_output.txt | head -n1 | awk '{print $3}')
+        JS_FILES=$(grep "js" scan_output.txt | head -n1 | awk '{print $3}')
+        YAML_FILES=$(grep "yaml" scan_output.txt | head -n1 | awk '{print $3}')
+
+        # Extraer severidades del SARIF si existe
         if [ -f semgrep.sarif ]; then
-          echo "Analizando resultados de Semgrep..."
-          
-          # Obtener estadísticas básicas
-          TOTAL_RULES=$(cat semgrep.sarif | jq '.runs[0].tool.driver.rules | length')
-          TOTAL_RESULTS=$(cat semgrep.sarif | jq '.runs[0].results | length')
-          
-          # Obtener severidades
           HIGH_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "ERROR")] | length')
           MEDIUM_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "WARNING")] | length')
           LOW_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "NOTE")] | length')
-          
-          echo "Resultados del análisis:"
-          echo "- Total de reglas: $TOTAL_RULES"
-          echo "- Total de hallazgos: $TOTAL_RESULTS"
-          echo "- Severidad alta: $HIGH_SEVERITY"
-          echo "- Severidad media: $MEDIUM_SEVERITY"
-          echo "- Severidad baja: $LOW_SEVERITY"
         else
-          echo "No se encontró el archivo semgrep.sarif"
+          HIGH_SEVERITY=0
+          MEDIUM_SEVERITY=0
+          LOW_SEVERITY=0
         fi
+
+        # Verificar valores
+        echo "Datos extraídos:"
+        echo "Total reglas: ${TOTAL_RULES:-0}"
+        echo "Total archivos: ${TOTAL_FILES:-0}"
+        echo "Total hallazgos: ${TOTAL_FINDINGS:-0}"
+        echo "PHP: ${PHP_FILES:-0}"
+        echo "HTML: ${HTML_FILES:-0}"
+        echo "JS: ${JS_FILES:-0}"
+        echo "YAML: ${YAML_FILES:-0}"
+        echo "Alta: ${HIGH_SEVERITY:-0}"
+        echo "Media: ${MEDIUM_SEVERITY:-0}"
+        echo "Baja: ${LOW_SEVERITY:-0}"
+
+        # Exportar variables para el reporte HTML
+        echo "TOTAL_RULES=${TOTAL_RULES:-0}" >> $GITHUB_ENV
+        echo "TOTAL_FILES=${TOTAL_FILES:-0}" >> $GITHUB_ENV
+        echo "TOTAL_FINDINGS=${TOTAL_FINDINGS:-0}" >> $GITHUB_ENV
+        echo "PHP_FILES=${PHP_FILES:-0}" >> $GITHUB_ENV
+        echo "HTML_FILES=${HTML_FILES:-0}" >> $GITHUB_ENV
+        echo "JS_FILES=${JS_FILES:-0}" >> $GITHUB_ENV
+        echo "YAML_FILES=${YAML_FILES:-0}" >> $GITHUB_ENV
+        echo "HIGH_SEVERITY=${HIGH_SEVERITY:-0}" >> $GITHUB_ENV
+        echo "MEDIUM_SEVERITY=${MEDIUM_SEVERITY:-0}" >> $GITHUB_ENV
+        echo "LOW_SEVERITY=${LOW_SEVERITY:-0}" >> $GITHUB_ENV
 
     - name: Create Semgrep HTML Report
       run: |
@@ -371,7 +399,7 @@ jobs:
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Total de Hallazgos</div>
-                        <div class=\"metric-value warning\">$TOTAL_RESULTS</div>
+                        <div class=\"metric-value warning\">$TOTAL_FINDINGS</div>
                         <div class=\"metric-detail\">Problemas detectados</div>
                     </div>
                 </div>
