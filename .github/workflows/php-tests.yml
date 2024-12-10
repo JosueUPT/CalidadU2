@@ -68,8 +68,8 @@ jobs:
     - name: Generate Sonar Report
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       run: |
-        # Primero, obtener los datos de SonarCloud
-        SONAR_DATA=$(curl -s "https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density,complexity,ncloc,tests,sqale_index")
+        # Obtener datos extendidos de SonarCloud
+        SONAR_DATA=$(curl -s "https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density,complexity,ncloc,tests,sqale_index,security_rating,reliability_rating,sqale_rating,test_success_density,test_failures,cognitive_complexity,comment_lines_density,confirmed_issues,development_cost,effort_to_reach_maintainability_rating_a,new_technical_debt,reliability_remediation_effort,security_remediation_effort,technical_debt")
         
         # Extraer valores usando jq
         BUGS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "bugs") | .value')
@@ -78,9 +78,13 @@ jobs:
         COVERAGE=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "coverage") | .value')
         DUPLICATION=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "duplicated_lines_density") | .value')
         COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "complexity") | .value')
+        COGNITIVE_COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "cognitive_complexity") | .value')
         LINES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "ncloc") | .value')
-        TESTS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "tests") | .value')
         TECH_DEBT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_index") | .value')
+        SECURITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "security_rating") | .value')
+        RELIABILITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "reliability_rating") | .value')
+        MAINTAINABILITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_rating") | .value')
+        COMMENT_DENSITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "comment_lines_density") | .value')
         
         mkdir -p public/sonar
         echo "<!DOCTYPE html>
@@ -184,7 +188,7 @@ jobs:
                     </div>
                 </div>
 
-                <h2 class=\"section-title\">Detalles de Calidad</h2>
+                <h2 class=\"section-title\">Métricas Avanzadas</h2>
                 <div class=\"metric-grid\">
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Complejidad Ciclomática</div>
@@ -192,14 +196,33 @@ jobs:
                         <div class=\"metric-detail\">Total del proyecto</div>
                     </div>
                     <div class=\"metric-card\">
-                        <div class=\"metric-title\">Deuda Técnica</div>
-                        <div class=\"metric-value warning\">$(echo \"$TECH_DEBT/60/8\" | bc)d $(echo \"$TECH_DEBT/60%8\" | bc)h</div>
-                        <div class=\"metric-detail\">Tiempo estimado de corrección</div>
+                        <div class=\"metric-title\">Complejidad Cognitiva</div>
+                        <div class=\"metric-value info\">$COGNITIVE_COMPLEXITY</div>
+                        <div class=\"metric-detail\">Dificultad de entendimiento</div>
                     </div>
                     <div class=\"metric-card\">
-                        <div class=\"metric-title\">Tests</div>
-                        <div class=\"metric-value good\">$TESTS</div>
-                        <div class=\"metric-detail\">Pruebas unitarias</div>
+                        <div class=\"metric-title\">Densidad de Comentarios</div>
+                        <div class=\"metric-value info\">${COMMENT_DENSITY}%</div>
+                        <div class=\"metric-detail\">Código documentado</div>
+                    </div>
+                </div>
+
+                <h2 class=\"section-title\">Calificaciones</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Seguridad</div>
+                        <div class=\"metric-value ${SECURITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$SECURITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
+                        <div class=\"metric-detail\">Calificación de seguridad</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Confiabilidad</div>
+                        <div class=\"metric-value ${RELIABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$RELIABILITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
+                        <div class=\"metric-detail\">Calificación de fiabilidad</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Mantenibilidad</div>
+                        <div class=\"metric-value ${MAINTAINABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$MAINTAINABILITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
+                        <div class=\"metric-detail\">Facilidad de mantenimiento</div>
                     </div>
                 </div>
 
