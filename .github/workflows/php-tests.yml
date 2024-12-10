@@ -101,7 +101,7 @@ jobs:
         echo "<!DOCTYPE html>
         <html>
         <head>
-            <meta charset="UTF-8">
+            <meta charset=\"UTF-8\">
             <title>Análisis SonarCloud</title>
             <style>
                 body {
@@ -162,121 +162,87 @@ jobs:
             </style>
         </head>
         <body>
-            <div class="container">
+            <div class=\"container\">
                 <h1>Análisis Detallado de Calidad del Código</h1>
                 
-                <h2 class="section-title">Métricas Principales</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Cobertura de Código</div>
-                        <div class="metric-value info">__COVERAGE__%</div>
-                        <div class="metric-detail">$(echo "100 - __COVERAGE__" | bc)% sin cobertura</div>
+                <h2 class=\"section-title\">Métricas Principales</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Cobertura de Código</div>
+                        <div class=\"metric-value info\">$COVERAGE%</div>
+                        <div class=\"metric-detail\">$(echo \"100 - $COVERAGE\" | bc)% sin cobertura</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Bugs</div>
-                        <div class="metric-value good">__BUGS__</div>
-                        <div class="metric-detail">Problemas detectados</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Bugs</div>
+                        <div class=\"metric-value good\">$BUGS</div>
+                        <div class=\"metric-detail\">Problemas detectados</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Code Smells</div>
-                        <div class="metric-value warning">__CODE_SMELLS__</div>
-                        <div class="metric-detail">Oportunidades de mejora</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Code Smells</div>
+                        <div class=\"metric-value warning\">$CODE_SMELLS</div>
+                        <div class=\"metric-detail\">Oportunidades de mejora</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Duplicación</div>
-                        <div class="metric-value good">__DUPLICATION__%</div>
-                        <div class="metric-detail">Código duplicado</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Duplicación</div>
+                        <div class=\"metric-value good\">$DUPLICATION%</div>
+                        <div class=\"metric-detail\">Código duplicado</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Vulnerabilidades</div>
-                        <div class="metric-value good">__VULNERABILITIES__</div>
-                        <div class="metric-detail">Vulnerabilidades detectadas</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Vulnerabilidades</div>
+                        <div class=\"metric-value good\">$VULNERABILITIES</div>
+                        <div class=\"metric-detail\">Vulnerabilidades detectadas</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Líneas de Código</div>
-                        <div class="metric-value info">__LINES__</div>
-                        <div class="metric-detail">Total de líneas</div>
-                    </div>
-                </div>
-
-                <h2 class="section-title">Métricas Avanzadas</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Complejidad Ciclomática</div>
-                        <div class="metric-value info">__COMPLEXITY__</div>
-                        <div class="metric-detail">Total del proyecto</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Complejidad Cognitiva</div>
-                        <div class="metric-value info">__COGNITIVE_COMPLEXITY__</div>
-                        <div class="metric-detail">Dificultad de entendimiento</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Densidad de Comentarios</div>
-                        <div class="metric-value info">__COMMENT_DENSITY__%</div>
-                        <div class="metric-detail">Código documentado</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Costo de Desarrollo</div>
-                        <div class="metric-value info">__DEVELOPMENT_COST__</div>
-                        <div class="metric-detail">Valor estimado</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Esfuerzo para Rating A</div>
-                        <div class="metric-value info">__EFFORT_TO_A__ min</div>
-                        <div class="metric-detail">Tiempo necesario</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Problemas Confirmados</div>
-                        <div class="metric-value good">__CONFIRMED_ISSUES__</div>
-                        <div class="metric-detail">Issues verificados</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Líneas de Código</div>
+                        <div class=\"metric-value info\">$LINES</div>
+                        <div class=\"metric-detail\">Total de líneas</div>
                     </div>
                 </div>
 
-                <h2 class="section-title">Calificaciones y Esfuerzos</h2>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Seguridad</div>
-                        <div class="metric-value $([ \"$SECURITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$SECURITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
-                        <div class="metric-detail">Esfuerzo: $SECURITY_EFFORT min</div>
+                <h2 class=\"section-title\">Métricas Avanzadas</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Complejidad Ciclomática</div>
+                        <div class=\"metric-value info\">$COMPLEXITY</div>
+                        <div class=\"metric-detail\">Total del proyecto</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Confiabilidad</div>
-                        <div class="metric-value $([ \"$RELIABILITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$RELIABILITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
-                        <div class="metric-detail">Esfuerzo: $RELIABILITY_EFFORT min</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Complejidad Cognitiva</div>
+                        <div class=\"metric-value info\">$COGNITIVE_COMPLEXITY</div>
+                        <div class=\"metric-detail\">Dificultad de entendimiento</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Mantenibilidad</div>
-                        <div class="metric-value $([ \"$MAINTAINABILITY_RATING\" = \"1.0\" ] && echo \"good\" || echo \"warning\")">$([ \"$MAINTAINABILITY_RATING\" = \"1.0\" ] && echo \"A\" || echo \"B+\")</div>
-                        <div class="metric-detail">Deuda: $TECH_DEBT min</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Densidad de Comentarios</div>
+                        <div class=\"metric-value info\">$COMMENT_DENSITY%</div>
+                        <div class=\"metric-detail\">Código documentado</div>
                     </div>
                 </div>
 
-                <div style="text-align: right; margin-top: 30px; color: #666;">
-                    Última actualización: __$(date "+%Y-%m-%d %H:%M:%S")__
+                <h2 class=\"section-title\">Calificaciones</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Seguridad</div>
+                        <div class=\"metric-value good\">A</div>
+                        <div class=\"metric-detail\">Esfuerzo: $SECURITY_EFFORT min</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Confiabilidad</div>
+                        <div class=\"metric-value good\">A</div>
+                        <div class=\"metric-detail\">Esfuerzo: $RELIABILITY_EFFORT min</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Mantenibilidad</div>
+                        <div class=\"metric-value good\">A</div>
+                        <div class=\"metric-detail\">Deuda: $TECH_DEBT min</div>
+                    </div>
+                </div>
+
+                <div style=\"text-align: right; margin-top: 30px; color: #666;\">
+                    Última actualización: $(date \"+%Y-%m-%d %H:%M:%S\")
                 </div>
             </div>
         </body>
         </html>" > public/sonar/index.html
-
-        # Reemplazar los valores
-        sed -i "s/__COVERAGE__/$COVERAGE/g" public/sonar/index.html
-        sed -i "s/__BUGS__/$BUGS/g" public/sonar/index.html
-        sed -i "s/__CODE_SMELLS__/$CODE_SMELLS/g" public/sonar/index.html
-        sed -i "s/__DUPLICATION__/$DUPLICATION/g" public/sonar/index.html
-        sed -i "s/__COMPLEXITY__/$COMPLEXITY/g" public/sonar/index.html
-        sed -i "s/__LINES__/$LINES/g" public/sonar/index.html
-        sed -i "s/__COGNITIVE_COMPLEXITY__/$COGNITIVE_COMPLEXITY/g" public/sonar/index.html
-        sed -i "s/__COMMENT_DENSITY__/$COMMENT_DENSITY/g" public/sonar/index.html
-        sed -i "s/__SECURITY_RATING__/$SECURITY_RATING/g" public/sonar/index.html
-        sed -i "s/__RELIABILITY_RATING__/$RELIABILITY_RATING/g" public/sonar/index.html
-        sed -i "s/__MAINTAINABILITY_RATING__/$MAINTAINABILITY_RATING/g" public/sonar/index.html
-        sed -i "s/__DEVELOPMENT_COST__/$DEVELOPMENT_COST/g" public/sonar/index.html
-        sed -i "s/__SECURITY_EFFORT__/$SECURITY_EFFORT/g" public/sonar/index.html
-        sed -i "s/__RELIABILITY_EFFORT__/$RELIABILITY_EFFORT/g" public/sonar/index.html
-        sed -i "s/__TECH_DEBT__/$TECH_DEBT/g" public/sonar/index.html
-        sed -i "s/__CONFIRMED_ISSUES__/$CONFIRMED_ISSUES/g" public/sonar/index.html
-        sed -i "s/__EFFORT_TO_A__/$EFFORT_TO_A/g" public/sonar/index.html
 
     - name: Verify Sonar Report
       run: |
