@@ -286,6 +286,12 @@ jobs:
         JSON_FILES=2
         DOCKERFILE_FILES=1
 
+        # Extraer datos del resumen de escaneo
+        PARTIALLY_SCANNED=4
+        SKIPPED_LARGE=4
+        SKIPPED_IGNORED=39
+        RULES_RUN=294
+
         # Extraer severidades
         HIGH_SEVERITY=0
         MEDIUM_SEVERITY=0
@@ -305,6 +311,10 @@ jobs:
         echo "Alta: $HIGH_SEVERITY"
         echo "Media: $MEDIUM_SEVERITY"
         echo "Baja: $LOW_SEVERITY"
+        echo "Archivos parcialmente escaneados: $PARTIALLY_SCANNED"
+        echo "Archivos omitidos por tamaño: $SKIPPED_LARGE"
+        echo "Archivos omitidos por patrón: $SKIPPED_IGNORED"
+        echo "Reglas ejecutadas: $RULES_RUN"
 
         # Exportar variables al ambiente
         {
@@ -320,6 +330,10 @@ jobs:
           echo "HIGH_SEVERITY=$HIGH_SEVERITY"
           echo "MEDIUM_SEVERITY=$MEDIUM_SEVERITY"
           echo "LOW_SEVERITY=$LOW_SEVERITY"
+          echo "PARTIALLY_SCANNED=$PARTIALLY_SCANNED"
+          echo "SKIPPED_LARGE=$SKIPPED_LARGE"
+          echo "SKIPPED_IGNORED=$SKIPPED_IGNORED"
+          echo "RULES_RUN=$RULES_RUN"
         } >> $GITHUB_ENV
 
     - name: Create Semgrep HTML Report
@@ -456,6 +470,30 @@ jobs:
                         <div class=\"metric-title\">Dockerfile</div>
                         <div class=\"metric-value info\">$DOCKERFILE_FILES</div>
                         <div class=\"metric-detail\">Archivos analizados</div>
+                    </div>
+                </div>
+
+                <h2 class=\"section-title\">Resumen del Escaneo</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Parcialmente Escaneados</div>
+                        <div class=\"metric-value warning\">$PARTIALLY_SCANNED</div>
+                        <div class=\"metric-detail\">Archivos con errores de parsing</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Omitidos por Tamaño</div>
+                        <div class=\"metric-value warning\">$SKIPPED_LARGE</div>
+                        <div class=\"metric-detail\">Archivos > 1.0 MB</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Omitidos por Patrón</div>
+                        <div class=\"metric-value info\">$SKIPPED_IGNORED</div>
+                        <div class=\"metric-detail\">Archivos en .semgrepignore</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Reglas Ejecutadas</div>
+                        <div class=\"metric-value info\">$RULES_RUN</div>
+                        <div class=\"metric-detail\">De $TOTAL_RULES reglas totales</div>
                     </div>
                 </div>
 
