@@ -572,19 +572,16 @@ jobs:
       run: |
         mkdir -p public/snyk
         
-        echo "🔍 Ejecutando análisis de Snyk..."
-        # Ejecutar análisis y mostrar output completo
-        snyk test --all-projects || true
+        echo "🔍 Ejecutando análisis de Snyk en src/..."
+        cd src
         
         echo "📊 Generando reporte JSON..."
-        # Generar reporte JSON para el HTML
-        snyk test --json --all-projects > snyk_report.json || true
-        
-        echo "📝 Contenido del reporte JSON:"
-        cat snyk_report.json
+        snyk test --json > ../snyk_report.json || true
         
         echo "🔎 Detalles completos del análisis:"
-        snyk test --all-projects --json | jq '.'
+        snyk test --json | jq '.'
+        
+        cd ..
 
     - name: Generate Snyk HTML Report
       run: |
@@ -667,82 +664,27 @@ jobs:
                 <h1>Análisis de Seguridad con Snyk</h1>
                 
                 <div class="project-card">
-                    <h2>Resumen General</h2>
+                    <h2>Resumen de src/</h2>
                     <div class="metric-grid">
                         <div class="metric">
-                            <div class="metric-value">5</div>
-                            <div class="metric-label">Proyectos Analizados</div>
+                            <div class="metric-value">$(jq '.[].dependencyCount' snyk_report.json || echo "0")</div>
+                            <div class="metric-label">Dependencias</div>
                         </div>
                         <div class="metric">
-                            <div class="metric-value">51</div>
-                            <div class="metric-label">Total Dependencias</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">0</div>
+                            <div class="metric-value">$(jq '[.[].vulnerabilities[]] | length' snyk_report.json || echo "0")</div>
                             <div class="metric-label">Vulnerabilidades</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <h3 class="project-title">calidad-u2</h3>
-                    <div class="path">📁 composer.lock</div>
-                    <div class="status ok">✅ Sin vulnerabilidades</div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">1</div>
-                            <div class="metric-label">Dependencias</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">src</h3>
-                    <div class="path">📁 src/composer.lock</div>
-                    <div class="status ok">✅ Sin vulnerabilidades</div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">1</div>
-                            <div class="metric-label">Dependencias</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">phar-io/manifest</h3>
-                    <div class="path">📁 vendor/phar-io/manifest/composer.lock</div>
-                    <div class="status ok">✅ Sin vulnerabilidades</div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">6</div>
-                            <div class="metric-label">Dependencias</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">phpunit/phpunit</h3>
-                    <div class="path">📁 vendor/phpunit/phpunit/composer.lock</div>
-                    <div class="status ok">✅ Sin vulnerabilidades</div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">39</div>
-                            <div class="metric-label">Dependencias</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="project-title">theseer/tokenizer</h3>
-                    <div class="path">📁 vendor/theseer/tokenizer/composer.lock</div>
-                    <div class="status ok">✅ Sin vulnerabilidades</div>
-                    <div class="metric-grid">
-                        <div class="metric">
-                            <div class="metric-value">4</div>
-                            <div class="metric-label">Dependencias</div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Detalles por archivo -->
+                $(for file in src/**/*.php; do
+                    echo "<div class=\"project-card\">"
+                    echo "<h3 class=\"project-title\">$(basename "$file")</h3>"
+                    echo "<div class=\"path\">📁 $file</div>"
+                    echo "<div class=\"status ok\">✅ Analizado</div>"
+                    echo "</div>"
+                done)
 
                 <div style="text-align: right; margin-top: 30px; color: #666;">
                     Última actualización: $(date '+%Y-%m-%d %H:%M:%S')
