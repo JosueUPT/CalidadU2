@@ -68,11 +68,25 @@ jobs:
     - name: Generate Sonar Report
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       run: |
+        # Primero, obtener los datos de SonarCloud
+        SONAR_DATA=$(curl -s "https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density,complexity,ncloc,tests,sqale_index")
+        
+        # Extraer valores usando jq
+        BUGS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "bugs") | .value')
+        VULNERABILITIES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "vulnerabilities") | .value')
+        CODE_SMELLS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "code_smells") | .value')
+        COVERAGE=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "coverage") | .value')
+        DUPLICATION=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "duplicated_lines_density") | .value')
+        COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "complexity") | .value')
+        LINES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "ncloc") | .value')
+        TESTS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "tests") | .value')
+        TECH_DEBT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_index") | .value')
+        
         mkdir -p public/sonar
-        echo '<!DOCTYPE html>
+        echo "<!DOCTYPE html>
         <html>
         <head>
-            <meta charset="UTF-8">
+            <meta charset=\"UTF-8\">
             <title>Análisis SonarCloud</title>
             <style>
                 body {
@@ -81,7 +95,7 @@ jobs:
                     background-color: #f5f5f5;
                 }
                 .container {
-                    max-width: 800px;
+                    max-width: 1200px;
                     margin: 0 auto;
                     padding: 20px;
                     background-color: white;
@@ -110,47 +124,91 @@ jobs:
                     font-weight: bold;
                     color: #333;
                 }
+                .metric-detail {
+                    font-size: 0.9em;
+                    color: #666;
+                    margin-top: 5px;
+                }
                 .good { color: #28a745; }
                 .warning { color: #ffc107; }
+                .danger { color: #dc3545; }
                 .info { color: #17a2b8; }
                 h1 {
                     text-align: center;
                     color: #333;
                     margin-bottom: 30px;
                 }
+                .section-title {
+                    margin-top: 30px;
+                    color: #444;
+                    border-bottom: 2px solid #eee;
+                    padding-bottom: 10px;
+                }
             </style>
         </head>
         <body>
-            <div class="container">
-                <h1>Análisis de Calidad del Código</h1>
-                <div class="metric-grid">
-                    <div class="metric-card">
-                        <div class="metric-title">Cobertura de Código</div>
-                        <div class="metric-value info">84.7%</div>
+            <div class=\"container\">
+                <h1>Análisis Detallado de Calidad del Código</h1>
+                
+                <h2 class=\"section-title\">Métricas Principales</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Cobertura de Código</div>
+                        <div class=\"metric-value info\">$COVERAGE%</div>
+                        <div class=\"metric-detail\">$(echo \"100 - $COVERAGE\" | bc)% sin cobertura</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Bugs</div>
-                        <div class="metric-value good">0</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Bugs</div>
+                        <div class=\"metric-value good\">$BUGS</div>
+                        <div class=\"metric-detail\">Problemas detectados</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Code Smells</div>
-                        <div class="metric-value warning">189</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Code Smells</div>
+                        <div class=\"metric-value warning\">$CODE_SMELLS</div>
+                        <div class=\"metric-detail\">Oportunidades de mejora</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Duplicación</div>
-                        <div class="metric-value good">1.2%</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Duplicación</div>
+                        <div class=\"metric-value good\">$DUPLICATION%</div>
+                        <div class=\"metric-detail\">Código duplicado</div>
                     </div>
-                    <div class="metric-card">
-                        <div class="metric-title">Vulnerabilidades</div>
-                        <div class="metric-value good">0</div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Vulnerabilidades</div>
+                        <div class=\"metric-value good\">$VULNERABILITIES</div>
+                        <div class=\"metric-detail\">Vulnerabilidades detectadas</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Líneas de Código</div>
+                        <div class=\"metric-value info\">$LINES</div>
+                        <div class=\"metric-detail\">Total de líneas</div>
                     </div>
                 </div>
-                <div style="text-align: right; margin-top: 20px; color: #666;">
-                    Última actualización: $(date "+%Y-%m-%d %H:%M:%S")
+
+                <h2 class=\"section-title\">Detalles de Calidad</h2>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Complejidad Ciclomática</div>
+                        <div class=\"metric-value info\">$COMPLEXITY</div>
+                        <div class=\"metric-detail\">Total del proyecto</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Deuda Técnica</div>
+                        <div class=\"metric-value warning\">$(echo \"$TECH_DEBT/60/8\" | bc)d $(echo \"$TECH_DEBT/60%8\" | bc)h</div>
+                        <div class=\"metric-detail\">Tiempo estimado de corrección</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Tests</div>
+                        <div class=\"metric-value good\">$TESTS</div>
+                        <div class=\"metric-detail\">Pruebas unitarias</div>
+                    </div>
+                </div>
+
+                <div style=\"text-align: right; margin-top: 30px; color: #666;\">
+                    Última actualización: $(date \"+%Y-%m-%d %H:%M:%S\")
                 </div>
             </div>
         </body>
-        </html>' > public/sonar/index.html
+        </html>" > public/sonar/index.html
 
     - name: Verify Sonar Report
       run: |
