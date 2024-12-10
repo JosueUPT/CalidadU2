@@ -9,7 +9,6 @@ on:
 permissions:
   contents: write
   pages: write
-  id-token: write
 
 jobs:
   test-and-build:
@@ -279,12 +278,24 @@ jobs:
         TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1 || echo "0")
 
         # Extraer datos por lenguaje (mejorado)
-        PHP_FILES=$(grep -A1 "Analyzing PHP" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
-        HTML_FILES=$(grep -A1 "Analyzing HTML" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
-        JS_FILES=$(grep -A1 "Analyzing JavaScript" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
-        YAML_FILES=$(grep -A1 "Analyzing YAML" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
-        JSON_FILES=$(grep -A1 "Analyzing JSON" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
-        DOCKERFILE_FILES=$(grep -A1 "Analyzing Dockerfile" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        echo "Contenido del archivo scan_output_verbose.txt:"
+        cat scan_output_verbose.txt
+
+        # Mejorar la extracción de archivos por lenguaje
+        PHP_FILES=$(grep -A1 "Analyzing PHP files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        HTML_FILES=$(grep -A1 "Analyzing HTML files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        JS_FILES=$(grep -A1 "Analyzing JavaScript files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        YAML_FILES=$(grep -A1 "Analyzing YAML files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        JSON_FILES=$(grep -A1 "Analyzing JSON files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+        DOCKERFILE_FILES=$(grep -A1 "Analyzing Dockerfile files" scan_output_verbose.txt | grep -o '[0-9]\+ files' | cut -d' ' -f1 || echo "0")
+
+        # Debug: mostrar el contenido específico para cada lenguaje
+        echo "Buscando datos de PHP:"
+        grep -A2 "Analyzing PHP" scan_output_verbose.txt || echo "No PHP data found"
+        echo "Buscando datos de HTML:"
+        grep -A2 "Analyzing HTML" scan_output_verbose.txt || echo "No HTML data found"
+        echo "Buscando datos de JavaScript:"
+        grep -A2 "Analyzing JavaScript" scan_output_verbose.txt || echo "No JS data found"
 
         # Extraer severidades
         HIGH_SEVERITY=$(grep "High:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
