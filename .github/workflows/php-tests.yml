@@ -270,51 +270,32 @@ jobs:
 
     - name: Process Semgrep Results
       run: |
-        # Guardar output del scan en un archivo temporal
-        semgrep scan --config=auto > scan_output.txt 2>&1
+        # Ejecutar scan y guardar output detallado
+        semgrep scan --config=auto --verbose > scan_output_verbose.txt 2>&1
 
-        # Extraer datos del scan (usando valores específicos)
-        TOTAL_RULES=1054
-        TOTAL_FILES=235
-        TOTAL_FINDINGS=24
+        # Extraer datos del scan (desde el output de Semgrep)
+        TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+')
+        TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+')
+        TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1)
 
-        # Extraer datos por lenguaje (usando valores específicos)
-        PHP_FILES=35
-        HTML_FILES=111
-        JS_FILES=4
-        YAML_FILES=7
-        JSON_FILES=2
-        DOCKERFILE_FILES=1
+        # Extraer datos por lenguaje (desde el output de Semgrep)
+        PHP_FILES=$(grep "php" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        HTML_FILES=$(grep "html" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        JS_FILES=$(grep "js" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        YAML_FILES=$(grep "yaml" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        JSON_FILES=$(grep "json" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | head -n1 | awk '{print $3}')
 
-        # Extraer datos del resumen de escaneo
-        PARTIALLY_SCANNED=4
-        SKIPPED_LARGE=4
-        SKIPPED_IGNORED=39
-        RULES_RUN=294
+        # Extraer datos del resumen de escaneo (desde el output de Semgrep)
+        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+')
+        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1)
+        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1)
+        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1)
 
-        # Extraer severidades
-        HIGH_SEVERITY=0
-        MEDIUM_SEVERITY=0
-        LOW_SEVERITY=0
-
-        # Verificar valores
-        echo "Datos extraídos:"
-        echo "Total reglas: $TOTAL_RULES"
-        echo "Total archivos: $TOTAL_FILES"
-        echo "Total hallazgos: $TOTAL_FINDINGS"
-        echo "PHP: $PHP_FILES"
-        echo "HTML: $HTML_FILES"
-        echo "JS: $JS_FILES"
-        echo "YAML: $YAML_FILES"
-        echo "JSON: $JSON_FILES"
-        echo "Dockerfile: $DOCKERFILE_FILES"
-        echo "Alta: $HIGH_SEVERITY"
-        echo "Media: $MEDIUM_SEVERITY"
-        echo "Baja: $LOW_SEVERITY"
-        echo "Archivos parcialmente escaneados: $PARTIALLY_SCANNED"
-        echo "Archivos omitidos por tamaño: $SKIPPED_LARGE"
-        echo "Archivos omitidos por patrón: $SKIPPED_IGNORED"
-        echo "Reglas ejecutadas: $RULES_RUN"
+        # Extraer listas de archivos específicos
+        PARSE_ERROR_FILES=$(grep "Parse error in" scan_output_verbose.txt | sed 's/.*Parse error in //')
+        LARGE_FILES=$(grep "Skipping file > 1MB:" scan_output_verbose.txt | sed 's/.*Skipping file > 1MB: //')
+        IGNORED_FILES=$(grep "Skipping file matched by .semgrepignore:" scan_output_verbose.txt | sed 's/.*Skipping file matched by .semgrepignore: //')
 
         # Exportar variables al ambiente
         {
@@ -327,13 +308,19 @@ jobs:
           echo "YAML_FILES=$YAML_FILES"
           echo "JSON_FILES=$JSON_FILES"
           echo "DOCKERFILE_FILES=$DOCKERFILE_FILES"
-          echo "HIGH_SEVERITY=$HIGH_SEVERITY"
-          echo "MEDIUM_SEVERITY=$MEDIUM_SEVERITY"
-          echo "LOW_SEVERITY=$LOW_SEVERITY"
           echo "PARTIALLY_SCANNED=$PARTIALLY_SCANNED"
           echo "SKIPPED_LARGE=$SKIPPED_LARGE"
           echo "SKIPPED_IGNORED=$SKIPPED_IGNORED"
           echo "RULES_RUN=$RULES_RUN"
+          echo "PARSE_ERROR_FILES<<EOF"
+          echo "$PARSE_ERROR_FILES"
+          echo "EOF"
+          echo "LARGE_FILES<<EOF"
+          echo "$LARGE_FILES"
+          echo "EOF"
+          echo "IGNORED_FILES<<EOF"
+          echo "$IGNORED_FILES"
+          echo "EOF"
         } >> $GITHUB_ENV
 
     - name: Create Semgrep HTML Report
@@ -399,6 +386,19 @@ jobs:
                     color: #444;
                     border-bottom: 2px solid #eee;
                     padding-bottom: 10px;
+                }
+                .metric-files {
+                    font-size: 0.8em;
+                    color: #666;
+                    margin-top: 10px;
+                    text-align: left;
+                    padding: 5px;
+                    background: #f8f9fa;
+                    border-radius: 4px;
+                    max-height: 100px;
+                    overflow-y: auto;
+                    white-space: pre-wrap;
+                    word-break: break-all;
                 }
             </style>
         </head>
@@ -478,17 +478,20 @@ jobs:
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Parcialmente Escaneados</div>
                         <div class=\"metric-value warning\">$PARTIALLY_SCANNED</div>
-                        <div class=\"metric-detail\">Archivos con errores de parsing</div>
+                        <div class=\"metric-detail\">Archivos con errores de parsing:</div>
+                        <div class=\"metric-files\">$PARSE_ERROR_FILES</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Tamaño</div>
                         <div class=\"metric-value warning\">$SKIPPED_LARGE</div>
-                        <div class=\"metric-detail\">Archivos > 1.0 MB</div>
+                        <div class=\"metric-detail\">Archivos > 1.0 MB:</div>
+                        <div class=\"metric-files\">$LARGE_FILES</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Patrón</div>
                         <div class=\"metric-value info\">$SKIPPED_IGNORED</div>
-                        <div class=\"metric-detail\">Archivos en .semgrepignore</div>
+                        <div class=\"metric-detail\">Archivos en .semgrepignore:</div>
+                        <div class=\"metric-files\">$IGNORED_FILES</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Reglas Ejecutadas</div>
