@@ -6,7 +6,7 @@
 **FACULTAD DE INGENIERIA**  
 *Escuela Profesional de Ingeniería de Sistemas*
 
-### Proyecto FANPAGE
+### Proyecto Reportes FANPAGE
 - **Curso:** Calidad y pruebas de software
 - **Docente:** Mg. Patrick Cuadros Quiroga
 
