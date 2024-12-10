@@ -68,24 +68,29 @@ jobs:
     - name: Generate Sonar Report
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       run: |
-        # Obtener datos extendidos de SonarCloud
-        SONAR_DATA=$(curl -s "https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density,complexity,ncloc,tests,sqale_index,security_rating,reliability_rating,sqale_rating,test_success_density,test_failures,cognitive_complexity,comment_lines_density,confirmed_issues,development_cost,effort_to_reach_maintainability_rating_a,new_technical_debt,reliability_remediation_effort,security_remediation_effort,technical_debt")
+        # Obtener datos de SonarCloud
+        SONAR_DATA=$(curl -s "https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density,complexity,ncloc,cognitive_complexity,comment_lines_density,security_rating,reliability_rating,sqale_rating,development_cost,security_remediation_effort,reliability_remediation_effort,sqale_index,confirmed_issues,effort_to_reach_maintainability_rating_a")
         
-        # Extraer valores usando jq
+        # Extraer todos los valores disponibles
         BUGS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "bugs") | .value')
         VULNERABILITIES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "vulnerabilities") | .value')
         CODE_SMELLS=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "code_smells") | .value')
         COVERAGE=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "coverage") | .value')
         DUPLICATION=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "duplicated_lines_density") | .value')
         COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "complexity") | .value')
-        COGNITIVE_COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "cognitive_complexity") | .value')
         LINES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "ncloc") | .value')
-        TECH_DEBT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_index") | .value')
+        COGNITIVE_COMPLEXITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "cognitive_complexity") | .value')
+        COMMENT_DENSITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "comment_lines_density") | .value')
         SECURITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "security_rating") | .value')
         RELIABILITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "reliability_rating") | .value')
         MAINTAINABILITY_RATING=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_rating") | .value')
-        COMMENT_DENSITY=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "comment_lines_density") | .value')
-        
+        DEVELOPMENT_COST=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "development_cost") | .value')
+        SECURITY_EFFORT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "security_remediation_effort") | .value')
+        RELIABILITY_EFFORT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "reliability_remediation_effort") | .value')
+        TECH_DEBT=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "sqale_index") | .value')
+        CONFIRMED_ISSUES=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "confirmed_issues") | .value')
+        EFFORT_TO_A=$(echo $SONAR_DATA | jq -r '.component.measures[] | select(.metric == "effort_to_reach_maintainability_rating_a") | .value')
+
         mkdir -p public/sonar
         echo "<!DOCTYPE html>
         <html>
@@ -205,24 +210,39 @@ jobs:
                         <div class=\"metric-value info\">${COMMENT_DENSITY}%</div>
                         <div class=\"metric-detail\">Código documentado</div>
                     </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Costo de Desarrollo</div>
+                        <div class=\"metric-value info\">$DEVELOPMENT_COST</div>
+                        <div class=\"metric-detail\">Valor estimado</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Esfuerzo para Rating A</div>
+                        <div class=\"metric-value info\">$EFFORT_TO_A min</div>
+                        <div class=\"metric-detail\">Tiempo necesario</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Problemas Confirmados</div>
+                        <div class=\"metric-value good\">$CONFIRMED_ISSUES</div>
+                        <div class=\"metric-detail\">Issues verificados</div>
+                    </div>
                 </div>
 
-                <h2 class=\"section-title\">Calificaciones</h2>
+                <h2 class=\"section-title\">Calificaciones y Esfuerzos</h2>
                 <div class=\"metric-grid\">
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Seguridad</div>
-                        <div class=\"metric-value ${SECURITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$SECURITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
-                        <div class=\"metric-detail\">Calificación de seguridad</div>
+                        <div class=\"metric-value ${SECURITY_RATING == 1 ? 'good' : 'warning'}\">$([ \"$SECURITY_RATING\" = \"1\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class=\"metric-detail\">Esfuerzo: $SECURITY_EFFORT min</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Confiabilidad</div>
-                        <div class=\"metric-value ${RELIABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$RELIABILITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
-                        <div class=\"metric-detail\">Calificación de fiabilidad</div>
+                        <div class=\"metric-value ${RELIABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ \"$RELIABILITY_RATING\" = \"1\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class=\"metric-detail\">Esfuerzo: $RELIABILITY_EFFORT min</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Mantenibilidad</div>
-                        <div class=\"metric-value ${MAINTAINABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ "$MAINTAINABILITY_RATING" = "1" ] && echo "A" || echo "B+")</div>
-                        <div class=\"metric-detail\">Facilidad de mantenimiento</div>
+                        <div class=\"metric-value ${MAINTAINABILITY_RATING == 1 ? 'good' : 'warning'}\">$([ \"$MAINTAINABILITY_RATING\" = \"1\" ] && echo \"A\" || echo \"B+\")</div>
+                        <div class=\"metric-detail\">Deuda: $TECH_DEBT min</div>
                     </div>
                 </div>
 
