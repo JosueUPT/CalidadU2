@@ -337,3 +337,16 @@ jobs:
         force_orphan: true
         publish_branch: gh-pages
         full_commit_message: 'docs: update test reports'
+
+    - name: Obtener datos de Semgrep
+      run: |
+        # Obtener datos de Semgrep
+        SEMGREP_DATA=$(curl -s -H "Authorization: Bearer cacf03a9ba91f3f1bcea6ba60eedcd07f76bb491bd5d4041275942dd7a500f63" \
+          "https://semgrep.dev/api/v1/deployments/pyfange/findings?repo_ref=18003741")
+
+        # Extraer valores relevantes
+        FINDINGS=$(echo $SEMGREP_DATA | jq -r '.findings | length')
+        OPEN_FINDINGS=$(echo $SEMGREP_DATA | jq -r '.findings | map(select(.status == "open")) | length')
+        SEVERITY_HIGH=$(echo $SEMGREP_DATA | jq -r '.findings | map(select(.severity == "HIGH")) | length')
+        SEVERITY_MEDIUM=$(echo $SEMGREP_DATA | jq -r '.findings | map(select(.severity == "MEDIUM")) | length')
+        SEVERITY_LOW=$(echo $SEMGREP_DATA | jq -r '.findings | map(select(.severity == "LOW")) | length')
