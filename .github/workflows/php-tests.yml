@@ -574,15 +574,23 @@ jobs:
         # Ejecutar análisis detallado y guardar resultados
         snyk test --json --all-projects > snyk_report.json || true
         
-        # Procesar resultados con jq
-        TOTAL_DEPS=$(jq '.dependencies | length' snyk_report.json || echo "0")
-        TOTAL_VULNS=$(jq '.vulnerabilities | length' snyk_report.json || echo "0")
-        HIGH_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "high")] | length' snyk_report.json || echo "0")
-        MEDIUM_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "medium")] | length' snyk_report.json || echo "0")
-        LOW_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "low")] | length' snyk_report.json || echo "0")
+        # Procesar resultados con jq (ajustado para array)
+        TOTAL_DEPS=$(jq '.[].dependencies | length' snyk_report.json | awk '{sum += $1} END {print sum}' || echo "0")
+        TOTAL_VULNS=$(jq '.[].vulnerabilities | length' snyk_report.json | awk '{sum += $1} END {print sum}' || echo "0")
+        HIGH_VULNS=$(jq '[.[].vulnerabilities[] | select(.severity == "high")] | length' snyk_report.json || echo "0")
+        MEDIUM_VULNS=$(jq '[.[].vulnerabilities[] | select(.severity == "medium")] | length' snyk_report.json || echo "0")
+        LOW_VULNS=$(jq '[.[].vulnerabilities[] | select(.severity == "low")] | length' snyk_report.json || echo "0")
 
         # Extraer detalles de vulnerabilidades por archivo
-        VULN_DETAILS=$(jq -r '.vulnerabilities[] | "• Archivo: " + (.from[0] // "N/A") + "\n  Título: " + .title + "\n  Severidad: " + .severity + "\n  Descripción: " + .description + "\n  Solución: " + (.remediation.advice // "No disponible") + "\n"' snyk_report.json || echo "No se encontraron vulnerabilidades")
+        VULN_DETAILS=$(jq -r '.[].vulnerabilities[] | "• Proyecto: " + (.packageName // "N/A") + 
+          "\n  Archivo: " + (.from[0] // "N/A") + 
+          "\n  Título: " + .title + 
+          "\n  Severidad: " + .severity + 
+          "\n  Descripción: " + (.description // "No disponible") + 
+          "\n  Paquete Afectado: " + (.package // "N/A") + 
+          "\n  Versión Vulnerable: " + (.version // "N/A") + 
+          "\n  Solución: " + (.remediation.advice // "No disponible") + 
+          "\n"' snyk_report.json 2>/dev/null || echo "No se encontraron vulnerabilidades")
         
         # Crear reporte HTML
         cat << EOF > public/snyk/index.html
