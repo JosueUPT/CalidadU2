@@ -339,17 +339,33 @@ jobs:
         full_commit_message: 'docs: update test reports'
 
     - name: Semgrep Scan
-      uses: semgrep/semgrep-action@v1
-      with:
-        generateSarif: "1"
-        output: semgrep.sarif
-      continue-on-error: true
+      run: |
+        # Ejecutar scan y generar SARIF
+        semgrep scan --sarif --output=semgrep.sarif --config=auto
+
+        # Ejecutar CI (opcional)
+        semgrep ci || true
 
     - name: Process Semgrep Results
       run: |
         if [ -f semgrep.sarif ]; then
+          echo "Analizando resultados de Semgrep..."
+          
+          # Obtener estadísticas básicas
           TOTAL_RULES=$(cat semgrep.sarif | jq '.runs[0].tool.driver.rules | length')
           TOTAL_RESULTS=$(cat semgrep.sarif | jq '.runs[0].results | length')
-          echo "Total reglas: $TOTAL_RULES"
-          echo "Total hallazgos: $TOTAL_RESULTS"
+          
+          # Obtener severidades
+          HIGH_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "ERROR")] | length')
+          MEDIUM_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "WARNING")] | length')
+          LOW_SEVERITY=$(cat semgrep.sarif | jq '[.runs[0].results[].properties.severity | select(. == "NOTE")] | length')
+          
+          echo "Resultados del análisis:"
+          echo "- Total de reglas: $TOTAL_RULES"
+          echo "- Total de hallazgos: $TOTAL_RESULTS"
+          echo "- Severidad alta: $HIGH_SEVERITY"
+          echo "- Severidad media: $MEDIUM_SEVERITY"
+          echo "- Severidad baja: $LOW_SEVERITY"
+        else
+          echo "No se encontró el archivo semgrep.sarif"
         fi
