@@ -563,6 +563,79 @@ jobs:
         </body>
         </html>" > public/semgrep/index.html
 
+    - name: Install Snyk
+      run: npm install -g snyk
+
+    - name: Run Snyk Analysis
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      run: |
+        mkdir -p public/snyk
+        # Ejecutar análisis y guardar resultados
+        snyk test --json > snyk_report.json || true
+        
+        # Procesar resultados con jq
+        TOTAL_DEPS=$(jq '.dependencies | length' snyk_report.json || echo "0")
+        TOTAL_VULNS=$(jq '.vulnerabilities | length' snyk_report.json || echo "0")
+        HIGH_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "high")] | length' snyk_report.json || echo "0")
+        MEDIUM_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "medium")] | length' snyk_report.json || echo "0")
+        LOW_VULNS=$(jq '[.vulnerabilities[] | select(.severity == "low")] | length' snyk_report.json || echo "0")
+        
+        # Crear reporte HTML
+        echo "<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset=\"UTF-8\">
+            <title>Análisis de Seguridad con Snyk</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+                .container { max-width: 1200px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+                .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+                .metric-card { background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; }
+                .metric-value { font-size: 2em; font-weight: bold; }
+                .good { color: #28a745; }
+                .warning { color: #ffc107; }
+                .danger { color: #dc3545; }
+            </style>
+        </head>
+        <body>
+            <div class=\"container\">
+                <h1>Análisis de Seguridad con Snyk</h1>
+                <div class=\"metric-grid\">
+                    <div class=\"metric-card\">
+                        <h3>Total Dependencias</h3>
+                        <div class=\"metric-value\">$TOTAL_DEPS</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <h3>Vulnerabilidades</h3>
+                        <div class=\"metric-value warning\">$TOTAL_VULNS</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <h3>Alta Severidad</h3>
+                        <div class=\"metric-value danger\">$HIGH_VULNS</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <h3>Media Severidad</h3>
+                        <div class=\"metric-value warning\">$MEDIUM_VULNS</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <h3>Baja Severidad</h3>
+                        <div class=\"metric-value good\">$LOW_VULNS</div>
+                    </div>
+                </div>
+                <div style=\"margin-top: 20px;\">
+                    <h2>Detalles de Vulnerabilidades</h2>
+                    <pre style=\"background: #f8f9fa; padding: 20px; border-radius: 8px; overflow-x: auto;\">
+                    $(jq -r '.vulnerabilities[] | "• " + .title + " (" + .severity + ")\n  " + .description' snyk_report.json || echo "No se encontraron vulnerabilidades")
+                    </pre>
+                </div>
+                <div style=\"text-align: right; margin-top: 30px; color: #666;\">
+                    Última actualización: $(date \"+%Y-%m-%d %H:%M:%S\")
+                </div>
+            </div>
+        </body>
+        </html>" > public/snyk/index.html
+
     - name: Create main index.html
       run: |
         echo '<!DOCTYPE html>
@@ -626,6 +699,12 @@ jobs:
                 .semgrep-btn:hover {
                     background-color: #E64A19;
                 }
+                .snyk-btn {
+                    background-color: #4B45A1;
+                }
+                .snyk-btn:hover {
+                    background-color: #3B3580;
+                }
             </style>
         </head>
         <body>
@@ -636,6 +715,7 @@ jobs:
                     <a href="bdd/index.html" class="button bdd-btn">Ver Reporte BDD</a>
                     <a href="sonar/index.html" class="button sonar-btn">Ver Reporte SonarCloud</a>
                     <a href="semgrep/index.html" class="button semgrep-btn">Ver Reporte Semgrep</a>
+                    <a href="snyk/index.html" class="button snyk-btn">Ver Reporte Snyk</a>
                 </div>
             </div>
         </body>
@@ -652,4 +732,4 @@ jobs:
         publish_branch: gh-pages
         full_commit_message: 'docs: update test reports'
 
-    
+   
