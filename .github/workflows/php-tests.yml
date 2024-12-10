@@ -65,88 +65,6 @@ jobs:
         composer dump-autoload
         vendor/bin/behat --config behat.yml --format pretty --format html --out std --out public/bdd || true
 
-    - name: Create main index.html
-      run: |
-        echo '<!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Reportes de Pruebas</title>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 40px;
-                    text-align: center;
-                    background-color: #f5f5f5;
-                }
-                .container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    padding: 20px;
-                    background-color: white;
-                    border-radius: 10px;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                }
-                h1 { 
-                    color: #333;
-                    margin-bottom: 30px;
-                }
-                .buttons {
-                    display: flex;
-                    justify-content: center;
-                    gap: 20px;
-                }
-                .button {
-                    display: inline-block;
-                    padding: 12px 24px;
-                    color: white;
-                    text-decoration: none;
-                    border-radius: 5px;
-                    transition: background-color 0.3s;
-                }
-                .coverage-btn {
-                    background-color: #4CAF50;
-                }
-                .coverage-btn:hover {
-                    background-color: #45a049;
-                }
-                .bdd-btn {
-                    background-color: #2196F3;
-                }
-                .bdd-btn:hover {
-                    background-color: #1976D2;
-                }
-                .sonar-btn {
-                    background-color: #FF9800;
-                }
-                .sonar-btn:hover {
-                    background-color: #F57C00;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>Proyecto SI784-2024-II</h1>
-                <div class="buttons">
-                    <a href="coverage/index.html" class="button coverage-btn">Ver Reporte de Cobertura</a>
-                    <a href="bdd/index.html" class="button bdd-btn">Ver Reporte BDD</a>
-                    <a href="sonar/index.html" class="button sonar-btn">Ver Reporte SonarCloud</a>
-                </div>
-            </div>
-        </body>
-        </html>' > public/index.html
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
-        enable_jekyll: false
-        force_orphan: true
-        publish_branch: gh-pages
-        full_commit_message: 'docs: update test reports'
-
     - name: Generate Sonar Report
       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
       run: |
@@ -357,3 +275,85 @@ jobs:
           echo "Contenido de public/:"
           ls -R public/
         fi
+
+    - name: Create main index.html
+      run: |
+        echo '<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Reportes de Pruebas</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 40px;
+                    text-align: center;
+                    background-color: #f5f5f5;
+                }
+                .container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background-color: white;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }
+                h1 { 
+                    color: #333;
+                    margin-bottom: 30px;
+                }
+                .buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 20px;
+                }
+                .button {
+                    display: inline-block;
+                    padding: 12px 24px;
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 5px;
+                    transition: background-color 0.3s;
+                }
+                .coverage-btn {
+                    background-color: #4CAF50;
+                }
+                .coverage-btn:hover {
+                    background-color: #45a049;
+                }
+                .bdd-btn {
+                    background-color: #2196F3;
+                }
+                .bdd-btn:hover {
+                    background-color: #1976D2;
+                }
+                .sonar-btn {
+                    background-color: #FF9800;
+                }
+                .sonar-btn:hover {
+                    background-color: #F57C00;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>Proyecto SI784-2024-II</h1>
+                <div class="buttons">
+                    <a href="coverage/index.html" class="button coverage-btn">Ver Reporte de Cobertura</a>
+                    <a href="bdd/index.html" class="button bdd-btn">Ver Reporte BDD</a>
+                    <a href="sonar/index.html" class="button sonar-btn">Ver Reporte SonarCloud</a>
+                </div>
+            </div>
+        </body>
+        </html>' > public/index.html
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+        enable_jekyll: false
+        force_orphan: true
+        publish_branch: gh-pages
+        full_commit_message: 'docs: update test reports'
