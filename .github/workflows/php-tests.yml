@@ -273,23 +273,28 @@ jobs:
         # Ejecutar scan y guardar output detallado
         semgrep scan --config=auto --verbose > scan_output_verbose.txt 2>&1
 
-        # Extraer datos del scan usando valores por defecto si no se encuentran
+        # Extraer datos del scan
         TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+' | tail -n1 || echo "0")
         TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+' | tail -n1 || echo "0")
         TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1 || echo "0")
 
-        # Extraer datos por lenguaje con valores por defecto
-        PHP_FILES=$(grep "php" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
-        HTML_FILES=$(grep "html" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
-        JS_FILES=$(grep "js" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
-        YAML_FILES=$(grep "yaml" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
-        JSON_FILES=$(grep "json" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
-        DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        # Extraer datos por lenguaje (mejorado)
+        PHP_FILES=$(grep -A1 "Analyzing PHP" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        HTML_FILES=$(grep -A1 "Analyzing HTML" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        JS_FILES=$(grep -A1 "Analyzing JavaScript" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        YAML_FILES=$(grep -A1 "Analyzing YAML" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        JSON_FILES=$(grep -A1 "Analyzing JSON" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
+        DOCKERFILE_FILES=$(grep -A1 "Analyzing Dockerfile" scan_output_verbose.txt | grep "files:" | awk '{print $1}' || echo "0")
 
-        # Extraer datos del resumen con valores por defecto
+        # Extraer severidades
+        HIGH_SEVERITY=$(grep "High:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        MEDIUM_SEVERITY=$(grep "Medium:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        LOW_SEVERITY=$(grep "Low:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+
+        # Extraer datos del resumen
         PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
-        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1 | head -n1 || echo "0")
-        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1 | head -n1 || echo "0")
+        SKIPPED_LARGE=$(grep "files larger than" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
+        SKIPPED_IGNORED=$(grep "files matching" scan_output_verbose.txt | grep -o '[0-9]\+' | head -n1 || echo "0")
         RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1 | head -n1 || echo "0")
 
         # Debug: mostrar valores
@@ -297,6 +302,15 @@ jobs:
         echo "TOTAL_RULES: $TOTAL_RULES"
         echo "TOTAL_FILES: $TOTAL_FILES"
         echo "TOTAL_FINDINGS: $TOTAL_FINDINGS"
+        echo "PHP_FILES: $PHP_FILES"
+        echo "HTML_FILES: $HTML_FILES"
+        echo "JS_FILES: $JS_FILES"
+        echo "YAML_FILES: $YAML_FILES"
+        echo "JSON_FILES: $JSON_FILES"
+        echo "DOCKERFILE_FILES: $DOCKERFILE_FILES"
+        echo "HIGH_SEVERITY: $HIGH_SEVERITY"
+        echo "MEDIUM_SEVERITY: $MEDIUM_SEVERITY"
+        echo "LOW_SEVERITY: $LOW_SEVERITY"
         echo "PARTIALLY_SCANNED: $PARTIALLY_SCANNED"
         echo "SKIPPED_LARGE: $SKIPPED_LARGE"
         echo "SKIPPED_IGNORED: $SKIPPED_IGNORED"
@@ -313,6 +327,9 @@ jobs:
         YAML_FILES=$YAML_FILES
         JSON_FILES=$JSON_FILES
         DOCKERFILE_FILES=$DOCKERFILE_FILES
+        HIGH_SEVERITY=$HIGH_SEVERITY
+        MEDIUM_SEVERITY=$MEDIUM_SEVERITY
+        LOW_SEVERITY=$LOW_SEVERITY
         PARTIALLY_SCANNED=$PARTIALLY_SCANNED
         SKIPPED_LARGE=$SKIPPED_LARGE
         SKIPPED_IGNORED=$SKIPPED_IGNORED
@@ -343,7 +360,7 @@ jobs:
                 }
                 .metric-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                     gap: 20px;
                     margin-top: 20px;
                 }
@@ -352,6 +369,7 @@ jobs:
                     padding: 20px;
                     border-radius: 8px;
                     text-align: center;
+                    border: 1px solid #eee;
                 }
                 .metric-title {
                     color: #666;
@@ -372,10 +390,9 @@ jobs:
                 .warning { color: #ffc107; }
                 .danger { color: #dc3545; }
                 .info { color: #17a2b8; }
-                h1 {
+                h1, h2 {
                     text-align: center;
                     color: #333;
-                    margin-bottom: 30px;
                 }
                 .section-title {
                     margin-top: 30px;
@@ -383,31 +400,28 @@ jobs:
                     border-bottom: 2px solid #eee;
                     padding-bottom: 10px;
                 }
-                .metric-files {
-                    font-size: 0.8em;
-                    color: #666;
-                    margin-top: 10px;
-                    text-align: left;
-                    padding: 5px;
-                    background: #f8f9fa;
-                    border-radius: 4px;
-                    max-height: 100px;
-                    overflow-y: auto;
-                    white-space: pre-wrap;
-                    word-break: break-all;
-                }
             </style>
         </head>
         <body>
             <div class=\"container\">
                 <h1>Análisis de Seguridad con Semgrep</h1>
                 
-                <h2 class=\"section-title\">Resumen de Hallazgos</h2>
+                <h2 class=\"section-title\">Resumen General</h2>
                 <div class=\"metric-grid\">
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Total de Reglas</div>
                         <div class=\"metric-value info\">$TOTAL_RULES</div>
-                        <div class=\"metric-detail\">Reglas aplicadas</div>
+                        <div class=\"metric-detail\">Reglas disponibles</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Reglas Ejecutadas</div>
+                        <div class=\"metric-value info\">$RULES_RUN</div>
+                        <div class=\"metric-detail\">De $TOTAL_RULES reglas totales</div>
+                    </div>
+                    <div class=\"metric-card\">
+                        <div class=\"metric-title\">Total de Archivos</div>
+                        <div class=\"metric-value info\">$TOTAL_FILES</div>
+                        <div class=\"metric-detail\">Archivos analizados</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Total de Hallazgos</div>
@@ -469,30 +483,22 @@ jobs:
                     </div>
                 </div>
 
-                <h2 class=\"section-title\">Resumen del Escaneo</h2>
+                <h2 class=\"section-title\">Estado del Escaneo</h2>
                 <div class=\"metric-grid\">
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Parcialmente Escaneados</div>
                         <div class=\"metric-value warning\">$PARTIALLY_SCANNED</div>
-                        <div class=\"metric-detail\">Archivos con errores de parsing:</div>
-                        <div class=\"metric-files\">$PARSE_ERROR_FILES</div>
+                        <div class=\"metric-detail\">Archivos con errores de parsing</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Tamaño</div>
                         <div class=\"metric-value warning\">$SKIPPED_LARGE</div>
-                        <div class=\"metric-detail\">Archivos > 1.0 MB:</div>
-                        <div class=\"metric-files\">$LARGE_FILES</div>
+                        <div class=\"metric-detail\">Archivos > 1.0 MB</div>
                     </div>
                     <div class=\"metric-card\">
                         <div class=\"metric-title\">Omitidos por Patrón</div>
                         <div class=\"metric-value info\">$SKIPPED_IGNORED</div>
-                        <div class=\"metric-detail\">Archivos en .semgrepignore:</div>
-                        <div class=\"metric-files\">$IGNORED_FILES</div>
-                    </div>
-                    <div class=\"metric-card\">
-                        <div class=\"metric-title\">Reglas Ejecutadas</div>
-                        <div class=\"metric-value info\">$RULES_RUN</div>
-                        <div class=\"metric-detail\">De $TOTAL_RULES reglas totales</div>
+                        <div class=\"metric-detail\">Archivos en .semgrepignore</div>
                     </div>
                 </div>
 
