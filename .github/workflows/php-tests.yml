@@ -273,53 +273,63 @@ jobs:
         # Ejecutar scan y guardar output detallado
         semgrep scan --config=auto --verbose > scan_output_verbose.txt 2>&1
 
-        # Extraer datos del scan (desde el output de Semgrep)
-        TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+')
-        TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+')
-        TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1)
+        # Extraer datos del scan usando valores por defecto si no se encuentran
+        TOTAL_RULES=$(grep "Code rules:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        TOTAL_FILES=$(grep "files tracked by git" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        TOTAL_FINDINGS=$(grep "findings" scan_output_verbose.txt | tail -n1 | grep -o '[0-9]\+ findings' | cut -d' ' -f1 || echo "0")
 
-        # Extraer datos por lenguaje (desde el output de Semgrep)
-        PHP_FILES=$(grep "php" scan_output_verbose.txt | head -n1 | awk '{print $3}')
-        HTML_FILES=$(grep "html" scan_output_verbose.txt | head -n1 | awk '{print $3}')
-        JS_FILES=$(grep "js" scan_output_verbose.txt | head -n1 | awk '{print $3}')
-        YAML_FILES=$(grep "yaml" scan_output_verbose.txt | head -n1 | awk '{print $3}')
-        JSON_FILES=$(grep "json" scan_output_verbose.txt | head -n1 | awk '{print $3}')
-        DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | head -n1 | awk '{print $3}')
+        # Extraer datos por lenguaje con valores por defecto
+        PHP_FILES=$(grep "php" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        HTML_FILES=$(grep "html" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        JS_FILES=$(grep "js" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        YAML_FILES=$(grep "yaml" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        JSON_FILES=$(grep "json" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
+        DOCKERFILE_FILES=$(grep "dockerfile" scan_output_verbose.txt | head -n1 | awk '{print $3}' || echo "0")
 
-        # Extraer datos del resumen de escaneo (desde el output de Semgrep)
-        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+')
-        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1)
-        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1)
-        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1)
+        # Extraer datos del resumen con valores por defecto
+        PARTIALLY_SCANNED=$(grep "Partially scanned:" scan_output_verbose.txt | grep -o '[0-9]\+' || echo "0")
+        SKIPPED_LARGE=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files larger than' | cut -d' ' -f1 || echo "0")
+        SKIPPED_IGNORED=$(grep "Scan skipped:" scan_output_verbose.txt | grep -o '[0-9]\+ files matching' | cut -d' ' -f1 || echo "0")
+        RULES_RUN=$(grep "Ran" scan_output_verbose.txt | grep -o '[0-9]\+ rules' | cut -d' ' -f1 || echo "0")
 
-        # Extraer listas de archivos específicos
-        PARSE_ERROR_FILES=$(grep "Parse error in" scan_output_verbose.txt | sed 's/.*Parse error in //')
-        LARGE_FILES=$(grep "Skipping file > 1MB:" scan_output_verbose.txt | sed 's/.*Skipping file > 1MB: //')
-        IGNORED_FILES=$(grep "Skipping file matched by .semgrepignore:" scan_output_verbose.txt | sed 's/.*Skipping file matched by .semgrepignore: //')
+        # Extraer listas de archivos con manejo de errores
+        PARSE_ERROR_FILES=$(grep "Parse error in" scan_output_verbose.txt | sed 's/.*Parse error in //' || echo "Ninguno")
+        LARGE_FILES=$(grep "Skipping file > 1MB:" scan_output_verbose.txt | sed 's/.*Skipping file > 1MB: //' || echo "Ninguno")
+        IGNORED_FILES=$(grep "Skipping file matched by .semgrepignore:" scan_output_verbose.txt | sed 's/.*Skipping file matched by .semgrepignore: //' || echo "Ninguno")
 
-        # Exportar variables al ambiente
+        # Debug: mostrar valores
+        echo "Valores extraídos:"
+        echo "TOTAL_RULES: $TOTAL_RULES"
+        echo "TOTAL_FILES: $TOTAL_FILES"
+        echo "TOTAL_FINDINGS: $TOTAL_FINDINGS"
+        echo "PARTIALLY_SCANNED: $PARTIALLY_SCANNED"
+        echo "SKIPPED_LARGE: $SKIPPED_LARGE"
+        echo "SKIPPED_IGNORED: $SKIPPED_IGNORED"
+        echo "RULES_RUN: $RULES_RUN"
+
+        # Exportar variables con manejo de errores
         {
-          echo "TOTAL_RULES=$TOTAL_RULES"
-          echo "TOTAL_FILES=$TOTAL_FILES"
-          echo "TOTAL_FINDINGS=$TOTAL_FINDINGS"
-          echo "PHP_FILES=$PHP_FILES"
-          echo "HTML_FILES=$HTML_FILES"
-          echo "JS_FILES=$JS_FILES"
-          echo "YAML_FILES=$YAML_FILES"
-          echo "JSON_FILES=$JSON_FILES"
-          echo "DOCKERFILE_FILES=$DOCKERFILE_FILES"
-          echo "PARTIALLY_SCANNED=$PARTIALLY_SCANNED"
-          echo "SKIPPED_LARGE=$SKIPPED_LARGE"
-          echo "SKIPPED_IGNORED=$SKIPPED_IGNORED"
-          echo "RULES_RUN=$RULES_RUN"
+          echo "TOTAL_RULES=${TOTAL_RULES:-0}"
+          echo "TOTAL_FILES=${TOTAL_FILES:-0}"
+          echo "TOTAL_FINDINGS=${TOTAL_FINDINGS:-0}"
+          echo "PHP_FILES=${PHP_FILES:-0}"
+          echo "HTML_FILES=${HTML_FILES:-0}"
+          echo "JS_FILES=${JS_FILES:-0}"
+          echo "YAML_FILES=${YAML_FILES:-0}"
+          echo "JSON_FILES=${JSON_FILES:-0}"
+          echo "DOCKERFILE_FILES=${DOCKERFILE_FILES:-0}"
+          echo "PARTIALLY_SCANNED=${PARTIALLY_SCANNED:-0}"
+          echo "SKIPPED_LARGE=${SKIPPED_LARGE:-0}"
+          echo "SKIPPED_IGNORED=${SKIPPED_IGNORED:-0}"
+          echo "RULES_RUN=${RULES_RUN:-0}"
           echo "PARSE_ERROR_FILES<<EOF"
-          echo "$PARSE_ERROR_FILES"
+          echo "${PARSE_ERROR_FILES:-Ninguno}"
           echo "EOF"
           echo "LARGE_FILES<<EOF"
-          echo "$LARGE_FILES"
+          echo "${LARGE_FILES:-Ninguno}"
           echo "EOF"
           echo "IGNORED_FILES<<EOF"
-          echo "$IGNORED_FILES"
+          echo "${IGNORED_FILES:-Ninguno}"
           echo "EOF"
         } >> $GITHUB_ENV
 
