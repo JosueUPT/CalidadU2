@@ -190,23 +190,23 @@ jobs:
                     </div>
                 </div>
                 <div id="last-analysis" class="last-analysis"></div>
-                <a href="https://sonarcloud.io/project/overview?id=upt-faing-epis_proyecto-si784-2024-ii-u2-chambilla_llantay" class="sonar-link" target="_blank">
+                <a href="https://sonarcloud.io/project/overview?id=JosueUPT_CalidadU2" class="sonar-link" target="_blank">
                     Ver reporte completo en SonarCloud
                 </a>
                 <script>
-                    const projectKey = "upt-faing-epis_proyecto-si784-2024-ii-u2-chambilla_llantay";
+                    const projectKey = "JosueUPT_CalidadU2";
                     const metrics = [
                         "bugs",
                         "vulnerabilities",
                         "code_smells",
                         "coverage",
-                        "duplicated_lines_density",
-                        "quality_gate_status"
+                        "duplicated_lines_density"
                     ];
 
                     async function fetchSonarData() {
                         try {
-                            const response = await fetch(`https://sonarcloud.io/api/measures/component?component=${projectKey}&metricKeys=${metrics.join(",")}`);
+                            const response = await fetch('https://sonarcloud.io/api/measures/component?component=JosueUPT_CalidadU2&metricKeys=bugs,vulnerabilities,code_smells,coverage,duplicated_lines_density');
+                            
                             if (!response.ok) throw new Error("Error al obtener datos de SonarCloud");
                             
                             const data = await response.json();
@@ -234,10 +234,6 @@ jobs:
                                     case "duplicated_lines_density":
                                         elementId = "duplication";
                                         value = value + "%";
-                                        break;
-                                    case "quality_gate_status":
-                                        elementId = "quality-gate";
-                                        value = value === "OK" ? "✅ Passed" : "❌ Failed";
                                         break;
                                 }
                                 
