@@ -43,17 +43,24 @@ jobs:
 
     - name: Run test suite with coverage
       run: |
-        mkdir -p public/coverage
-        echo "Ejecutando pruebas unitarias con cobertura..."
-        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text --stop-on-warning --no-interaction
+        echo "Configurando cobertura..."
+        mkdir -p coverage
         
-        # Verificar que el reporte se generó
-        if [ -d "public/coverage" ]; then
-          echo "✓ Reporte de cobertura generado en public/coverage"
-          ls -l public/coverage/
+        echo "Ejecutando PHPUnit con configuración local..."
+        XDEBUG_MODE=coverage ./vendor/bin/phpunit --configuration phpunit.xml || true
+        
+        echo "Copiando reportes a public..."
+        mkdir -p public/coverage
+        cp -r coverage/html/* public/coverage/
+        
+        # Verificar la generación
+        if [ -d "public/coverage" ] && [ -f "public/coverage/index.html" ]; then
+          echo "✓ Reporte de cobertura generado correctamente"
+          ls -la public/coverage/
         else
-          echo "✗ Error: No se pudo generar el reporte de cobertura"
-          exit 1
+          echo "✗ Error al generar el reporte"
+          echo "Contenido actual:"
+          ls -R public/
         fi
 
     - name: Verify Coverage Report
@@ -66,6 +73,7 @@ jobs:
           echo "✗ El reporte de cobertura NO se generó"
           echo "Contenido de public/:"
           ls -R public/
+          exit 1
         fi
 
     - name: Update Behat configuration
