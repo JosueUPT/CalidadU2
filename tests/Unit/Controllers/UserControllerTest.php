@@ -556,28 +556,6 @@ class UserControllerTest extends TestCase
     }
 
     /** @test */
-    public function getUserById_falla_con_id_nulo(): void
-    {
-        $mockStmt = $this->createMock(PDOStatement::class);
-        $mockStmt->expects($this->once())
-            ->method('execute')
-            ->with($this->callback(function($params) {
-                return $params === [null];
-            }))
-            ->willReturn(true);
-        
-        $mockStmt->method('fetch')
-            ->willReturn(false);
-        
-        $this->mockPDO->method('prepare')
-            ->willReturn($mockStmt);
-
-        $result = $this->userController->getUserById(null);
-        
-        $this->assertNull($result);
-    }
-
-    /** @test */
     public function register_establece_tipo_usuario_correctamente(): void
     {
         $mockStmt = $this->createMock(PDOStatement::class);

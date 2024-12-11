@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733947628">
-  <project timestamp="1733947628">
+<coverage generated="1733950501">
+  <project timestamp="1733950501">
     <file name="C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php">
       <class name="Config\Database" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="24" elements="40" coveredelements="26"/>
@@ -638,8 +638,8 @@
       <class name="Controllers\UserController" namespace="global">
         <metrics complexity="16" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="45" elements="62" coveredelements="52"/>
       </class>
-      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
-      <line num="11" type="stmt" count="34"/>
+      <line num="10" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="33"/>
+      <line num="11" type="stmt" count="33"/>
       <line num="14" type="method" name="hashPassword" visibility="private" complexity="1" crap="1" count="9"/>
       <line num="15" type="stmt" count="9"/>
       <line num="18" type="method" name="verifyPassword" visibility="private" complexity="1" crap="1" count="8"/>
@@ -691,10 +691,10 @@
       <line num="93" type="stmt" count="0"/>
       <line num="94" type="stmt" count="0"/>
       <line num="95" type="stmt" count="0"/>
-      <line num="99" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="7"/>
-      <line num="101" type="stmt" count="7"/>
-      <line num="102" type="stmt" count="7"/>
-      <line num="103" type="stmt" count="4"/>
+      <line num="99" type="method" name="getUserById" visibility="public" complexity="2" crap="2" count="6"/>
+      <line num="101" type="stmt" count="6"/>
+      <line num="102" type="stmt" count="6"/>
+      <line num="103" type="stmt" count="3"/>
       <line num="104" type="stmt" count="3"/>
       <line num="105" type="stmt" count="3"/>
       <line num="106" type="stmt" count="3"/>
