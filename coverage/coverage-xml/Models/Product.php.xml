@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Product.php" path="\Models">
+    <totals>
+      <lines total="24" comments="2" code="22" executable="8" executed="8" percent="100.00"/>
+      <methods count="8" tested="8" percent="100.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="1" percent="100.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Models\Product" start="4" executable="8" executed="8" crap="8">
+      <namespace name="Models"/>
+      <method name="getId" signature="getId()" start="11" end="11" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getName" signature="getName()" start="12" end="12" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getPrice" signature="getPrice()" start="13" end="13" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getImage" signature="getImage()" start="14" end="14" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setName" signature="setName($name)" start="17" end="17" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setPrice" signature="setPrice($price)" start="18" end="18" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setImage" signature="setImage($image)" start="19" end="19" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setId" signature="setId($id)" start="21" end="23" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="11">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+      </line>
+      <line nr="12">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductWithExistingName"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_productos"/>
+      </line>
+      <line nr="13">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+      </line>
+      <line nr="14">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+      </line>
+      <line nr="17">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithLargeImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductWithExistingName"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_productos"/>
+      </line>
+      <line nr="18">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithLargeImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductWithExistingName"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_productos"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation"/>
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductWithExistingName"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_productos"/>
+      </line>
+      <line nr="22">
+        <covered by="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithLargeImage"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos"/>
+        <covered by="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="3"/>
+      <line no="4">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Product</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="5">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$price</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$image</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9"/>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Getters</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">id</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">name</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getPrice</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">price</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getImage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">image</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="15"/>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Setters</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">name</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setPrice</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$price</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">price</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$price</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setImage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$image</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">image</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$image</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="20"/>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">id</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="24">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+    </source>
+  </file>
+</phpunit>

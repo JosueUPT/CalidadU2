@@ -62,3 +62,8 @@ despues
 ```
 docker compose up -d
 ```
+
+
+vendor/bin/phpunit --testdox
+
+vendor/bin/infection --threads=4 --only-covered --skip-initial-tests --coverage=coverage

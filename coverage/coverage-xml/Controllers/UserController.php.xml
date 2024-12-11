@@ -1,0 +1,1406 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="UserController.php" path="\Controllers">
+    <totals>
+      <lines total="114" comments="8" code="106" executable="54" executed="45" percent="83.33"/>
+      <methods count="8" tested="7" percent="87.50"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Controllers\UserController" start="6" executable="54" executed="45" crap="17.19">
+      <namespace name="Controllers"/>
+      <method name="__construct" signature="__construct($conn)" start="10" end="12" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="hashPassword" signature="hashPassword($password)" start="14" end="16" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="verifyPassword" signature="verifyPassword($password, $hashedPassword)" start="18" end="20" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="registerUser" signature="registerUser($userData)" start="22" end="54" crap="3" executable="22" executed="22" coverage="100"/>
+      <method name="loginUser" signature="loginUser($email, $password)" start="56" end="75" crap="4" executable="13" executed="13" coverage="100"/>
+      <method name="logout" signature="logout()" start="77" end="97" crap="12" executable="9" executed="0" coverage="0"/>
+      <method name="getUserById" signature="getUserById($userId)" start="99" end="108" crap="2" executable="6" executed="6" coverage="100"/>
+      <method name="register" signature="register($userData)" start="111" end="113" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="11">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_password_correcto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_hash_password_con_costo_correcto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_usuario_no_existe"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::puede_obtener_usuario_por_id"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::obtener_usuario_inexistente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="15">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_hash_password_con_costo_correcto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_password_correcto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verifica_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="24">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="25">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="26">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="27">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente"/>
+      </line>
+      <line nr="37">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="38">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="42">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="43">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="45">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="46">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="49">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="50">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="51">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="52">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro"/>
+      </line>
+      <line nr="58">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="59">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="60">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="62">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="63">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="64">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="65">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="66">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="67">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion"/>
+      </line>
+      <line nr="70">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas"/>
+      </line>
+      <line nr="71">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="72">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="73">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion"/>
+      </line>
+      <line nr="101">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_usuario_no_existe"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::puede_obtener_usuario_por_id"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::obtener_usuario_inexistente"/>
+      </line>
+      <line nr="102">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_usuario_no_existe"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::puede_obtener_usuario_por_id"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::obtener_usuario_inexistente"/>
+      </line>
+      <line nr="103">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_usuario_no_existe"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::puede_obtener_usuario_por_id"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::obtener_usuario_inexistente"/>
+      </line>
+      <line nr="104">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+      </line>
+      <line nr="105">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+      </line>
+      <line nr="106">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario"/>
+      </line>
+      <line nr="112">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="39">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="40">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+      <line nr="47">
+        <covered by="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario"/>
+        <covered by="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Controllers</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="3"/>
+      <line no="4">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Models\User</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="5"/>
+      <line no="6">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">UserController</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="7">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONST">const</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">HASH_COST</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">12</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COMMENT">// Costo de hash para password_hash</token>
+      </line>
+      <line no="9"/>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="13"/>
+      <line no="14">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">hashPassword</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">password_hash</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">PASSWORD_BCRYPT</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'cost'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">self</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">HASH_COST</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="17"/>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">verifyPassword</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$hashedPassword</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">password_verify</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$hashedPassword</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="21"/>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">registerUser</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">User</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setUserType</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="28"/>
+      <line no="29">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Verificar si el correo ya existe</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">prepare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"SELECT id FROM users WHERE email = ?"</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">execute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">fetch</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'El correo ya est&#xE1; registrado'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="35"/>
+      <line no="36">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Usar password_hash en lugar de md5</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">prepare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"INSERT INTO users (name, email, password, user_type) </token>
+      </line>
+      <line no="39">
+        <token name="T_CONSTANT_ENCAPSED_STRING">                 VALUES (?, ?, ?, ?)"</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="41">
+        <token name="T_WHITESPACE">            </token>
+      </line>
+      <line no="42">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">execute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">hashPassword</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'password'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getUserType</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">            </token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Registro exitoso!'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="50">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Exception</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error en registro: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="52">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Error en el registro'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="53">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="55"/>
+      <line no="56">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">loginUser</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$email</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="57">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="58">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">prepare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"SELECT * FROM users WHERE email = ?"</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="59">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">execute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$email</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="60">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">fetch</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\PDO</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">FETCH_ASSOC</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="61"/>
+      <line no="62">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_AND">&amp;&amp;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">verifyPassword</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$password</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'password'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="63">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$_SESSION</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="64">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$_SESSION</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_name'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$_SESSION</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="66">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_VARIABLE">$_SESSION</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="67">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_type'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_type'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="68">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="69"/>
+      <line no="70">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Correo o contrase&#xF1;a incorrectos'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="71">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Exception</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="72">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error en login: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="73">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Error en el inicio de sesi&#xF3;n'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="74">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="75">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="76"/>
+      <line no="77">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">logout</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="78">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="79">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Asegurarse de que la sesi&#xF3;n est&#xE1; iniciada</token>
+      </line>
+      <line no="80">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">session_status</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_IDENTICAL">===</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">PHP_SESSION_NONE</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="81">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_STRING">session_start</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="82">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="83">
+        <token name="T_WHITESPACE">            </token>
+      </line>
+      <line no="84">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Limpiar todas las variables de sesi&#xF3;n</token>
+      </line>
+      <line no="85">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$_SESSION</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="86">
+        <token name="T_WHITESPACE">            </token>
+      </line>
+      <line no="87">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Destruir la sesi&#xF3;n</token>
+      </line>
+      <line no="88">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">session_destroy</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="89">
+        <token name="T_WHITESPACE">            </token>
+      </line>
+      <line no="90">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Redireccionar al login</token>
+      </line>
+      <line no="91">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">header</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'location: ../auth/login.php'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="92">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_EXIT">exit</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="93">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Exception</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="94">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error en logout: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="95">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Error al cerrar sesi&#xF3;n'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="96">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="97">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="98"/>
+      <line no="99">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getUserById</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userId</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="100">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="101">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">prepare</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"SELECT id, name, email, user_type FROM users WHERE id = ?"</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="102">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">execute</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_VARIABLE">$userId</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="103">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$stmt</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">fetch</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\PDO</token>
+        <token name="T_DOUBLE_COLON">::</token>
+        <token name="T_STRING">FETCH_ASSOC</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="104">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Exception</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="105">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error al obtener usuario: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="106">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">null</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="107">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="108">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="109"/>
+      <line no="110">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Alias para mantener compatibilidad</token>
+      </line>
+      <line no="111">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">register</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="112">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">registerUser</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="113">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="114">
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+      </line>
+    </source>
+  </file>
+</phpunit>

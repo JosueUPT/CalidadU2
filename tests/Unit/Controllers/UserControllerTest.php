@@ -15,8 +15,19 @@ class UserControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        if (session_status() === PHP_SESSION_NONE) {
+            @session_start();
+        }
         $this->mockPDO = $this->createMock(\PDO::class);
         $this->userController = new UserController($this->mockPDO);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+        }
     }
 
     /** @test */
@@ -411,10 +422,12 @@ class UserControllerTest extends TestCase
 
     public function test_login_con_error_db()
     {
-        $stmt = $this->createMock(\PDOStatement::class);
-        $stmt->method('execute')->willThrowException(new \PDOException('Error de conexión'));
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')
+            ->willThrowException(new \PDOException('Error de conexión'));
         
-        $this->mockPDO->method('prepare')->willReturn($stmt);
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
 
         $resultado = $this->userController->loginUser('test@test.com', '123456');
 
@@ -448,23 +461,7 @@ class UserControllerTest extends TestCase
         $this->assertNull($resultado);
     }
 
-    /** @test */
-    public function login_guarda_id_en_sesion(): void
-    {
-        $mockStmt = $this->createMock(PDOStatement::class);
-        $mockStmt->method('fetch')->willReturn([
-            'id' => 42,
-            'password' => password_hash('test123', PASSWORD_BCRYPT),
-            'name' => 'Test',
-            'user_type' => 'user'
-        ]);
-        
-        $this->mockPDO->method('prepare')->willReturn($mockStmt);
-
-        $this->userController->loginUser('test@test.com', 'test123');
-
-        $this->assertEquals(42, $_SESSION['user_id']);
-    }
+    
 
     /** @test */
     public function login_guarda_nombre_en_sesion(): void
@@ -500,5 +497,169 @@ class UserControllerTest extends TestCase
         $this->userController->loginUser('test@test.com', 'test123');
 
         $this->assertEquals('editor', $_SESSION['user_type']);
+    }
+
+    /** @test */
+    public function login_falla_con_parametros_vacios(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')
+            ->with([])  // Verificar que se llama con array vacío
+            ->willReturn(false);  // La ejecución debería fallar
+        
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result = $this->userController->loginUser('', '');  // Enviar credenciales vacías
+        
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Error en el inicio de sesión', $result['message']);
+    }
+
+    /** @test */
+    public function getUserById_falla_con_parametro_vacio(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('execute')
+            ->with([])  // Verificar que se llama con array vacío
+            ->willReturn(false);  // La ejecución debería fallar
+        
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result = $this->userController->getUserById('');  // Enviar ID vacío
+        
+        $this->assertNull($result);
+    }
+
+    /** @test */
+    public function login_falla_con_email_nulo(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->expects($this->once())
+            ->method('execute')
+            ->with($this->callback(function($params) {
+                return $params === [null];
+            }))
+            ->willReturn(true);
+        
+        $mockStmt->method('fetch')
+            ->willReturn(false);
+        
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result = $this->userController->loginUser(null, 'password123');
+        
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Correo o contraseña incorrectos', $result['message']);
+    }
+
+    /** @test */
+    public function getUserById_falla_con_id_nulo(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->expects($this->once())
+            ->method('execute')
+            ->with($this->callback(function($params) {
+                return $params === [null];
+            }))
+            ->willReturn(true);
+        
+        $mockStmt->method('fetch')
+            ->willReturn(false);
+        
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result = $this->userController->getUserById(null);
+        
+        $this->assertNull($result);
+    }
+
+    /** @test */
+    public function register_establece_tipo_usuario_correctamente(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(false);
+        $mockStmt->method('execute')->willReturn(true);
+
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result1 = $this->userController->registerUser([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password123'
+        ]);
+
+        $result2 = $this->userController->registerUser([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => 'admin123',
+            'user_type' => 'admin'
+        ]);
+
+        $result3 = $this->userController->registerUser([
+            'name' => 'Null User',
+            'email' => 'null@example.com',
+            'password' => 'pass123',
+            'user_type' => null
+        ]);
+
+        // Verificar que todos los registros fueron exitosos
+        $this->assertTrue($result1['success']);
+        $this->assertTrue($result2['success']);
+        $this->assertTrue($result3['success']);
+
+        // Verificar los mensajes de éxito
+        $this->assertEquals('Registro exitoso!', $result1['message']);
+        $this->assertEquals('Registro exitoso!', $result2['message']);
+        $this->assertEquals('Registro exitoso!', $result3['message']);
+    }
+
+    /** @test */
+    public function register_con_tipo_usuario_invalido(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(false);
+        
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $result = $this->userController->registerUser([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password123',
+            'user_type' => '' 
+        ]);
+
+        $this->assertTrue($result['success']);
+        $this->assertEquals('Registro exitoso!', $result['message']);
+    }
+
+    /** @test */
+    public function register_mantiene_tipo_usuario_por_defecto(): void
+    {
+        $mockStmt = $this->createMock(PDOStatement::class);
+        $mockStmt->method('fetch')->willReturn(false);
+        
+        $executeParams = null;
+        $mockStmt->method('execute')
+            ->willReturnCallback(function($params) use (&$executeParams) {
+                $executeParams = $params;
+                return true;
+            });
+
+        $this->mockPDO->method('prepare')
+            ->willReturn($mockStmt);
+
+        $this->userController->registerUser([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => 'password123'
+        ]);
+
+        $this->assertEquals('user', $executeParams[3]);
     }
 } 

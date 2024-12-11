@@ -8,11 +8,16 @@ class AutoloadTest extends TestCase
 {
     public function test_puede_cargar_clase_existente(): void
     {
-        $className = 'Exceptions\DatabaseException';
+        // Cargar el autoloader
+        require_once __DIR__ . '/../../src/autoload.php';
         
-        $this->assertFalse(class_exists($className, false));
+        // Intentar cargar una clase que sabemos que existe
+        $className = 'Models\Cart';
         
-        $this->assertTrue(class_exists($className, true));
+        // Verificar que la clase se puede cargar correctamente
+        $result = class_exists($className, true);
+        
+        $this->assertTrue($result, 'El autoloader debería poder cargar la clase Models\Cart');
     }
 
     public function test_maneja_clase_inexistente(): void

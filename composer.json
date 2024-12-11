@@ -25,6 +25,19 @@
         "behat/mink-selenium2-driver": "^1.7",
         "dmore/chrome-mink-driver": "^2.9",
         "php-webdriver/webdriver": "^1.15",
-        "emuse/behat-html-formatter": "^2.0"
+        "emuse/behat-html-formatter": "^2.0",
+        "infection/infection": "0.26",
+        "pestphp/pest": "^1.23"
+    },
+    "scripts": {
+        "test:mutation": [
+            "vendor/bin/infection --threads=4 --min-msi=60"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "pestphp/pest-plugin": true
+        }
     }
 }

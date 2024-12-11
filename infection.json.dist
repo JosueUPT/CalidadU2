@@ -1,0 +1,31 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "src/views"
+        ]
+    },
+    "logs": {
+        "text": "reports/mutations/infection.log",
+        "html": "reports/mutations/infection.html",
+        "summary": "reports/mutations/summary.log",
+        "json": "reports/mutations/infection.json",
+        "perMutator": "reports/mutations/per-mutator.md"
+    },
+    "mutators": {
+        "@default": true
+    },
+    "testFramework": "phpunit",
+    "bootstrap": "./vendor/autoload.php",
+    "initialTestsPhpOptions": "-d xdebug.mode=coverage",
+    "testFrameworkOptions": "--testsuite=Unit,Mutation",
+    "phpUnit": {
+        "configDir": ".",
+        "customPath": "./vendor/bin/phpunit"
+    },
+    "timeout": 10,
+    "minMsi": 60,
+    "minCoveredMsi": 60
+}

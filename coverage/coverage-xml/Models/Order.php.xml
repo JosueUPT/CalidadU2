@@ -1,0 +1,804 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="Order.php" path="\Models">
+    <totals>
+      <lines total="46" comments="2" code="44" executable="23" executed="22" percent="95.65"/>
+      <methods count="22" tested="21" percent="95.45"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Models\Order" start="4" executable="23" executed="22" crap="22">
+      <namespace name="Models"/>
+      <method name="getId" signature="getId()" start="18" end="18" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getUserId" signature="getUserId()" start="19" end="19" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getName" signature="getName()" start="20" end="20" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getNumber" signature="getNumber()" start="21" end="21" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getEmail" signature="getEmail()" start="22" end="22" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getMethod" signature="getMethod()" start="23" end="23" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getAddress" signature="getAddress()" start="24" end="24" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getTotalProducts" signature="getTotalProducts()" start="25" end="25" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getTotalPrice" signature="getTotalPrice()" start="26" end="26" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="getPlacedOn" signature="getPlacedOn()" start="27" end="27" crap="2" executable="1" executed="0" coverage="0"/>
+      <method name="getPaymentStatus" signature="getPaymentStatus()" start="28" end="28" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setUserId" signature="setUserId($userId)" start="31" end="31" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setName" signature="setName($name)" start="32" end="32" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setNumber" signature="setNumber($number)" start="33" end="33" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setEmail" signature="setEmail($email)" start="34" end="34" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setMethod" signature="setMethod($method)" start="35" end="35" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setAddress" signature="setAddress($address)" start="36" end="36" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setTotalProducts" signature="setTotalProducts($totalProducts)" start="37" end="37" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setTotalPrice" signature="setTotalPrice($totalPrice)" start="38" end="38" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setPaymentStatus" signature="setPaymentStatus($status)" start="39" end="39" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setPlacedOn" signature="setPlacedOn($placedOn)" start="40" end="40" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="setId" signature="setId($id)" start="42" end="45" crap="1" executable="2" executed="2" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="18">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testDeleteOrder"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+      </line>
+      <line nr="20">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="21">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="22">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="23">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="24">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="25">
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="26">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalPendings"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalCompleted"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetDashboardData"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+      </line>
+      <line nr="28">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido"/>
+      </line>
+      <line nr="33">
+        <covered by="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido"/>
+      </line>
+      <line nr="34">
+        <covered by="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido"/>
+      </line>
+      <line nr="35">
+        <covered by="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+      </line>
+      <line nr="37">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+      </line>
+      <line nr="38">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalPendings"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalCompleted"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetDashboardData"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos"/>
+      </line>
+      <line nr="39">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+      </line>
+      <line nr="40">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario"/>
+      </line>
+      <line nr="43">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalPendings"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalCompleted"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetDashboardData"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testDeleteOrder"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalPendings"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetTotalCompleted"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testGetDashboardData"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testDeleteOrder"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError"/>
+        <covered by="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Models</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="3"/>
+      <line no="4">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Order</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="5">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$userId</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$number</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="9">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$email</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$method</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$address</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$totalProducts</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$totalPrice</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$placedOn</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="15">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$paymentStatus</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="16"/>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Getters</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">id</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getUserId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">userId</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">name</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getNumber</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">number</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">email</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getMethod</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">method</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getAddress</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">address</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getTotalProducts</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">totalProducts</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="26">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getTotalPrice</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">totalPrice</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="27">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getPlacedOn</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">placedOn</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">getPaymentStatus</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">paymentStatus</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="29"/>
+      <line no="30">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Setters</token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setUserId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userId</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">userId</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$userId</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">name</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$name</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setNumber</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$number</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">number</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$number</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$email</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">email</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$email</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="35">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setMethod</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$method</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">method</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$method</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setAddress</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$address</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">address</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$address</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setTotalProducts</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$totalProducts</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">totalProducts</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$totalProducts</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setTotalPrice</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$totalPrice</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">totalPrice</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$totalPrice</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setPaymentStatus</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$status</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">paymentStatus</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$status</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setPlacedOn</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$placedOn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">placedOn</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$placedOn</token>
+        <token name="T_SEMICOLON">;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="41"/>
+      <line no="42">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">setId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">id</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$id</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="46">
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+      </line>
+    </source>
+  </file>
+</phpunit>

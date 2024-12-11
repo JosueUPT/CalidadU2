@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Dec 11 15:03:26 CET 2024" phpunit="9.6.22" coverage="9.2.32">
+    <runtime name="PHP" version="8.2.12" url="https://secure.php.net/"/>
+    <driver name="xdebug" version="3.4.0beta1"/>
+  </build>
+  <project source="C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src">
+    <tests>
+      <test name="Tests\Mutation\AdminControllerMutationTest::testAddProductMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\AdminControllerMutationTest::testDeleteProductMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\AdminControllerMutationTest::testUpdateProductMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithMissingFields" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\ProductControllerMutationTest::testUpdateCartQuantityMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\ProductControllerMutationTest::testAddToCartMutationWithDuplicate" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\ProductControllerMutationTest::testDeleteCartItemMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\OrderControllerMutationTest::testUpdatePaymentStatusMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\OrderControllerMutationTest::testCreateOrderMutationWithEmptyCart" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Mutation\OrderControllerMutationTest::testDeleteOrderMutation" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\UserTest::verifica_exists_retorna_false_cuando_no_existe" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\UserTest::verifica_exists_retorna_true_cuando_existe" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\UserTest::verifica_setId_retorna_instancia" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\UserTest::verifica_constructor_inicializa_user_type" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\UserTest::verifica_password_es_hasheado" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testDeleteMessage" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductDatabaseError" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithoutImage" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testHandleImageDeleteInvalidName" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateProductWithLargeImage" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetTotalPendings" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetAdminsCount" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetAllMessages" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetTotalCompleted" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testDeleteProduct" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testHandleImageDelete" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetSecureImagePathInvalidExtension" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetAllProducts" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetAllOrders" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetProductsCount" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetDashboardData" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetMessagesCount" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetOrdersCount" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetTotalAccounts" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetSecureImagePath" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testAddProductWithExistingName" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testDeleteOrder" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testAddProductSuccessfully" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testHandleDatabaseError" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetUsersCount" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatusDatabaseError" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testDeleteUser" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateProduct" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testGetAllUsers" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\AdminControllerTest::testUpdateOrderStatus" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\SearchControllerTest::buscar_productos_devuelve_array_vacio_cuando_no_hay_resultados" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\SearchControllerTest::buscar_productos_devuelve_resultados" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\SearchControllerTest::buscar_productos_devuelve_array_vacio_cuando_hay_excepcion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\AutoloadTest::test_maneja_clase_inexistente" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\AutoloadTest::test_puede_cargar_clase_existente" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Views\ShopTest::test_muestra_mensaje_cuando_no_hay_productos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Exceptions\DatabaseExceptionTest::hereda_de_exception" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Exceptions\DatabaseExceptionTest::puede_crear_excepcion_sin_parametros" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Exceptions\DatabaseExceptionTest::puede_crear_excepcion_con_parametros" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_campos_faltantes" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::constructor_asigna_conexion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::crear_mensaje_retorna_instancia_message" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::crear_usuario_retorna_instancia_user" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Config\DatabaseTest::test_conexion_fallida_lanza_excepcion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::eliminar_item_carrito_exitoso" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::agregar_producto_duplicado_al_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::verificar_carrito_vacio" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_agregar_al_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::agregar_al_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_actualizar_cantidad" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_eliminar_todos_items_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::eliminar_todos_items_carrito_exitoso" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_eliminar_item_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_obtener_todos_productos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_obtener_productos_recientes" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::obtener_todos_productos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::manejo_error_al_obtener_items_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::obtener_productos_recientes" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::obtener_items_carrito" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\ProductControllerTest::actualizar_cantidad_carrito_exitoso" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_obtener_todos_productos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_obtener_todos_usuarios" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::actualizar_estado_pago" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::obtener_pedidos_usuario" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::crear_pedido" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_con_carrito_vacio" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::crear_pedido_duplicado" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_pedidos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::manejar_error_base_datos_en_obtener_pedidos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::manejar_error_al_crear_pedido" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_usuarios" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::eliminar_pedido" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\OrderControllerTest::obtener_todos_productos" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_guardar_mensaje" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::maneja_error_al_verificar_existencia" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_id" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::maneja_error_al_guardar" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_message" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_email" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_user_id" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_name" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Models\MessageTest::puede_establecer_y_obtener_number" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::login_falla_con_password_incorrecto" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::verifica_password_correcto" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::registro_falla_con_email_existente" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::verifica_password_incorrecto" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::usuario_puede_registrarse" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_login_con_error_db" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::login_guarda_nombre_en_sesion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::registro_con_tipo_usuario_personalizado" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::verifica_hash_password_con_costo_correcto" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_login_con_password_incorrecto" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_register_con_email_existente" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_getUserById_usuario_no_existe" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_getUserById_con_error_db" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::login_exitoso_con_admin" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::manejo_error_al_obtener_usuario" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::inicio_sesion_falla_con_credenciales_incorrectas" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::usuario_puede_iniciar_sesion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_login" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::verificar_hash_password" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::puede_obtener_usuario_por_id" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::registro_exitoso_sin_tipo_usuario" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::login_guarda_tipo_usuario_en_sesion" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::obtener_usuario_inexistente" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_register_con_error_db" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::verificar_alias_register" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::manejo_error_en_registro" size="unknown" result="0" status="PASSED"/>
+      <test name="Tests\Unit\Controllers\UserControllerTest::test_login_con_credenciales_invalidas" size="unknown" result="0" status="PASSED"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="1288" comments="50" code="1238" executable="691" executed="590" percent="85.38"/>
+        <methods count="130" tested="106" percent="81.54"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="13" tested="6" percent="46.15"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <directory name="Config">
+        <totals>
+          <lines total="70" comments="0" code="70" executable="36" executed="20" percent="55.56"/>
+          <methods count="4" tested="1" percent="25.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="0" percent="0.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="Database.php" href="Config/Database.php.xml">
+          <totals>
+            <lines total="70" comments="0" code="70" executable="36" executed="20" percent="55.56"/>
+            <methods count="4" tested="1" percent="25.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Controllers">
+        <totals>
+          <lines total="1004" comments="37" code="967" executable="560" executed="485" percent="86.61"/>
+          <methods count="59" tested="41" percent="69.49"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="6" tested="3" percent="50.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="AdminController.php" href="Controllers/AdminController.php.xml">
+          <totals>
+            <lines total="407" comments="15" code="392" executable="228" executed="191" percent="83.77"/>
+            <methods count="25" tested="13" percent="52.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ContactController.php" href="Controllers/ContactController.php.xml">
+          <totals>
+            <lines total="65" comments="5" code="60" executable="27" executed="27" percent="100.00"/>
+            <methods count="4" tested="4" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="OrderController.php" href="Controllers/OrderController.php.xml">
+          <totals>
+            <lines total="249" comments="7" code="242" executable="157" executed="128" percent="81.53"/>
+            <methods count="12" tested="7" percent="58.33"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="ProductController.php" href="Controllers/ProductController.php.xml">
+          <totals>
+            <lines total="146" comments="2" code="144" executable="86" executed="86" percent="100.00"/>
+            <methods count="8" tested="8" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="SearchController.php" href="Controllers/SearchController.php.xml">
+          <totals>
+            <lines total="23" comments="0" code="23" executable="8" executed="8" percent="100.00"/>
+            <methods count="2" tested="2" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="UserController.php" href="Controllers/UserController.php.xml">
+          <totals>
+            <lines total="114" comments="8" code="106" executable="54" executed="45" percent="83.33"/>
+            <methods count="8" tested="7" percent="87.50"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Exceptions">
+        <totals>
+          <lines total="8" comments="0" code="8" executable="1" executed="1" percent="100.00"/>
+          <methods count="1" tested="1" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="DatabaseException.php" href="Exceptions/DatabaseException.php.xml">
+          <totals>
+            <lines total="8" comments="0" code="8" executable="1" executed="1" percent="100.00"/>
+            <methods count="1" tested="1" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <directory name="Models">
+        <totals>
+          <lines total="181" comments="10" code="171" executable="81" executed="78" percent="96.30"/>
+          <methods count="66" tested="63" percent="95.45"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="5" tested="2" percent="40.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+        <file name="Cart.php" href="Models/Cart.php.xml">
+          <totals>
+            <lines total="26" comments="2" code="24" executable="11" executed="10" percent="90.91"/>
+            <methods count="11" tested="10" percent="90.91"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="Message.php" href="Models/Message.php.xml">
+          <totals>
+            <lines total="47" comments="2" code="45" executable="25" executed="24" percent="96.00"/>
+            <methods count="14" tested="13" percent="92.86"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="Order.php" href="Models/Order.php.xml">
+          <totals>
+            <lines total="46" comments="2" code="44" executable="23" executed="22" percent="95.65"/>
+            <methods count="22" tested="21" percent="95.45"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="0" percent="0.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="Product.php" href="Models/Product.php.xml">
+          <totals>
+            <lines total="24" comments="2" code="22" executable="8" executed="8" percent="100.00"/>
+            <methods count="8" tested="8" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+        <file name="User.php" href="Models/User.php.xml">
+          <totals>
+            <lines total="38" comments="2" code="36" executable="14" executed="14" percent="100.00"/>
+            <methods count="11" tested="11" percent="100.00"/>
+            <functions count="0" tested="0" percent="0"/>
+            <classes count="1" tested="1" percent="100.00"/>
+            <traits count="0" tested="0" percent="0"/>
+          </totals>
+        </file>
+      </directory>
+      <file name="autoload.php" href="autoload.php.xml">
+        <totals>
+          <lines total="12" comments="1" code="11" executable="8" executed="6" percent="75.00"/>
+          <methods count="0" tested="0" percent="0"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="0" tested="0" percent="0"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+      <file name="index.php" href="index.php.xml">
+        <totals>
+          <lines total="13" comments="2" code="11" executable="5" executed="0" percent="0.00"/>
+          <methods count="0" tested="0" percent="0"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="0" tested="0" percent="0"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+    </directory>
+  </project>
+</phpunit>

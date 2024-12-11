@@ -175,6 +175,26 @@ class OrderControllerTest extends TestCase
     }
 
     /** @test */
+    public function obtener_todos_pedidos_cuando_no_hay_datos(): void
+    {
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('execute');
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn([]);
+
+        $result = $this->orderController->getAllOrders();
+
+        $this->assertEmpty($result);
+        $this->assertIsArray($result);
+    }
+
+    /** @test */
     public function manejar_error_base_datos_en_obtener_pedidos(): void
     {
         $userId = 1;
@@ -387,5 +407,71 @@ class OrderControllerTest extends TestCase
 
         $this->assertEmpty($result);
         $this->assertIsArray($result);
+    }
+
+    /** @test */
+    public function crear_pedido_con_carrito_items_vacio(): void
+    {
+        $userId = 1;
+        $userData = [
+            'name' => 'Juan Pérez',
+            'number' => '123456789',
+            'email' => 'juan@test.com',
+            'method' => 'credit card',
+            'flat' => '123',
+            'street' => 'Calle Principal',
+            'city' => 'Lima',
+            'country' => 'Perú',
+            'pin_code' => '12345'
+        ];
+
+        // Simular array vacío de items
+        $cartItems = [];
+
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn($cartItems);
+
+        $result = $this->orderController->createOrder($userData, $userId);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('El carrito está vacío', $result['message']);
+    }
+
+    /** @test */
+    public function crear_pedido_con_foreach_array_vacio(): void
+    {
+        $userId = 1;
+        $userData = [
+            'name' => 'Juan Pérez',
+            'number' => '123456789',
+            'email' => 'juan@test.com',
+            'method' => 'credit card',
+            'flat' => '123',
+            'street' => 'Calle Principal',
+            'city' => 'Lima',
+            'country' => 'Perú',
+            'pin_code' => '12345'
+        ];
+
+        // Simular un array vacío para el foreach
+        $cartItems = array();
+
+        $this->conn->expects($this->once())
+            ->method('prepare')
+            ->willReturn($this->pdoStatement);
+
+        $this->pdoStatement->expects($this->once())
+            ->method('fetchAll')
+            ->willReturn($cartItems);
+
+        $result = $this->orderController->createOrder($userData, $userId);
+
+        $this->assertFalse($result['success']);
+        $this->assertEquals('El carrito está vacío', $result['message']);
     }
 } 

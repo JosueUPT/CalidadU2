@@ -1,0 +1,2882 @@
+Escaped mutants:
+================
+
+1) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:38    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private function getTotalPendings()
+     {
+         $stmt = $this->conn->prepare("SELECT * FROM `orders` WHERE payment_status = 'pendiente'");
+-        $stmt->execute();
++        
+         $total = 0;
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+
+
+2) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:42    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $total = 0;
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+-            $order->setId($row['id']);
++            
+             $order->setTotalPrice($row['total_price']);
+             $total += $order->getTotalPrice();
+         }
+
+
+3) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:51    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     private function getTotalCompleted()
+     {
+         $stmt = $this->conn->prepare("SELECT * FROM `orders` WHERE payment_status = 'completado'");
+-        $stmt->execute();
++        
+         $total = 0;
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+
+
+4) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:55    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $total = 0;
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+-            $order->setId($row['id']);
++            
+             $order->setTotalPrice($row['total_price']);
+             $total += $order->getTotalPrice();
+         }
+
+
+5) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:65    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `orders`";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function getProductsCount()
+
+
+6) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:72    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `products`";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function getUsersCount()
+
+
+7) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:79    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `users` WHERE user_type = 'user'";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function getAdminsCount()
+
+
+8) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:86    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `users` WHERE user_type = 'admin'";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function getTotalAccounts()
+
+
+9) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:93    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `users`";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function getMessagesCount()
+
+
+10) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:100    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $query = "SELECT COUNT(*) as count FROM `message`";
+         $stmt = $this->conn->prepare($query);
+-        $stmt->execute();
++        
+         return $stmt->fetch(\PDO::FETCH_ASSOC)['count'];
+     }
+     private function handleDatabaseError($e)
+
+
+11) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:105    [M] Concat
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError($e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log($e->getMessage() . "Error en la base de datos: ");
+         throw new \Exception("Error al procesar la solicitud");
+     }
+     public function addProduct($postData, $files)
+
+
+12) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:105    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError($e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log($e->getMessage());
+         throw new \Exception("Error al procesar la solicitud");
+     }
+     public function addProduct($postData, $files)
+
+
+13) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:105    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError($e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log("Error en la base de datos: ");
+         throw new \Exception("Error al procesar la solicitud");
+     }
+     public function addProduct($postData, $files)
+
+
+14) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:105    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError($e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        
+         throw new \Exception("Error al procesar la solicitud");
+     }
+     public function addProduct($postData, $files)
+
+
+15) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:172    [M] LogicalOr
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             // Validar el nombre del archivo
+-            if (empty($imageName) || !is_string($imageName)) {
++            if (empty($imageName) && !is_string($imageName)) {
+                 throw new \Exception('Nombre de archivo inválido');
+             }
+             // Obtener y validar la extensión
+
+
+16) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:177    [M] UnwrapStrToLower
+
+--- Original
++++ New
+@@ @@
+                 throw new \Exception('Nombre de archivo inválido');
+             }
+             // Obtener y validar la extensión
+-            $extension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
++            $extension = pathinfo($imageName, PATHINFO_EXTENSION);
+             if (!in_array($extension, self::ALLOWED_EXTENSIONS)) {
+                 throw new \Exception('Tipo de archivo no permitido');
+             }
+
+
+17) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:184    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             // Verificar que el archivo existe en la base de datos
+             $stmt = $this->conn->prepare("SELECT image FROM products WHERE image = ?");
+-            $stmt->execute([$imageName]);
++            $stmt->execute([]);
+             if (!$stmt->fetch()) {
+                 throw new \Exception('Archivo no encontrado en la base de datos');
+             }
+
+
+18) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:184    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             // Verificar que el archivo existe en la base de datos
+             $stmt = $this->conn->prepare("SELECT image FROM products WHERE image = ?");
+-            $stmt->execute([$imageName]);
++            
+             if (!$stmt->fetch()) {
+                 throw new \Exception('Archivo no encontrado en la base de datos');
+             }
+
+
+19) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:189    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             if (!$stmt->fetch()) {
+                 throw new \Exception('Archivo no encontrado en la base de datos');
+             }
+-            return self::UPLOAD_PATH . $imageName;
++            return $imageName . self::UPLOAD_PATH;
+         } catch (\Exception $e) {
+             error_log("Error en getSecureImagePath: " . $e->getMessage());
+             return false;
+
+
+20) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:189    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             if (!$stmt->fetch()) {
+                 throw new \Exception('Archivo no encontrado en la base de datos');
+             }
+-            return self::UPLOAD_PATH . $imageName;
++            return $imageName;
+         } catch (\Exception $e) {
+             error_log("Error en getSecureImagePath: " . $e->getMessage());
+             return false;
+
+
+21) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:191    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             return self::UPLOAD_PATH . $imageName;
+         } catch (\Exception $e) {
+-            error_log("Error en getSecureImagePath: " . $e->getMessage());
++            error_log($e->getMessage() . "Error en getSecureImagePath: ");
+             return false;
+         }
+     }
+
+
+22) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:191    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return self::UPLOAD_PATH . $imageName;
+         } catch (\Exception $e) {
+-            error_log("Error en getSecureImagePath: " . $e->getMessage());
++            error_log($e->getMessage());
+             return false;
+         }
+     }
+
+
+23) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:191    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return self::UPLOAD_PATH . $imageName;
+         } catch (\Exception $e) {
+-            error_log("Error en getSecureImagePath: " . $e->getMessage());
++            error_log("Error en getSecureImagePath: ");
+             return false;
+         }
+     }
+
+
+24) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:191    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return self::UPLOAD_PATH . $imageName;
+         } catch (\Exception $e) {
+-            error_log("Error en getSecureImagePath: " . $e->getMessage());
++            
+             return false;
+         }
+     }
+
+
+25) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:209    [M] FalseValue
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$imageName]);
+             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+             if (!$result) {
+-                return false;
++                return true;
+             }
+             // Construir y validar la ruta
+             $fullPath = realpath(self::UPLOAD_PATH . $result['image']);
+
+
+26) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:284    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $products = [];
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $product = new Product();
+-            $product->setId($row['id']);
++            
+             $product->setName($row['name']);
+             $product->setPrice($row['price']);
+             $product->setImage($row['image']);
+
+
+27) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:287    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $product->setId($row['id']);
+             $product->setName($row['name']);
+             $product->setPrice($row['price']);
+-            $product->setImage($row['image']);
++            
+             $products[] = $product;
+         }
+         return $products;
+
+
+28) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:295    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function getAllOrders()
+     {
+         $stmt = $this->conn->prepare("SELECT * FROM `orders`");
+-        $stmt->execute();
++        
+         $orders = [];
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+
+
+29) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:299    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         $orders = [];
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+-            $order->setId($row['id']);
++            
+             $order->setUserId($row['user_id']);
+             $order->setPlacedOn($row['placed_on']);
+             $order->setName($row['name']);
+
+
+30) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:300    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+             $order = new Order();
+             $order->setId($row['id']);
+-            $order->setUserId($row['user_id']);
++            
+             $order->setPlacedOn($row['placed_on']);
+             $order->setName($row['name']);
+             $order->setNumber($row['number']);
+
+
+31) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:301    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order = new Order();
+             $order->setId($row['id']);
+             $order->setUserId($row['user_id']);
+-            $order->setPlacedOn($row['placed_on']);
++            
+             $order->setName($row['name']);
+             $order->setNumber($row['number']);
+             $order->setEmail($row['email']);
+
+
+32) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:303    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setUserId($row['user_id']);
+             $order->setPlacedOn($row['placed_on']);
+             $order->setName($row['name']);
+-            $order->setNumber($row['number']);
++            
+             $order->setEmail($row['email']);
+             $order->setAddress($row['address']);
+             $order->setTotalProducts($row['total_products']);
+
+
+33) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:304    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setPlacedOn($row['placed_on']);
+             $order->setName($row['name']);
+             $order->setNumber($row['number']);
+-            $order->setEmail($row['email']);
++            
+             $order->setAddress($row['address']);
+             $order->setTotalProducts($row['total_products']);
+             $order->setTotalPrice($row['total_price']);
+
+
+34) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:305    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setName($row['name']);
+             $order->setNumber($row['number']);
+             $order->setEmail($row['email']);
+-            $order->setAddress($row['address']);
++            
+             $order->setTotalProducts($row['total_products']);
+             $order->setTotalPrice($row['total_price']);
+             $order->setMethod($row['method']);
+
+
+35) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:306    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setNumber($row['number']);
+             $order->setEmail($row['email']);
+             $order->setAddress($row['address']);
+-            $order->setTotalProducts($row['total_products']);
++            
+             $order->setTotalPrice($row['total_price']);
+             $order->setMethod($row['method']);
+             $order->setPaymentStatus($row['payment_status']);
+
+
+36) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:308    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setAddress($row['address']);
+             $order->setTotalProducts($row['total_products']);
+             $order->setTotalPrice($row['total_price']);
+-            $order->setMethod($row['method']);
++            
+             $order->setPaymentStatus($row['payment_status']);
+             $orders[] = $order;
+         }
+
+
+37) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:309    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setTotalProducts($row['total_products']);
+             $order->setTotalPrice($row['total_price']);
+             $order->setMethod($row['method']);
+-            $order->setPaymentStatus($row['payment_status']);
++            
+             $orders[] = $order;
+         }
+         return $orders;
+
+
+38) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:318    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             $order = new Order();
+-            $order->setId($orderId);
++            
+             $order->setPaymentStatus($status);
+             $stmt = $this->conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
+             return $stmt->execute([$order->getPaymentStatus(), $order->getId()]);
+
+
+39) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:319    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         try {
+             $order = new Order();
+             $order->setId($orderId);
+-            $order->setPaymentStatus($status);
++            
+             $stmt = $this->conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
+             return $stmt->execute([$order->getPaymentStatus(), $order->getId()]);
+         } catch (\PDOException $e) {
+
+
+40) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:322    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setId($orderId);
+             $order->setPaymentStatus($status);
+             $stmt = $this->conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
+-            return $stmt->execute([$order->getPaymentStatus(), $order->getId()]);
++            return $stmt->execute([$order->getId()]);
+         } catch (\PDOException $e) {
+             $this->handleDatabaseError($e);
+             return false;
+
+
+41) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:332    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             $order = new Order();
+-            $order->setId($orderId);
++            
+             $stmt = $this->conn->prepare("DELETE FROM `orders` WHERE id = ?");
+             return $stmt->execute([$order->getId()]);
+         } catch (\PDOException $e) {
+
+
+42) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:335    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             $order = new Order();
+             $order->setId($orderId);
+             $stmt = $this->conn->prepare("DELETE FROM `orders` WHERE id = ?");
+-            return $stmt->execute([$order->getId()]);
++            return $stmt->execute([]);
+         } catch (\PDOException $e) {
+             $this->handleDatabaseError($e);
+             return false;
+
+
+43) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:345    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             $stmt = $this->conn->prepare("SELECT * FROM `users`");
+-            $stmt->execute();
++            
+             $users = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $user = new User();
+
+
+44) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:350    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $users = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $user = new User();
+-                $user->setId($row['id']);
++                
+                 $user->setName($row['name']);
+                 $user->setEmail($row['email']);
+                 $user->setUserType($row['user_type']);
+
+
+45) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:353    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $user->setId($row['id']);
+                 $user->setName($row['name']);
+                 $user->setEmail($row['email']);
+-                $user->setUserType($row['user_type']);
++                
+                 $users[] = $user;
+             }
+             return $users;
+
+
+46) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:366    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             $user = new User();
+-            $user->setId($userId);
++            
+             $stmt = $this->conn->prepare("DELETE FROM `users` WHERE id = ?");
+             return $stmt->execute([$user->getId()]);
+         } catch (\PDOException $e) {
+
+
+47) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:369    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             $user = new User();
+             $user->setId($userId);
+             $stmt = $this->conn->prepare("DELETE FROM `users` WHERE id = ?");
+-            return $stmt->execute([$user->getId()]);
++            return $stmt->execute([]);
+         } catch (\PDOException $e) {
+             $this->handleDatabaseError($e);
+             return false;
+
+
+48) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:382    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $messages = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $message = new Message();
+-                $message->setId($row['id']);
++                
+                 $message->setUserId($row['user_id']);
+                 $message->setMessage($row['message']);
+                 $message->setName($row['name']);
+
+
+49) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:383    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $message = new Message();
+                 $message->setId($row['id']);
+-                $message->setUserId($row['user_id']);
++                
+                 $message->setMessage($row['message']);
+                 $message->setName($row['name']);
+                 $message->setEmail($row['email']);
+
+
+50) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:385    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $message->setId($row['id']);
+                 $message->setUserId($row['user_id']);
+                 $message->setMessage($row['message']);
+-                $message->setName($row['name']);
++                
+                 $message->setEmail($row['email']);
+                 $message->setNumber($row['number']);
+                 $messages[] = $message;
+
+
+51) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:387    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $message->setMessage($row['message']);
+                 $message->setName($row['name']);
+                 $message->setEmail($row['email']);
+-                $message->setNumber($row['number']);
++                
+                 $messages[] = $message;
+             }
+             return $messages;
+
+
+52) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\AdminController.php:401    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+         try {
+             $query = "DELETE FROM `message` WHERE id = ?";
+             $stmt = $this->conn->prepare($query);
+-            return $stmt->execute([$messageId]);
++            return $stmt->execute([]);
+         } catch (\PDOException $e) {
+             $this->handleDatabaseError($e);
+             return false;
+
+
+53) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:58    [M] Concat
+
+--- Original
++++ New
+@@ @@
+                 return ['success' => true, 'message' => '¡Mensaje enviado exitosamente!'];
+             }
+             // Añadir log específico si save() falla
+-            error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
++            error_log($userData['user_id'] . "Error en save(): Falló al guardar el mensaje para usuario ID: ");
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+
+
+54) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:58    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+                 return ['success' => true, 'message' => '¡Mensaje enviado exitosamente!'];
+             }
+             // Añadir log específico si save() falla
+-            error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
++            error_log($userData['user_id']);
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+
+
+55) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:58    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+                 return ['success' => true, 'message' => '¡Mensaje enviado exitosamente!'];
+             }
+             // Añadir log específico si save() falla
+-            error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
++            error_log("Error en save(): Falló al guardar el mensaje para usuario ID: ");
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+
+
+56) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:58    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             if ($message->save($this->conn)) {
+                 return ['success' => true, 'message' => '¡Mensaje enviado exitosamente!'];
+             }
+-            // Añadir log específico si save() falla
+-            error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
++            
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+
+
+57) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:61    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+-            error_log("Error al enviar mensaje: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al enviar mensaje: ");
+             return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
+         }
+     }
+ }
+
+
+58) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:61    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+-            error_log("Error al enviar mensaje: " . $e->getMessage());
++            error_log($e->getMessage());
+             return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
+         }
+     }
+ }
+
+
+59) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:61    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+-            error_log("Error al enviar mensaje: " . $e->getMessage());
++            error_log("Error al enviar mensaje: ");
+             return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
+         }
+     }
+ }
+
+
+60) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:61    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             error_log("Error en save(): Falló al guardar el mensaje para usuario ID: " . $userData['user_id']);
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+-            error_log("Error al enviar mensaje: " . $e->getMessage());
++            
+             return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
+         }
+     }
+ }
+
+
+61) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:62    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+-            return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
++            return ['success' => false, 'message' => $e->getMessage() . 'Error al enviar mensaje: '];
+         }
+     }
+ }
+
+
+62) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ContactController.php:62    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             return ['success' => false, 'message' => 'Error al enviar mensaje'];
+         } catch (\Exception $e) {
+             error_log("Error al enviar mensaje: " . $e->getMessage());
+-            return ['success' => false, 'message' => 'Error al enviar mensaje: ' . $e->getMessage()];
++            return ['success' => false, 'message' => 'Error al enviar mensaje: '];
+         }
+     }
+ }
+
+
+63) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:40    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $orders;
+         } catch (\Exception $e) {
+-            $this->handleDatabaseError($e);
++            
+             return [];
+         }
+     }
+
+
+64) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:73    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $order = new Order();
+                 $order->setUserId($row['user_id']);
+-                $order->setName($row['name']);
++                
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+
+
+65) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:74    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order = new Order();
+                 $order->setUserId($row['user_id']);
+                 $order->setName($row['name']);
+-                $order->setEmail($row['email']);
++                
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+
+
+66) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:75    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setUserId($row['user_id']);
+                 $order->setName($row['name']);
+                 $order->setEmail($row['email']);
+-                $order->setMethod($row['method']);
++                
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+
+
+67) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:76    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setName($row['name']);
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+-                $order->setAddress($row['address']);
++                
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+                 $orders[] = $order;
+
+
+68) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:77    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+-                $order->setTotalProducts($row['total_products']);
++                
+                 $order->setTotalPrice($row['total_price']);
+                 $orders[] = $order;
+             }
+
+
+69) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:78    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+-                $order->setTotalPrice($row['total_price']);
++                
+                 $orders[] = $order;
+             }
+             return $orders;
+
+
+70) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:104    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+                 return ['success' => false, 'message' => 'El carrito está vacío'];
+             }
+             // Calcular total y preparar lista de productos
+-            $cartTotal = 0;
++            $cartTotal = -1;
+             $products = [];
+             foreach ($cartItems as $item) {
+                 $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
+
+
+71) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:106    [M] Foreach_
+
+--- Original
++++ New
+@@ @@
+             // Calcular total y preparar lista de productos
+             $cartTotal = 0;
+             $products = [];
+-            foreach ($cartItems as $item) {
++            foreach (array() as $item) {
+                 $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+
+
+72) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = ' (' . $item['name'] . $item['quantity'] . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+73) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = ' (' . $item['quantity'] . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+74) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = $item['name'] . $item['quantity'] . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+75) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = $item['name'] . $item['quantity'] . ' (' . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+76) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = $item['name'] . ' (' . ')';
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+77) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = $item['name'] . ' (' . ')' . $item['quantity'];
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+78) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:107    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $cartTotal = 0;
+             $products = [];
+             foreach ($cartItems as $item) {
+-                $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
++                $products[] = $item['name'] . ' (' . $item['quantity'];
+                 $cartTotal += $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+
+
+79) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:108    [M] Multiplication
+
+--- Original
++++ New
+@@ @@
+             $products = [];
+             foreach ($cartItems as $item) {
+                 $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
+-                $cartTotal += $item['price'] * $item['quantity'];
++                $cartTotal += $item['price'] / $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+
+
+80) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:108    [M] Assignment
+
+--- Original
++++ New
+@@ @@
+             $products = [];
+             foreach ($cartItems as $item) {
+                 $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
+-                $cartTotal += $item['price'] * $item['quantity'];
++                $cartTotal = $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+
+
+81) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:108    [M] PlusEqual
+
+--- Original
++++ New
+@@ @@
+             $products = [];
+             foreach ($cartItems as $item) {
+                 $products[] = $item['name'] . ' (' . $item['quantity'] . ')';
+-                $cartTotal += $item['price'] * $item['quantity'];
++                $cartTotal -= $item['price'] * $item['quantity'];
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+
+
+82) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = $userData['flat'] . 'flat no. ' . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+83) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+84) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+85) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . ', ' . $userData['flat'] . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+86) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+87) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . $userData['street'] . ', ' . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+88) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+89) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . ', ' . $userData['street'] . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+90) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+91) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . $userData['city'] . ', ' . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+92) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+93) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . ', ' . $userData['city'] . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+94) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+95) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . $userData['country'] . ', ' . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+96) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+97) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . ' - ' . $userData['country'] . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+98) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+99) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . $userData['pin_code'] . ' - ';
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+100) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:113    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+-            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
++            $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ';
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+
+
+101) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:120    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $totalProducts = implode(', ', $products);
+             // Formatear y establecer dirección
+             $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+-            // Establecer valores adicionales en el objeto Order
+-            $order->setAddress($address);
++            
+             $order->setTotalProducts($totalProducts);
+             $order->setTotalPrice($cartTotal);
+             // Verificar si la orden ya existe
+
+
+102) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:121    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $address = 'flat no. ' . $userData['flat'] . ', ' . $userData['street'] . ', ' . $userData['city'] . ', ' . $userData['country'] . ' - ' . $userData['pin_code'];
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+-            $order->setTotalProducts($totalProducts);
++            
+             $order->setTotalPrice($cartTotal);
+             // Verificar si la orden ya existe
+             $stmt = $this->conn->prepare("SELECT * FROM orders WHERE \r\n                name = ? AND number = ? AND email = ? AND \r\n                method = ? AND address = ? AND \r\n                total_products = ? AND total_price = ?");
+
+
+103) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:122    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             // Establecer valores adicionales en el objeto Order
+             $order->setAddress($address);
+             $order->setTotalProducts($totalProducts);
+-            $order->setTotalPrice($cartTotal);
++            
+             // Verificar si la orden ya existe
+             $stmt = $this->conn->prepare("SELECT * FROM orders WHERE \r\n                name = ? AND number = ? AND email = ? AND \r\n                method = ? AND address = ? AND \r\n                total_products = ? AND total_price = ?");
+             $stmt->execute([$order->getName(), $order->getNumber(), $order->getEmail(), $order->getMethod(), $order->getAddress(), $order->getTotalProducts(), $order->getTotalPrice()]);
+
+
+104) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:130    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             $order->setTotalPrice($cartTotal);
+             // Verificar si la orden ya existe
+             $stmt = $this->conn->prepare("SELECT * FROM orders WHERE \r\n                name = ? AND number = ? AND email = ? AND \r\n                method = ? AND address = ? AND \r\n                total_products = ? AND total_price = ?");
+-            $stmt->execute([$order->getName(), $order->getNumber(), $order->getEmail(), $order->getMethod(), $order->getAddress(), $order->getTotalProducts(), $order->getTotalPrice()]);
++            $stmt->execute([$order->getNumber(), $order->getEmail(), $order->getMethod(), $order->getAddress(), $order->getTotalProducts(), $order->getTotalPrice()]);
+             if ($stmt->rowCount() > 0) {
+                 return ['success' => false, 'message' => '¡Pedido ya realizado!'];
+             }
+
+
+105) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:150    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             // Insertar nueva orden
+             $stmt = $this->conn->prepare("INSERT INTO orders \r\n                (user_id, name, number, email, method, address, \r\n                total_products, total_price, placed_on) \r\n                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+-            $stmt->execute([$order->getUserId(), $order->getName(), $order->getNumber(), $order->getEmail(), $order->getMethod(), $order->getAddress(), $order->getTotalProducts(), $order->getTotalPrice(), date('d-M-Y')]);
++            $stmt->execute([$order->getName(), $order->getNumber(), $order->getEmail(), $order->getMethod(), $order->getAddress(), $order->getTotalProducts(), $order->getTotalPrice(), date('d-M-Y')]);
+             // Limpiar carrito
+             $this->clearCart($userId);
+             return ['success' => true, 'message' => '¡Pedido realizado con éxito!'];
+
+
+106) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:167    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $this->clearCart($userId);
+             return ['success' => true, 'message' => '¡Pedido realizado con éxito!'];
+         } catch (\Exception $e) {
+-            error_log("Error al crear orden: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al crear orden: ");
+             return ['success' => false, 'message' => 'Error al procesar el pedido'];
+         }
+     }
+
+
+107) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:167    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $this->clearCart($userId);
+             return ['success' => true, 'message' => '¡Pedido realizado con éxito!'];
+         } catch (\Exception $e) {
+-            error_log("Error al crear orden: " . $e->getMessage());
++            error_log($e->getMessage());
+             return ['success' => false, 'message' => 'Error al procesar el pedido'];
+         }
+     }
+
+
+108) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:167    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $this->clearCart($userId);
+             return ['success' => true, 'message' => '¡Pedido realizado con éxito!'];
+         } catch (\Exception $e) {
+-            error_log("Error al crear orden: " . $e->getMessage());
++            error_log("Error al crear orden: ");
+             return ['success' => false, 'message' => 'Error al procesar el pedido'];
+         }
+     }
+
+
+109) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:167    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $this->clearCart($userId);
+             return ['success' => true, 'message' => '¡Pedido realizado con éxito!'];
+         } catch (\Exception $e) {
+-            error_log("Error al crear orden: " . $e->getMessage());
++            
+             return ['success' => false, 'message' => 'Error al procesar el pedido'];
+         }
+     }
+
+
+110) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:180    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+     private function clearCart($userId)
+     {
+         $stmt = $this->conn->prepare("DELETE FROM cart WHERE user_id = ?");
+-        $stmt->execute([$userId]);
++        $stmt->execute([]);
+     }
+     public function getUserOrders($userId)
+     {
+
+
+111) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:191    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $order = new Order();
+                 $order->setUserId($row['user_id']);
+-                $order->setName($row['name']);
++                
+                 $order->setNumber($row['number']);
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+
+
+112) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:192    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order = new Order();
+                 $order->setUserId($row['user_id']);
+                 $order->setName($row['name']);
+-                $order->setNumber($row['number']);
++                
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+
+
+113) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:193    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setUserId($row['user_id']);
+                 $order->setName($row['name']);
+                 $order->setNumber($row['number']);
+-                $order->setEmail($row['email']);
++                
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+
+
+114) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:194    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setName($row['name']);
+                 $order->setNumber($row['number']);
+                 $order->setEmail($row['email']);
+-                $order->setMethod($row['method']);
++                
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+
+
+115) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:195    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setNumber($row['number']);
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+-                $order->setAddress($row['address']);
++                
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+                 $order->setPaymentStatus($row['payment_status']);
+
+
+116) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:196    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setEmail($row['email']);
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+-                $order->setTotalProducts($row['total_products']);
++                
+                 $order->setTotalPrice($row['total_price']);
+                 $order->setPaymentStatus($row['payment_status']);
+                 $order->setPlacedOn($row['placed_on']);
+
+
+117) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:197    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setMethod($row['method']);
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+-                $order->setTotalPrice($row['total_price']);
++                
+                 $order->setPaymentStatus($row['payment_status']);
+                 $order->setPlacedOn($row['placed_on']);
+                 $orders[] = $order;
+
+
+118) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:198    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setAddress($row['address']);
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+-                $order->setPaymentStatus($row['payment_status']);
++                
+                 $order->setPlacedOn($row['placed_on']);
+                 $orders[] = $order;
+             }
+
+
+119) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:199    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $order->setTotalProducts($row['total_products']);
+                 $order->setTotalPrice($row['total_price']);
+                 $order->setPaymentStatus($row['payment_status']);
+-                $order->setPlacedOn($row['placed_on']);
++                
+                 $orders[] = $order;
+             }
+             return $orders;
+
+
+120) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:216    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $product = new Product();
+                 $product->setName($row['name']);
+-                $product->setPrice($row['price']);
++                
+                 $product->setImage($row['image']);
+                 $products[] = $product;
+             }
+
+
+121) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:217    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $product = new Product();
+                 $product->setName($row['name']);
+                 $product->setPrice($row['price']);
+-                $product->setImage($row['image']);
++                
+                 $products[] = $product;
+             }
+             return $products;
+
+
+122) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:222    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            $this->handleDatabaseError($e);
++            
+             return [];
+         }
+     }
+
+
+123) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:235    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $user = new User();
+                 $user->setName($row['name']);
+-                $user->setEmail($row['email']);
++                
+                 $user->setUserType($row['user_type']);
+                 $users[] = $user;
+             }
+
+
+124) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:236    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $user = new User();
+                 $user->setName($row['name']);
+                 $user->setEmail($row['email']);
+-                $user->setUserType($row['user_type']);
++                
+                 $users[] = $user;
+             }
+             return $users;
+
+
+125) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:241    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $users;
+         } catch (\Exception $e) {
+-            $this->handleDatabaseError($e);
++            
+             return [];
+         }
+     }
+
+
+126) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:247    [M] Concat
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError(\Exception $e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log($e->getMessage() . "Error en la base de datos: ");
+     }
+ }
+
+
+127) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:247    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError(\Exception $e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log($e->getMessage());
+     }
+ }
+
+
+128) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:247    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError(\Exception $e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        error_log("Error en la base de datos: ");
+     }
+ }
+
+
+129) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\OrderController.php:247    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+     }
+     private function handleDatabaseError(\Exception $e)
+     {
+-        error_log("Error en la base de datos: " . $e->getMessage());
++        
+     }
+ }
+
+
+130) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:17    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->conn = $conn;
+     }
+-    public function getLatestProducts($limit = 6)
++    public function getLatestProducts($limit = 5)
+     {
+         try {
+             $query = "SELECT * FROM products LIMIT :limit";
+
+
+131) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:17    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->conn = $conn;
+     }
+-    public function getLatestProducts($limit = 6)
++    public function getLatestProducts($limit = 7)
+     {
+         try {
+             $query = "SELECT * FROM products LIMIT :limit";
+
+
+132) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:21    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         try {
+             $query = "SELECT * FROM products LIMIT :limit";
+             $stmt = $this->conn->prepare($query);
+-            $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
++            
+             $stmt->execute();
+             $products = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+
+
+133) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:27    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $products = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $product = new Product();
+-                $product->setId($row['id']);
++                
+                 $product->setName($row['name']);
+                 $product->setPrice($row['price']);
+                 $product->setImage($row['image']);
+
+
+134) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:29    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $product = new Product();
+                 $product->setId($row['id']);
+                 $product->setName($row['name']);
+-                $product->setPrice($row['price']);
++                
+                 $product->setImage($row['image']);
+                 $products[] = $product;
+             }
+
+
+135) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:30    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $product->setId($row['id']);
+                 $product->setName($row['name']);
+                 $product->setPrice($row['price']);
+-                $product->setImage($row['image']);
++                
+                 $products[] = $product;
+             }
+             return $products;
+
+
+136) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:35    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener productos: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al obtener productos: ");
+             return [];
+         }
+     }
+
+
+137) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:35    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener productos: " . $e->getMessage());
++            error_log($e->getMessage());
+             return [];
+         }
+     }
+
+
+138) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:35    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener productos: " . $e->getMessage());
++            error_log("Error al obtener productos: ");
+             return [];
+         }
+     }
+
+
+139) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:35    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener productos: " . $e->getMessage());
++            
+             return [];
+         }
+     }
+
+
+140) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:62    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             // Añadir al carrito
+             $query = "INSERT INTO cart (user_id, name, price, quantity, image) \r\n                     VALUES (?, ?, ?, ?, ?)";
+             $stmt = $this->conn->prepare($query);
+-            $stmt->execute([$cart->getUserId(), $cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
++            $stmt->execute([$cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
+             return ['success' => true, 'message' => 'Producto añadido al carrito'];
+         } catch (\Exception $e) {
+             error_log("Error al añadir al carrito: " . $e->getMessage());
+
+
+141) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:72    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$cart->getUserId(), $cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
+             return ['success' => true, 'message' => 'Producto añadido al carrito'];
+         } catch (\Exception $e) {
+-            error_log("Error al añadir al carrito: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al añadir al carrito: ");
+             return ['success' => false, 'message' => 'Error al añadir al carrito'];
+         }
+     }
+
+
+142) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:72    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$cart->getUserId(), $cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
+             return ['success' => true, 'message' => 'Producto añadido al carrito'];
+         } catch (\Exception $e) {
+-            error_log("Error al añadir al carrito: " . $e->getMessage());
++            error_log($e->getMessage());
+             return ['success' => false, 'message' => 'Error al añadir al carrito'];
+         }
+     }
+
+
+143) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:72    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$cart->getUserId(), $cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
+             return ['success' => true, 'message' => 'Producto añadido al carrito'];
+         } catch (\Exception $e) {
+-            error_log("Error al añadir al carrito: " . $e->getMessage());
++            error_log("Error al añadir al carrito: ");
+             return ['success' => false, 'message' => 'Error al añadir al carrito'];
+         }
+     }
+
+
+144) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:72    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$cart->getUserId(), $cart->getName(), $cart->getPrice(), $cart->getQuantity(), $cart->getImage()]);
+             return ['success' => true, 'message' => 'Producto añadido al carrito'];
+         } catch (\Exception $e) {
+-            error_log("Error al añadir al carrito: " . $e->getMessage());
++            
+             return ['success' => false, 'message' => 'Error al añadir al carrito'];
+         }
+     }
+
+
+145) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:86    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $products = [];
+             foreach ($stmt->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+                 $product = new Product();
+-                $product->setId($row['id']);
++                
+                 $product->setName($row['name']);
+                 $product->setPrice($row['price']);
+                 $product->setImage($row['image']);
+
+
+146) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:88    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $product = new Product();
+                 $product->setId($row['id']);
+                 $product->setName($row['name']);
+-                $product->setPrice($row['price']);
++                
+                 $product->setImage($row['image']);
+                 $products[] = $product;
+             }
+
+
+147) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:89    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+                 $product->setId($row['id']);
+                 $product->setName($row['name']);
+                 $product->setPrice($row['price']);
+-                $product->setImage($row['image']);
++                
+                 $products[] = $product;
+             }
+             return $products;
+
+
+148) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:94    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener todos los productos: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al obtener todos los productos: ");
+             return [];
+         }
+     }
+
+
+149) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:94    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener todos los productos: " . $e->getMessage());
++            error_log($e->getMessage());
+             return [];
+         }
+     }
+
+
+150) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:94    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener todos los productos: " . $e->getMessage());
++            error_log("Error al obtener todos los productos: ");
+             return [];
+         }
+     }
+
+
+151) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:94    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return $products;
+         } catch (\Exception $e) {
+-            error_log("Error al obtener todos los productos: " . $e->getMessage());
++            
+             return [];
+         }
+     }
+
+
+152) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:106    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener items del carrito: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al obtener items del carrito: ");
+             return [];
+         }
+     }
+
+
+153) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:106    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener items del carrito: " . $e->getMessage());
++            error_log($e->getMessage());
+             return [];
+         }
+     }
+
+
+154) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:106    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener items del carrito: " . $e->getMessage());
++            error_log("Error al obtener items del carrito: ");
+             return [];
+         }
+     }
+
+
+155) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:106    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener items del carrito: " . $e->getMessage());
++            
+             return [];
+         }
+     }
+
+
+156) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:142    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return true;
+         } catch (\Exception $e) {
+-            error_log("Error al eliminar todos los items: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al eliminar todos los items: ");
+             return false;
+         }
+     }
+ }
+
+
+157) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:142    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return true;
+         } catch (\Exception $e) {
+-            error_log("Error al eliminar todos los items: " . $e->getMessage());
++            error_log($e->getMessage());
+             return false;
+         }
+     }
+ }
+
+
+158) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:142    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return true;
+         } catch (\Exception $e) {
+-            error_log("Error al eliminar todos los items: " . $e->getMessage());
++            error_log("Error al eliminar todos los items: ");
+             return false;
+         }
+     }
+ }
+
+
+159) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\ProductController.php:142    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return true;
+         } catch (\Exception $e) {
+-            error_log("Error al eliminar todos los items: " . $e->getMessage());
++            
+             return false;
+         }
+     }
+ }
+
+
+160) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:25    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         try {
+             $user = new User();
+-            $user->setName($userData['name']);
++            
+             $user->setEmail($userData['email']);
+             $user->setUserType($userData['user_type'] ?? 'user');
+             // Verificar si el correo ya existe
+
+
+161) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:26    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+         try {
+             $user = new User();
+             $user->setName($userData['name']);
+-            $user->setEmail($userData['email']);
++            
+             $user->setUserType($userData['user_type'] ?? 'user');
+             // Verificar si el correo ya existe
+             $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+
+
+162) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:27    [M] Coalesce
+
+--- Original
++++ New
+@@ @@
+             $user = new User();
+             $user->setName($userData['name']);
+             $user->setEmail($userData['email']);
+-            $user->setUserType($userData['user_type'] ?? 'user');
++            $user->setUserType('user' ?? $userData['user_type']);
+             // Verificar si el correo ya existe
+             $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+             $stmt->execute([$user->getEmail()]);
+
+
+163) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:27    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $user = new User();
+             $user->setName($userData['name']);
+             $user->setEmail($userData['email']);
+-            $user->setUserType($userData['user_type'] ?? 'user');
++            
+             // Verificar si el correo ya existe
+             $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+             $stmt->execute([$user->getEmail()]);
+
+
+164) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:31    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+             $user->setUserType($userData['user_type'] ?? 'user');
+             // Verificar si el correo ya existe
+             $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+-            $stmt->execute([$user->getEmail()]);
++            $stmt->execute([]);
+             if ($stmt->fetch()) {
+                 return ['success' => false, 'message' => 'El correo ya está registrado'];
+             }
+
+
+165) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:31    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $user->setUserType($userData['user_type'] ?? 'user');
+             // Verificar si el correo ya existe
+             $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+-            $stmt->execute([$user->getEmail()]);
++            
+             if ($stmt->fetch()) {
+                 return ['success' => false, 'message' => 'El correo ya está registrado'];
+             }
+
+
+166) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:51    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$user->getName(), $user->getEmail(), $this->hashPassword($userData['password']), $user->getUserType()]);
+             return ['success' => true, 'message' => 'Registro exitoso!'];
+         } catch (\Exception $e) {
+-            error_log("Error en registro: " . $e->getMessage());
++            error_log($e->getMessage() . "Error en registro: ");
+             return ['success' => false, 'message' => 'Error en el registro'];
+         }
+     }
+
+
+167) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:51    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$user->getName(), $user->getEmail(), $this->hashPassword($userData['password']), $user->getUserType()]);
+             return ['success' => true, 'message' => 'Registro exitoso!'];
+         } catch (\Exception $e) {
+-            error_log("Error en registro: " . $e->getMessage());
++            error_log($e->getMessage());
+             return ['success' => false, 'message' => 'Error en el registro'];
+         }
+     }
+
+
+168) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:51    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$user->getName(), $user->getEmail(), $this->hashPassword($userData['password']), $user->getUserType()]);
+             return ['success' => true, 'message' => 'Registro exitoso!'];
+         } catch (\Exception $e) {
+-            error_log("Error en registro: " . $e->getMessage());
++            error_log("Error en registro: ");
+             return ['success' => false, 'message' => 'Error en el registro'];
+         }
+     }
+
+
+169) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:51    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$user->getName(), $user->getEmail(), $this->hashPassword($userData['password']), $user->getUserType()]);
+             return ['success' => true, 'message' => 'Registro exitoso!'];
+         } catch (\Exception $e) {
+-            error_log("Error en registro: " . $e->getMessage());
++            
+             return ['success' => false, 'message' => 'Error en el registro'];
+         }
+     }
+
+
+170) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:72    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             }
+             return ['success' => false, 'message' => 'Correo o contraseña incorrectos'];
+         } catch (\Exception $e) {
+-            error_log("Error en login: " . $e->getMessage());
++            error_log($e->getMessage() . "Error en login: ");
+             return ['success' => false, 'message' => 'Error en el inicio de sesión'];
+         }
+     }
+
+
+171) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:72    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return ['success' => false, 'message' => 'Correo o contraseña incorrectos'];
+         } catch (\Exception $e) {
+-            error_log("Error en login: " . $e->getMessage());
++            error_log($e->getMessage());
+             return ['success' => false, 'message' => 'Error en el inicio de sesión'];
+         }
+     }
+
+
+172) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:72    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return ['success' => false, 'message' => 'Correo o contraseña incorrectos'];
+         } catch (\Exception $e) {
+-            error_log("Error en login: " . $e->getMessage());
++            error_log("Error en login: ");
+             return ['success' => false, 'message' => 'Error en el inicio de sesión'];
+         }
+     }
+
+
+173) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:72    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             }
+             return ['success' => false, 'message' => 'Correo o contraseña incorrectos'];
+         } catch (\Exception $e) {
+-            error_log("Error en login: " . $e->getMessage());
++            
+             return ['success' => false, 'message' => 'Error en el inicio de sesión'];
+         }
+     }
+
+
+174) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:105    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetch(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener usuario: " . $e->getMessage());
++            error_log($e->getMessage() . "Error al obtener usuario: ");
+             return null;
+         }
+     }
+
+
+175) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:105    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetch(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener usuario: " . $e->getMessage());
++            error_log($e->getMessage());
+             return null;
+         }
+     }
+
+
+176) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:105    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetch(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener usuario: " . $e->getMessage());
++            error_log("Error al obtener usuario: ");
+             return null;
+         }
+     }
+
+
+177) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Controllers\UserController.php:105    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $stmt->execute([$userId]);
+             return $stmt->fetch(\PDO::FETCH_ASSOC);
+         } catch (\Exception $e) {
+-            error_log("Error al obtener usuario: " . $e->getMessage());
++            
+             return null;
+         }
+     }
+
+
+178) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Models\Message.php:30    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $sql = "SELECT id FROM message WHERE user_id = ? AND message = ?";
+         $stmt = $conn->prepare($sql);
+-        $stmt->execute([$this->userId, $this->message]);
++        $stmt->execute([$this->message]);
+         return $stmt->rowCount() > 0;
+     }
+     public function save($conn)
+
+
+179) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Models\Message.php:37    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $sql = "INSERT INTO message (user_id, name, email, number, message) VALUES (?, ?, ?, ?, ?)";
+         $stmt = $conn->prepare($sql);
+-        return $stmt->execute([$this->userId, $this->name, $this->email, $this->number, $this->message]);
++        return $stmt->execute([$this->name, $this->email, $this->number, $this->message]);
+     }
+     public function setId($id)
+     {
+
+
+180) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Models\Order.php:44    [M] This
+
+--- Original
++++ New
+@@ @@
+     public function setId($id)
+     {
+         $this->id = $id;
+-        return $this;
++        return null;
+     }
+ }
+
+
+Timed Out mutants:
+==================
+
+1) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:13    [M] TrueValue
+
+--- Original
++++ New
+@@ @@
+     private $user;
+     private $password;
+     private $database;
+-    public function __construct(bool $useEnv = true)
++    public function __construct(bool $useEnv = false)
+     {
+         if (!$useEnv) {
+             $this->setDefaultCredentials();
+
+
+2) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:39    [M] Ternary
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->host = getenv('DB_HOST') ?: 'db';
+         $this->user = getenv('DB_USER') ?: 'root';
+-        $this->password = getenv('DB_PASSWORD') ?: '123456';
++        $this->password = getenv('DB_PASSWORD') ? '123456' : getenv('DB_PASSWORD');
+         $this->database = getenv('DB_NAME') ?: 'tienda_bd';
+     }
+     public function setCredentials(string $host, string $user, string $password, string $database) : void
+
+
+3) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:40    [M] Ternary
+
+--- Original
++++ New
+@@ @@
+         $this->host = getenv('DB_HOST') ?: 'db';
+         $this->user = getenv('DB_USER') ?: 'root';
+         $this->password = getenv('DB_PASSWORD') ?: '123456';
+-        $this->database = getenv('DB_NAME') ?: 'tienda_bd';
++        $this->database = getenv('DB_NAME') ? 'tienda_bd' : getenv('DB_NAME');
+     }
+     public function setCredentials(string $host, string $user, string $password, string $database) : void
+     {
+
+
+4) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:57    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+     public function connect()
+     {
+         try {
+-            $conn = new \PDO("mysql:host={$this->host};dbname={$this->database}", $this->user, $this->password, array(\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
++            $conn = new \PDO("mysql:host={$this->host};dbname={$this->database}", $this->user, $this->password, array());
+             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             return $conn;
+         } catch (\PDOException $e) {
+
+
+5) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:62    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             return $conn;
+         } catch (\PDOException $e) {
+-            error_log("Error de conexión: " . $e->getMessage());
++            error_log($e->getMessage() . "Error de conexión: ");
+             throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
+         }
+     }
+ }
+
+
+6) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:62    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             return $conn;
+         } catch (\PDOException $e) {
+-            error_log("Error de conexión: " . $e->getMessage());
++            error_log($e->getMessage());
+             throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
+         }
+     }
+ }
+
+
+7) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:62    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             return $conn;
+         } catch (\PDOException $e) {
+-            error_log("Error de conexión: " . $e->getMessage());
++            error_log("Error de conexión: ");
+             throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
+         }
+     }
+ }
+
+
+8) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:62    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+             $conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+             return $conn;
+         } catch (\PDOException $e) {
+-            error_log("Error de conexión: " . $e->getMessage());
++            
+             throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
+         }
+     }
+ }
+
+
+9) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:64    [M] Concat
+
+--- Original
++++ New
+@@ @@
+             return $conn;
+         } catch (\PDOException $e) {
+             error_log("Error de conexión: " . $e->getMessage());
+-            throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
++            throw new DatabaseException($e->getMessage() . "Error de conexión a la base de datos: ", $e->getCode(), $e);
+         }
+     }
+ }
+
+
+10) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:64    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             return $conn;
+         } catch (\PDOException $e) {
+             error_log("Error de conexión: " . $e->getMessage());
+-            throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
++            throw new DatabaseException($e->getMessage(), $e->getCode(), $e);
+         }
+     }
+ }
+
+
+11) C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php:64    [M] ConcatOperandRemoval
+
+--- Original
++++ New
+@@ @@
+             return $conn;
+         } catch (\PDOException $e) {
+             error_log("Error de conexión: " . $e->getMessage());
+-            throw new DatabaseException("Error de conexión a la base de datos: " . $e->getMessage(), $e->getCode(), $e);
++            throw new DatabaseException("Error de conexión a la base de datos: ", $e->getCode(), $e);
+         }
+     }
+ }
+
+
+Skipped mutants:
+================

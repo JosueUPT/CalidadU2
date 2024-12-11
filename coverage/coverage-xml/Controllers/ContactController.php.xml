@@ -1,0 +1,806 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="ContactController.php" path="\Controllers">
+    <totals>
+      <lines total="65" comments="5" code="60" executable="27" executed="27" percent="100.00"/>
+      <methods count="4" tested="4" percent="100.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="1" percent="100.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="Controllers\ContactController" start="9" executable="25" executed="25" crap="12">
+      <namespace name="Controllers"/>
+      <method name="__construct" signature="__construct($conn)" start="12" end="14" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="createUser" signature="createUser()" start="17" end="20" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="createMessage" signature="createMessage()" start="22" end="25" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="sendMessage" signature="sendMessage($userData)" start="27" end="64" crap="9" executable="22" executed="22" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="4">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+      </line>
+      <line nr="5">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+      </line>
+      <line nr="13">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithMissingFields"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_campos_faltantes"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::constructor_asigna_conexion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::crear_mensaje_retorna_instancia_message"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::crear_usuario_retorna_instancia_user"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="19">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::crear_usuario_retorna_instancia_user"/>
+      </line>
+      <line nr="24">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::crear_mensaje_retorna_instancia_message"/>
+      </line>
+      <line nr="30">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithMissingFields"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_campos_faltantes"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="31">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithMissingFields"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_campos_faltantes"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="32">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithMissingFields"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_campos_faltantes"/>
+      </line>
+      <line nr="36">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="37">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="38">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="39">
+        <covered by="Tests\Mutation\ContactControllerMutationTest::testSendMessageMutationWithInvalidUserId"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_usuario_no_encontrado"/>
+      </line>
+      <line nr="42">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="43">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="44">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="45">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="46">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="47">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="49">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="50">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_ya_enviado"/>
+      </line>
+      <line nr="53">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="54">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_user_id"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_valida_setters"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_exitoso"/>
+      </line>
+      <line nr="58">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+      </line>
+      <line nr="59">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_error_al_guardar"/>
+      </line>
+      <line nr="60">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+      </line>
+      <line nr="61">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+      </line>
+      <line nr="62">
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_maneja_error_en_save"/>
+        <covered by="Tests\Unit\Controllers\ContactControllerTest::enviar_mensaje_lanza_excepcion"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2">
+        <token name="T_NAMESPACE">namespace</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Controllers</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="3"/>
+      <line no="4">
+        <token name="T_REQUIRE_ONCE">require_once</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/../Models/Message.php'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="5">
+        <token name="T_REQUIRE_ONCE">require_once</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DIR">__DIR__</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'/../Models/User.php'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="6">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Models\Message</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7">
+        <token name="T_USE">use</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NAME_QUALIFIED">Models\User</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="8"/>
+      <line no="9">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ContactController</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11"/>
+      <line no="12">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="13">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$conn</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="14">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="15"/>
+      <line no="16">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COMMENT">// Agregar estos m&#xE9;todos protegidos para permitir el mock en las pruebas</token>
+      </line>
+      <line no="17">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">createUser</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="18">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">User</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="21"/>
+      <line no="22">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PROTECTED">protected</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">createMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="23">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_NEW">new</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">Message</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="26"/>
+      <line no="27">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">sendMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_TRY">try</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Validar que todos los campos requeridos existan</token>
+      </line>
+      <line no="30">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_OR">||</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_OR">||</token>
+        <token name="T_WHITESPACE"> </token>
+      </line>
+      <line no="31">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_OR">||</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Faltan campos requeridos'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="34"/>
+      <line no="35">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// Modificar la creaci&#xF3;n de User y Message</token>
+      </line>
+      <line no="36">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">createUser</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EXCLAMATION_MARK">!</token>
+        <token name="T_VARIABLE">$user</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Usuario no encontrado'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="41"/>
+      <line no="42">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">createMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="43">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setUserId</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="44">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setName</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'name'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="45">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setEmail</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'email'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="46">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setNumber</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'number'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="47">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">setMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="48"/>
+      <line no="49">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">exists</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+        <token name="T_WHITESPACE">  </token>
+        <token name="T_COMMENT">// Asumiendo que existe un m&#xE9;todo exists() en Message</token>
+      </line>
+      <line no="50">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'&#xA1;Mensaje ya enviado!'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="52"/>
+      <line no="53">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$message</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">save</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">conn</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">                </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'&#xA1;Mensaje enviado exitosamente!'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="55">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="56"/>
+      <line no="57">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_COMMENT">// A&#xF1;adir log espec&#xED;fico si save() falla</token>
+      </line>
+      <line no="58">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error en save(): Fall&#xF3; al guardar el mensaje para usuario ID: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$userData</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'user_id'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="59">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Error al enviar mensaje'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="60">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CATCH">catch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_NAME_FULLY_QUALIFIED">\Exception</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="61">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_STRING">error_log</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">"Error al enviar mensaje: "</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="62">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'success'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'message'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Error al enviar mensaje: '</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOT">.</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$e</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">getMessage</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="63">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="64">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="65">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+    </source>
+  </file>
+</phpunit>
