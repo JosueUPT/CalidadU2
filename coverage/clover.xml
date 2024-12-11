@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1733950932">
-  <project timestamp="1733950932">
+<coverage generated="1733951108">
+  <project timestamp="1733951108">
     <file name="C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\Config\Database.php">
       <class name="Config\Database" namespace="global">
         <metrics complexity="12" methods="4" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="36" coveredstatements="24" elements="40" coveredelements="26"/>
@@ -843,11 +843,13 @@
     <file name="C:\Users\ASUS\Desktop\proyecto-si784-2024-ii-u3-reportes_chambilla_llantay\src\index.php">
       <line num="3" type="stmt" count="0"/>
       <line num="4" type="stmt" count="0"/>
-      <line num="5" type="stmt" count="0"/>
+      <line num="6" type="stmt" count="0"/>
       <line num="7" type="stmt" count="0"/>
-      <line num="11" type="stmt" count="0"/>
-      <metrics loc="13" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="5" coveredelements="0"/>
+      <line num="8" type="stmt" count="0"/>
+      <line num="10" type="stmt" count="0"/>
+      <line num="14" type="stmt" count="0"/>
+      <metrics loc="16" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="7" coveredelements="0"/>
     </file>
-    <metrics files="15" loc="1288" ncloc="1238" classes="13" methods="130" coveredmethods="107" conditionals="0" coveredconditionals="0" statements="691" coveredstatements="593" elements="821" coveredelements="700"/>
+    <metrics files="15" loc="1291" ncloc="1240" classes="13" methods="130" coveredmethods="107" conditionals="0" coveredconditionals="0" statements="693" coveredstatements="593" elements="823" coveredelements="700"/>
   </project>
 </coverage>

@@ -47,6 +47,15 @@ jobs:
         echo "Ejecutando pruebas unitarias con cobertura..."
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text --stop-on-warning --no-interaction
         
+        # Verificar que el reporte se generó
+        if [ -d "public/coverage" ]; then
+          echo "✓ Reporte de cobertura generado en public/coverage"
+          ls -l public/coverage/
+        else
+          echo "✗ Error: No se pudo generar el reporte de cobertura"
+          exit 1
+        fi
+
     - name: Verify Coverage Report
       run: |
         echo "Verificando reporte de cobertura..."
