@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis SonarCloud</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .metric-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-title {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .metric-detail {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .good { color: #28a745; }
+        .warning { color: #ffc107; }
+        .danger { color: #dc3545; }
+        .info { color: #17a2b8; }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            margin-top: 30px;
+            color: #444;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis Detallado de Calidad del Código</h1>
+        
+        <h2 class="section-title">Métricas Principales</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-title">Cobertura de Código</div>
+                <div class="metric-value info">84.7%</div>
+                <div class="metric-detail">100 - 84.7% sin cobertura</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Bugs</div>
+                <div class="metric-value good">0</div>
+                <div class="metric-detail">Problemas detectados</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Code Smells</div>
+                <div class="metric-value warning">189</div>
+                <div class="metric-detail">Oportunidades de mejora</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Duplicación</div>
+                <div class="metric-value good">1.2%</div>
+                <div class="metric-detail">Código duplicado</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Vulnerabilidades</div>
+                <div class="metric-value good">0</div>
+                <div class="metric-detail">Vulnerabilidades detectadas</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Líneas de Código</div>
+                <div class="metric-value info">3421</div>
+                <div class="metric-detail">Total de líneas</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Métricas Avanzadas</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-title">Complejidad Ciclomática</div>
+                <div class="metric-value info">287</div>
+                <div class="metric-detail">Total del proyecto</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Complejidad Cognitiva</div>
+                <div class="metric-value info">242</div>
+                <div class="metric-detail">Dificultad de entendimiento</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Densidad de Comentarios</div>
+                <div class="metric-value info">1.6%</div>
+                <div class="metric-detail">Código documentado</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Calificaciones</h2>
+        <div class="metric-grid">
+            <div class="metric-card">
+                <div class="metric-title">Seguridad</div>
+                <div class="metric-value good">A</div>
+                <div class="metric-detail">Esfuerzo: 0 min</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Confiabilidad</div>
+                <div class="metric-value good">A</div>
+                <div class="metric-detail">Esfuerzo: 0 min</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Mantenibilidad</div>
+                <div class="metric-value good">A</div>
+                <div class="metric-detail">Deuda: 736 min</div>
+            </div>
+        </div>
+
+        <div style="text-align: right; margin-top: 30px; color: #666;">
+            Última actualización: 
+        </div>
+    </div>
+</body>
+</html>

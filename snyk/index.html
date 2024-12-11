@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis de Seguridad de Controllers</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-color: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: white; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        .controller-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        .file-info {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .methods-list {
+            list-style: none;
+            padding: 0;
+        }
+        .method-item {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .status.ok { 
+            background-color: #28a745; 
+            color: white;
+        }
+        .status.warning { 
+            background-color: #ffc107; 
+        }
+        .status.error { 
+            background-color: #dc3545; 
+            color: white;
+        }
+        .code-preview {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Análisis de Seguridad - Controllers</h1>
+        
+        <div class="controller-card">
+            <h2>Resumen General</h2>
+            <div class="status ok">✅ 6 Controllers Analizados</div>
+        </div>
+
+        <div class="controller-card">
+<h3>AdminController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/AdminController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 16)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getDashboardData</strong> (línea 20)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>addProduct</strong> (línea 109)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteProduct</strong> (línea 139)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>updateProduct</strong> (línea 233)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllProducts</strong> (línea 279)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllOrders</strong> (línea 293)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>updateOrderStatus</strong> (línea 315)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteOrder</strong> (línea 329)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllUsers</strong> (línea 342)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteUser</strong> (línea 363)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllMessages</strong> (línea 376)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteMessage</strong> (línea 397)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+<div class="controller-card">
+<h3>ContactController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/ContactController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 12)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>sendMessage</strong> (línea 27)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+<div class="controller-card">
+<h3>OrderController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/OrderController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 14)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getOrders</strong> (línea 18)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>updatePaymentStatus</strong> (línea 45)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteOrder</strong> (línea 55)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllOrders</strong> (línea 65)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>createOrder</strong> (línea 88)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getUserOrders</strong> (línea 183)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllProducts</strong> (línea 209)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllUsers</strong> (línea 227)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+<div class="controller-card">
+<h3>ProductController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/ProductController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 13)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getLatestProducts</strong> (línea 17)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>addToCart</strong> (línea 40)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getAllProducts</strong> (línea 77)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getCartItems</strong> (línea 99)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>updateCartQuantity</strong> (línea 111)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteCartItem</strong> (línea 123)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>deleteAllCartItems</strong> (línea 135)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+<div class="controller-card">
+<h3>SearchController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/SearchController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 7)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>searchProducts</strong> (línea 11)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+<div class="controller-card">
+<h3>UserController.php</h3>
+<div class="file-info">
+<p><strong>Ruta:</strong> src/Controllers/UserController.php</p>
+<p><strong>Última modificación:</strong> 2024-12-11 21:24:20</p>
+</div>
+<h4>Métodos detectados:</h4>
+<ul class="methods-list">
+<li class="method-item">
+<strong>__construct</strong> (línea 10)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>registerUser</strong> (línea 22)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>loginUser</strong> (línea 56)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>logout</strong> (línea 77)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>getUserById</strong> (línea 99)
+<div class="status ok">✅ Seguro</div>
+</li>
+<li class="method-item">
+<strong>register</strong> (línea 111)
+<div class="status ok">✅ Seguro</div>
+</li>
+</ul>
+</div>
+
+        <div style="text-align: right; margin-top: 30px; color: #666;">
+            Última actualización: 2024-12-11 21:25:44
+        </div>
+    </div>
+</body>
+</html>
