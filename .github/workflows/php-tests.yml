@@ -44,7 +44,20 @@ jobs:
     - name: Run test suite with coverage
       run: |
         mkdir -p public/coverage
-        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text
+        echo "Ejecutando pruebas unitarias con cobertura..."
+        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html public/coverage --coverage-text --stop-on-warning --no-interaction
+        
+    - name: Verify Coverage Report
+      run: |
+        echo "Verificando reporte de cobertura..."
+        if [ -f "public/coverage/index.html" ]; then
+          echo "✓ El reporte de cobertura se generó correctamente"
+          ls -l public/coverage/
+        else
+          echo "✗ El reporte de cobertura NO se generó"
+          echo "Contenido de public/:"
+          ls -R public/
+        fi
 
     - name: Update Behat configuration
       run: |

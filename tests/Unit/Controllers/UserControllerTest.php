@@ -640,4 +640,19 @@ class UserControllerTest extends TestCase
 
         $this->assertEquals('user', $executeParams[3]);
     }
+
+    /** @test */
+    public function test_conexion_fallida(): void
+    {
+        // Simular error de conexión
+        $mockPDO = $this->createMock(\PDO::class);
+        $mockPDO->method('prepare')
+                ->willThrowException(new \PDOException('Error de conexión'));
+        
+        $userController = new UserController($mockPDO);
+        $result = $userController->loginUser('test@test.com', '123');
+        
+        $this->assertFalse($result['success']);
+        $this->assertEquals('Error de conexión', $result['message']);
+    }
 } 
