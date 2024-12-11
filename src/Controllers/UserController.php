@@ -96,20 +96,11 @@ class UserController {
         }
     }
 
-    public function getUserById($id) 
-    {
+    public function getUserById($userId) {
         try {
-            if ($id === null) {
-                return null;  // Retornar null explícitamente cuando el ID es null
-            }
-
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
-            if (!$stmt->execute([$id])) {
-                return null;
-            }
-
-            $user = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $user ?: null;  // Retornar null si no se encuentra el usuario
+            $stmt = $this->conn->prepare("SELECT id, name, email, user_type FROM users WHERE id = ?");
+            $stmt->execute([$userId]);
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
         } catch (\Exception $e) {
             error_log("Error al obtener usuario: " . $e->getMessage());
             return null;
